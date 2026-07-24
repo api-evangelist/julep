@@ -1,0 +1,112 @@
+openapi: 3.0.0
+info:
+  title: Julep Agents Embed API
+  termsOfService: https://julep.ai/terms
+  contact:
+    name: Julep AI
+    url: https://julep.ai
+    email: developers@julep.ai
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  description: Julep is a backend for creating stateful AI apps with background tasks and long-term memory easily.
+  version: 1.0.0
+servers:
+- url: https://{serverEnv}.julep.ai/api
+  description: The julep cloud service endpoint
+  variables:
+    serverEnv:
+      default: api
+      description: The environment to use
+      enum:
+      - api
+      - dev
+security:
+- ApiKeyAuth: []
+- ApiKeyAuth_: []
+tags:
+- name: Embed
+paths:
+  /embed:
+    post:
+      operationId: EmbedRoute_embed
+      description: Embed a query for search
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Docs.EmbedQueryResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                body:
+                  anyOf:
+                  - $ref: '#/components/schemas/Docs.SingleEmbedQueryRequest'
+                  - $ref: '#/components/schemas/Docs.MultipleEmbedQueryRequest'
+              required:
+              - body
+      tags:
+      - Embed
+components:
+  schemas:
+    Docs.MultipleEmbedQueryRequest:
+      type: object
+      required:
+      - text
+      - embed_instruction
+      properties:
+        text:
+          type: array
+          items:
+            type: string
+          minItems: 1
+          maxItems: 100
+          description: Texts to embed
+        embed_instruction:
+          type: string
+          description: Instruction for the embedding model.
+          default: ''
+    Docs.EmbedQueryResponse:
+      type: object
+      required:
+      - vectors
+      properties:
+        vectors:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
+          description: The embedded vectors
+    Docs.SingleEmbedQueryRequest:
+      type: object
+      required:
+      - text
+      - embed_instruction
+      properties:
+        text:
+          type: string
+          description: Text to embed
+        embed_instruction:
+          type: string
+          description: Instruction for the embedding model.
+          default: ''
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+    ApiKeyAuth_:
+      type: apiKey
+      in: header
+      name: X-Auth-Key
+externalDocs:
+  url: https://docs.julep.ai
+  description: Julep API documentation

@@ -1,0 +1,190 @@
+openapi: 3.0.0
+info:
+  title: Julep Agents Files API
+  termsOfService: https://julep.ai/terms
+  contact:
+    name: Julep AI
+    url: https://julep.ai
+    email: developers@julep.ai
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  description: Julep is a backend for creating stateful AI apps with background tasks and long-term memory easily.
+  version: 1.0.0
+servers:
+- url: https://{serverEnv}.julep.ai/api
+  description: The julep cloud service endpoint
+  variables:
+    serverEnv:
+      default: api
+      description: The environment to use
+      enum:
+      - api
+      - dev
+security:
+- ApiKeyAuth: []
+- ApiKeyAuth_: []
+tags:
+- name: Files
+paths:
+  /files:
+    post:
+      operationId: FilesRoute_create
+      description: Create a new File
+      parameters: []
+      responses:
+        '201':
+          description: The request has succeeded and a new resource has been created as a result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Files.File'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Files.CreateFileRequest'
+      tags:
+      - Files
+  /files/{id}:
+    get:
+      operationId: FilesRoute_get
+      description: Get a File by its id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the resource
+        schema:
+          $ref: '#/components/schemas/Common.uuid'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Files.File'
+      tags:
+      - Files
+components:
+  schemas:
+    Files.File:
+      type: object
+      required:
+      - id
+      - created_at
+      - name
+      - description
+      - mime_type
+      - content
+      - size
+      - hash
+      properties:
+        id:
+          allOf:
+          - $ref: '#/components/schemas/Common.uuid'
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          description: When this resource was created as UTC date-time
+          readOnly: true
+        name:
+          allOf:
+          - $ref: '#/components/schemas/Common.identifierSafeUnicode'
+          description: Name of the file
+        description:
+          type: string
+          description: Description of the file
+          default: ''
+        mime_type:
+          oneOf:
+          - $ref: '#/components/schemas/Common.mimeType'
+          nullable: true
+          description: MIME type of the file
+          default: null
+        content:
+          type: string
+          description: Base64 encoded content of the file
+        project:
+          allOf:
+          - $ref: '#/components/schemas/Common.canonicalName'
+          description: Project canonical name of the file
+        size:
+          type: integer
+          format: uint64
+          minimum: 1
+          description: Size of the file in bytes
+          readOnly: true
+        hash:
+          type: string
+          description: Hash of the file
+          readOnly: true
+    Common.uuid:
+      type: string
+      format: uuid
+    Files.CreateFileRequest:
+      type: object
+      required:
+      - name
+      - description
+      - mime_type
+      - content
+      properties:
+        name:
+          allOf:
+          - $ref: '#/components/schemas/Common.identifierSafeUnicode'
+          description: Name of the file
+        description:
+          type: string
+          description: Description of the file
+          default: ''
+        mime_type:
+          oneOf:
+          - $ref: '#/components/schemas/Common.mimeType'
+          nullable: true
+          description: MIME type of the file
+          default: null
+        content:
+          type: string
+          description: Base64 encoded content of the file
+        project:
+          allOf:
+          - $ref: '#/components/schemas/Common.canonicalName'
+          description: Project canonical name of the file
+      description: Payload for creating a file
+    Common.mimeType:
+      type: string
+      maxLength: 120
+      pattern: ^(application|audio|font|example|image|message|model|multipart|text|video|x-(?:[0-9A-Za-z!#$%&'*+.^_`|~-]+))\/([0-9A-Za-z!#$%&'*+.^_`|~-]+)$
+      description: Valid mime types
+    Common.identifierSafeUnicode:
+      type: string
+      maxLength: 120
+      pattern: ^[\p{L}\p{Nl}\p{Pattern_Syntax}\p{Pattern_White_Space}]+[\p{ID_Start}\p{Mn}\p{Mc}\p{Nd}\p{Pc}\p{Pattern_Syntax}\p{Pattern_White_Space}]*$
+      description: 'For Unicode character safety
+
+        See: https://unicode.org/reports/tr31/
+
+        See: https://www.unicode.org/reports/tr39/#Identifier_Characters'
+    Common.canonicalName:
+      type: string
+      minLength: 1
+      maxLength: 255
+      pattern: ^[a-zA-Z][a-zA-Z0-9_]*$
+      description: 'For canonical names (machine-friendly identifiers)
+
+        Must start with a letter and can only contain letters, numbers, and underscores'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+    ApiKeyAuth_:
+      type: apiKey
+      in: header
+      name: X-Auth-Key
+externalDocs:
+  url: https://docs.julep.ai
+  description: Julep API documentation

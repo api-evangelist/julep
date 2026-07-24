@@ -1,0 +1,137 @@
+openapi: 3.0.0
+info:
+  title: Julep Agents Jobs API
+  termsOfService: https://julep.ai/terms
+  contact:
+    name: Julep AI
+    url: https://julep.ai
+    email: developers@julep.ai
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  description: Julep is a backend for creating stateful AI apps with background tasks and long-term memory easily.
+  version: 1.0.0
+servers:
+- url: https://{serverEnv}.julep.ai/api
+  description: The julep cloud service endpoint
+  variables:
+    serverEnv:
+      default: api
+      description: The environment to use
+      enum:
+      - api
+      - dev
+security:
+- ApiKeyAuth: []
+- ApiKeyAuth_: []
+tags:
+- name: Jobs
+paths:
+  /jobs/{id}:
+    get:
+      operationId: JobRoute_get
+      description: Get the status of an existing Job by its id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the resource
+        schema:
+          $ref: '#/components/schemas/Common.uuid'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Jobs.JobStatus'
+      tags:
+      - Jobs
+components:
+  schemas:
+    Jobs.JobState:
+      type: string
+      enum:
+      - pending
+      - in_progress
+      - retrying
+      - succeeded
+      - aborted
+      - failed
+      - unknown
+      description: 'Current state (one of: pending, in_progress, retrying, succeeded, aborted, failed)'
+    Common.identifierSafeUnicode:
+      type: string
+      maxLength: 120
+      pattern: ^[\p{L}\p{Nl}\p{Pattern_Syntax}\p{Pattern_White_Space}]+[\p{ID_Start}\p{Mn}\p{Mc}\p{Nd}\p{Pc}\p{Pattern_Syntax}\p{Pattern_White_Space}]*$
+      description: 'For Unicode character safety
+
+        See: https://unicode.org/reports/tr31/
+
+        See: https://www.unicode.org/reports/tr39/#Identifier_Characters'
+    Jobs.JobStatus:
+      type: object
+      required:
+      - id
+      - created_at
+      - updated_at
+      - name
+      - reason
+      - has_progress
+      - progress
+      - state
+      properties:
+        id:
+          allOf:
+          - $ref: '#/components/schemas/Common.uuid'
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          description: When this resource was created as UTC date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          description: When this resource was updated as UTC date-time
+          readOnly: true
+        name:
+          allOf:
+          - $ref: '#/components/schemas/Common.identifierSafeUnicode'
+          description: Name of the job
+          default: ''
+        reason:
+          type: string
+          description: Reason for the current state of the job
+          default: ''
+        has_progress:
+          type: boolean
+          description: Whether this Job supports progress updates
+          default: false
+        progress:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 100
+          description: Progress percentage
+          default: 0
+        state:
+          allOf:
+          - $ref: '#/components/schemas/Jobs.JobState'
+          description: Current state of the job
+          default: pending
+    Common.uuid:
+      type: string
+      format: uuid
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+    ApiKeyAuth_:
+      type: apiKey
+      in: header
+      name: X-Auth-Key
+externalDocs:
+  url: https://docs.julep.ai
+  description: Julep API documentation

@@ -1,0 +1,392 @@
+openapi: 3.0.0
+info:
+  title: Julep Agents Projects API
+  termsOfService: https://julep.ai/terms
+  contact:
+    name: Julep AI
+    url: https://julep.ai
+    email: developers@julep.ai
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  description: Julep is a backend for creating stateful AI apps with background tasks and long-term memory easily.
+  version: 1.0.0
+servers:
+- url: https://{serverEnv}.julep.ai/api
+  description: The julep cloud service endpoint
+  variables:
+    serverEnv:
+      default: api
+      description: The environment to use
+      enum:
+      - api
+      - dev
+security:
+- ApiKeyAuth: []
+- ApiKeyAuth_: []
+tags:
+- name: Projects
+paths:
+  /projects:
+    get:
+      operationId: ProjectsRoute_list
+      description: List Projects (paginated)
+      parameters:
+      - $ref: '#/components/parameters/Common.PaginationOptions.limit'
+      - $ref: '#/components/parameters/Common.PaginationOptions.offset'
+      - $ref: '#/components/parameters/Common.PaginationOptions.sort_by'
+      - $ref: '#/components/parameters/Common.PaginationOptions.direction'
+      - $ref: '#/components/parameters/Common.PaginationOptions.metadata_filter'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Projects.Project'
+                required:
+                - items
+      tags:
+      - Projects
+    post:
+      operationId: ProjectsRoute_create
+      description: Create a new Project
+      parameters: []
+      responses:
+        '201':
+          description: The request has succeeded and a new resource has been created as a result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Projects.Project'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Projects.CreateProjectRequest'
+      tags:
+      - Projects
+  /projects/{id}:
+    post:
+      operationId: ProjectsRoute_createOrUpdate
+      description: Create or update a Project
+      parameters:
+      - $ref: '#/components/parameters/Projects.CreateOrUpdateProjectRequest.id'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Projects.Project'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Projects.UpdateProjectRequest'
+      tags:
+      - Projects
+    put:
+      operationId: ProjectsRoute_update
+      description: Update an existing Project by id (overwrites existing values; use PATCH for merging instead)
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the resource
+        schema:
+          $ref: '#/components/schemas/Common.uuid'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Projects.Project'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Projects.UpdateProjectRequest'
+      tags:
+      - Projects
+    patch:
+      operationId: ProjectsRoute_patch
+      description: Update an existing Project by id (merges with existing values)
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the resource
+        schema:
+          $ref: '#/components/schemas/Common.uuid'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Projects.Project'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Projects.PatchProjectRequest'
+      tags:
+      - Projects
+    delete:
+      operationId: ProjectsRoute_delete
+      description: Delete Project by id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the resource
+        schema:
+          $ref: '#/components/schemas/Common.uuid'
+      responses:
+        '202':
+          description: The request has been accepted for processing, but processing has not yet completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common.ResourceDeletedResponse'
+      tags:
+      - Projects
+    get:
+      operationId: ProjectsRoute_get
+      description: Get a Project by id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the resource
+        schema:
+          $ref: '#/components/schemas/Common.uuid'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Projects.Project'
+      tags:
+      - Projects
+components:
+  parameters:
+    Common.PaginationOptions.limit:
+      name: limit
+      in: query
+      required: true
+      description: Limit the number of items returned
+      schema:
+        $ref: '#/components/schemas/Common.limit'
+        default: 100
+      explode: false
+    Projects.CreateOrUpdateProjectRequest.id:
+      name: id
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/Common.uuid'
+    Common.PaginationOptions.sort_by:
+      name: sort_by
+      in: query
+      required: true
+      description: Sort by a field
+      schema:
+        type: string
+        enum:
+        - created_at
+        - updated_at
+        default: created_at
+      explode: false
+    Common.PaginationOptions.direction:
+      name: direction
+      in: query
+      required: true
+      description: Sort direction
+      schema:
+        type: string
+        enum:
+        - asc
+        - desc
+        default: asc
+      explode: false
+    Common.PaginationOptions.metadata_filter:
+      name: metadata_filter
+      in: query
+      required: true
+      description: Object to filter results by metadata
+      schema:
+        type: object
+        additionalProperties: {}
+        default: {}
+      explode: false
+    Common.PaginationOptions.offset:
+      name: offset
+      in: query
+      required: true
+      description: Offset the items returned
+      schema:
+        $ref: '#/components/schemas/Common.offset'
+        default: 0
+      explode: false
+  schemas:
+    Common.uuid:
+      type: string
+      format: uuid
+    Common.ResourceDeletedResponse:
+      type: object
+      required:
+      - id
+      - deleted_at
+      - jobs
+      properties:
+        id:
+          allOf:
+          - $ref: '#/components/schemas/Common.uuid'
+          description: ID of deleted resource
+        deleted_at:
+          type: string
+          format: date-time
+          description: When this resource was deleted as UTC date-time
+          readOnly: true
+        jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Common.uuid'
+          description: IDs (if any) of jobs created as part of this request
+          default: []
+          readOnly: true
+    Projects.UpdateProjectRequest:
+      type: object
+      required:
+      - name
+      properties:
+        metadata:
+          type: object
+          additionalProperties: {}
+        canonical_name:
+          allOf:
+          - $ref: '#/components/schemas/Common.canonicalName'
+          description: Canonical name of the project (unique per developer)
+        name:
+          allOf:
+          - $ref: '#/components/schemas/Common.displayName'
+          description: Display name of the project
+      description: Payload for updating a project
+    Common.displayName:
+      type: string
+      minLength: 1
+      maxLength: 255
+      description: 'For display names
+
+        Must be between 1 and 255 characters'
+    Projects.CreateProjectRequest:
+      type: object
+      required:
+      - name
+      properties:
+        metadata:
+          type: object
+          additionalProperties: {}
+        canonical_name:
+          allOf:
+          - $ref: '#/components/schemas/Common.canonicalName'
+          description: Canonical name of the project (unique per developer)
+        name:
+          allOf:
+          - $ref: '#/components/schemas/Common.displayName'
+          description: Display name of the project
+      description: Payload for creating a project
+    Projects.PatchProjectRequest:
+      type: object
+      properties:
+        metadata:
+          type: object
+          additionalProperties: {}
+        canonical_name:
+          allOf:
+          - $ref: '#/components/schemas/Common.canonicalName'
+          description: Canonical name of the project (unique per developer)
+        name:
+          allOf:
+          - $ref: '#/components/schemas/Common.displayName'
+          description: Display name of the project
+      description: Payload for patching a project
+    Common.limit:
+      type: integer
+      format: uint16
+      minimum: 1
+      maximum: 1000
+      exclusiveMaximum: true
+      description: Limit the number of results
+    Projects.Project:
+      type: object
+      required:
+      - id
+      - created_at
+      - updated_at
+      - name
+      properties:
+        id:
+          allOf:
+          - $ref: '#/components/schemas/Common.uuid'
+          readOnly: true
+        metadata:
+          type: object
+          additionalProperties: {}
+        created_at:
+          type: string
+          format: date-time
+          description: When this resource was created as UTC date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          description: When this resource was updated as UTC date-time
+          readOnly: true
+        canonical_name:
+          allOf:
+          - $ref: '#/components/schemas/Common.canonicalName'
+          description: Canonical name of the project (unique per developer)
+        name:
+          allOf:
+          - $ref: '#/components/schemas/Common.displayName'
+          description: Display name of the project
+      description: Project model
+    Common.canonicalName:
+      type: string
+      minLength: 1
+      maxLength: 255
+      pattern: ^[a-zA-Z][a-zA-Z0-9_]*$
+      description: 'For canonical names (machine-friendly identifiers)
+
+        Must start with a letter and can only contain letters, numbers, and underscores'
+    Common.offset:
+      type: integer
+      format: uint32
+      minimum: 0
+      description: Offset to apply to the results
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+    ApiKeyAuth_:
+      type: apiKey
+      in: header
+      name: X-Auth-Key
+externalDocs:
+  url: https://docs.julep.ai
+  description: Julep API documentation

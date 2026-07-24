@@ -1,0 +1,139 @@
+openapi: 3.0.0
+info:
+  title: Julep Agents Docs API
+  termsOfService: https://julep.ai/terms
+  contact:
+    name: Julep AI
+    url: https://julep.ai
+    email: developers@julep.ai
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  description: Julep is a backend for creating stateful AI apps with background tasks and long-term memory easily.
+  version: 1.0.0
+servers:
+- url: https://{serverEnv}.julep.ai/api
+  description: The julep cloud service endpoint
+  variables:
+    serverEnv:
+      default: api
+      description: The environment to use
+      enum:
+      - api
+      - dev
+security:
+- ApiKeyAuth: []
+- ApiKeyAuth_: []
+tags:
+- name: Docs
+paths:
+  /docs/{id}:
+    get:
+      operationId: IndividualDocsRoute_get
+      description: Get Doc by id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the resource
+        schema:
+          $ref: '#/components/schemas/Common.uuid'
+      - name: include_embeddings
+        in: query
+        required: false
+        description: Whether to include embeddings in the response
+        schema:
+          type: boolean
+          default: true
+        explode: false
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Docs.Doc'
+      tags:
+      - Docs
+components:
+  schemas:
+    Docs.Doc:
+      type: object
+      required:
+      - id
+      - created_at
+      - title
+      - content
+      - embeddings
+      properties:
+        id:
+          allOf:
+          - $ref: '#/components/schemas/Common.uuid'
+          readOnly: true
+        metadata:
+          type: object
+          additionalProperties: {}
+        created_at:
+          type: string
+          format: date-time
+          description: When this resource was created as UTC date-time
+          readOnly: true
+        title:
+          type: string
+          maxLength: 800
+          description: Title describing what this document contains
+        content:
+          anyOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+          description: Contents of the document
+        embeddings:
+          anyOf:
+          - type: array
+            items:
+              type: number
+              format: float
+          - type: array
+            items:
+              type: array
+              items:
+                type: number
+                format: float
+          nullable: true
+          description: Embeddings for the document
+          default: null
+          readOnly: true
+        modality:
+          type: string
+          description: Modality of the document
+          readOnly: true
+        language:
+          type: string
+          description: Language of the document
+          readOnly: true
+        embedding_model:
+          type: string
+          description: Embedding model used for the document
+          readOnly: true
+        embedding_dimensions:
+          type: integer
+          format: uint16
+          description: Dimensions of the embedding model
+          readOnly: true
+    Common.uuid:
+      type: string
+      format: uuid
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+    ApiKeyAuth_:
+      type: apiKey
+      in: header
+      name: X-Auth-Key
+externalDocs:
+  url: https://docs.julep.ai
+  description: Julep API documentation

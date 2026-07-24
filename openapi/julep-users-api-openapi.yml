@@ -1,0 +1,915 @@
+openapi: 3.0.0
+info:
+  title: Julep Agents Users API
+  termsOfService: https://julep.ai/terms
+  contact:
+    name: Julep AI
+    url: https://julep.ai
+    email: developers@julep.ai
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  description: Julep is a backend for creating stateful AI apps with background tasks and long-term memory easily.
+  version: 1.0.0
+servers:
+- url: https://{serverEnv}.julep.ai/api
+  description: The julep cloud service endpoint
+  variables:
+    serverEnv:
+      default: api
+      description: The environment to use
+      enum:
+      - api
+      - dev
+security:
+- ApiKeyAuth: []
+- ApiKeyAuth_: []
+tags:
+- name: Users
+paths:
+  /users:
+    get:
+      operationId: UsersRoute_list
+      description: List users (paginated)
+      parameters:
+      - $ref: '#/components/parameters/Common.PaginationOptions.limit'
+      - $ref: '#/components/parameters/Common.PaginationOptions.offset'
+      - $ref: '#/components/parameters/Common.PaginationOptions.sort_by'
+      - $ref: '#/components/parameters/Common.PaginationOptions.direction'
+      - $ref: '#/components/parameters/Common.PaginationOptions.metadata_filter'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Users.User'
+                required:
+                - items
+      tags:
+      - Users
+    post:
+      operationId: UsersRoute_create
+      description: Create a new user
+      parameters: []
+      responses:
+        '201':
+          description: The request has succeeded and a new resource has been created as a result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users.User'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Users.CreateUserRequest'
+      tags:
+      - Users
+  /users/{id}:
+    post:
+      operationId: UsersRoute_createOrUpdate
+      description: Create or update a user
+      parameters:
+      - $ref: '#/components/parameters/Users.CreateOrUpdateUserRequest'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users.User'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Users.CreateUserRequest'
+      tags:
+      - Users
+    put:
+      operationId: UsersRoute_update
+      description: Update an existing user by id (overwrite existing values)
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the resource
+        schema:
+          $ref: '#/components/schemas/Common.uuid'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users.User'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Users.UpdateUserRequest'
+      tags:
+      - Users
+    patch:
+      operationId: UsersRoute_patch
+      description: Update an existing user by id (merge with existing values)
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the resource
+        schema:
+          $ref: '#/components/schemas/Common.uuid'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users.User'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Users.PatchUserRequest'
+      tags:
+      - Users
+    delete:
+      operationId: UsersRoute_delete
+      description: Delete a user by id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the resource
+        schema:
+          $ref: '#/components/schemas/Common.uuid'
+      responses:
+        '202':
+          description: The request has been accepted for processing, but processing has not yet completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common.ResourceDeletedResponse'
+      tags:
+      - Users
+    get:
+      operationId: UsersRoute_get
+      description: Get a user by id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the resource
+        schema:
+          $ref: '#/components/schemas/Common.uuid'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users.User'
+      tags:
+      - Users
+  /users/{id}/docs:
+    post:
+      operationId: UserDocsRoute_create
+      description: Create a Doc for this User
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of parent resource
+        schema:
+          $ref: '#/components/schemas/Common.uuid'
+      responses:
+        '201':
+          description: The request has succeeded and a new resource has been created as a result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Docs.Doc'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Docs.CreateDocRequest'
+      tags:
+      - Users
+    get:
+      operationId: UserDocsRoute_list
+      description: List Docs owned by a User
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of parent
+        schema:
+          $ref: '#/components/schemas/Common.uuid'
+      - $ref: '#/components/parameters/Common.PaginationOptions.limit'
+      - $ref: '#/components/parameters/Common.PaginationOptions.offset'
+      - $ref: '#/components/parameters/Common.PaginationOptions.sort_by'
+      - $ref: '#/components/parameters/Common.PaginationOptions.direction'
+      - $ref: '#/components/parameters/Common.PaginationOptions.metadata_filter'
+      - name: include_embeddings
+        in: query
+        required: false
+        description: Whether to include embeddings in the response
+        schema:
+          type: boolean
+          default: true
+        explode: false
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Docs.Doc'
+                required:
+                - items
+      tags:
+      - Users
+    delete:
+      operationId: UserDocsRoute_deleteBulk
+      description: Bulk delete Docs owned by a User
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the parent
+        schema:
+          $ref: '#/components/schemas/Common.uuid'
+      responses:
+        '202':
+          description: The request has been accepted for processing, but processing has not yet completed.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Common.ResourceDeletedResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Docs.BulkDeleteDocsRequest'
+      tags:
+      - Users
+  /users/{id}/docs/{child_id}:
+    delete:
+      operationId: UserDocsRoute_delete
+      description: Delete a Doc for this User
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of parent resource
+        schema:
+          $ref: '#/components/schemas/Common.uuid'
+      - name: child_id
+        in: path
+        required: true
+        description: ID of the resource to be deleted
+        schema:
+          $ref: '#/components/schemas/Common.uuid'
+      responses:
+        '202':
+          description: The request has been accepted for processing, but processing has not yet completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common.ResourceDeletedResponse'
+      tags:
+      - Users
+  /users/{id}/search:
+    post:
+      operationId: UserDocsSearchRoute_search
+      description: Search Docs owned by a User
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the parent
+        schema:
+          $ref: '#/components/schemas/Common.uuid'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Docs.DocSearchResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                body:
+                  anyOf:
+                  - $ref: '#/components/schemas/Docs.VectorDocSearchRequest'
+                  - $ref: '#/components/schemas/Docs.TextOnlyDocSearchRequest'
+                  - $ref: '#/components/schemas/Docs.HybridDocSearchRequest'
+              required:
+              - body
+      tags:
+      - Users
+components:
+  schemas:
+    Docs.DocReference:
+      type: object
+      required:
+      - owner
+      - id
+      - snippet
+      - distance
+      properties:
+        metadata:
+          type: object
+          additionalProperties: {}
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/Docs.DocOwner'
+          description: The owner of this document.
+        id:
+          allOf:
+          - $ref: '#/components/schemas/Common.uuid'
+          readOnly: true
+          description: ID of the document
+        title:
+          type: string
+        snippet:
+          $ref: '#/components/schemas/Docs.Snippet'
+        distance:
+          type: number
+          nullable: true
+          default: null
+    Docs.BulkDeleteDocsRequest:
+      type: object
+      required:
+      - metadata_filter
+      - delete_all
+      properties:
+        metadata_filter:
+          type: object
+          additionalProperties: {}
+          description: Metadata filter to apply to the search
+          default: {}
+        delete_all:
+          type: boolean
+          description: Delete all docs
+          default: false
+    Common.uuid:
+      type: string
+      format: uuid
+    Common.ResourceDeletedResponse:
+      type: object
+      required:
+      - id
+      - deleted_at
+      - jobs
+      properties:
+        id:
+          allOf:
+          - $ref: '#/components/schemas/Common.uuid'
+          description: ID of deleted resource
+        deleted_at:
+          type: string
+          format: date-time
+          description: When this resource was deleted as UTC date-time
+          readOnly: true
+        jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Common.uuid'
+          description: IDs (if any) of jobs created as part of this request
+          default: []
+          readOnly: true
+    Users.UpdateUserRequest:
+      type: object
+      required:
+      - name
+      - about
+      properties:
+        metadata:
+          type: object
+          additionalProperties: {}
+        name:
+          allOf:
+          - $ref: '#/components/schemas/Common.identifierSafeUnicode'
+          description: Name of the user
+          default: ''
+        about:
+          type: string
+          description: About the user
+          default: ''
+        project:
+          allOf:
+          - $ref: '#/components/schemas/Common.canonicalName'
+          description: Project canonical name of the user
+      description: Payload for updating a user
+    Docs.VectorDocSearchRequest:
+      type: object
+      required:
+      - limit
+      - metadata_filter
+      - include_embeddings
+      - vector
+      - confidence
+      properties:
+        limit:
+          type: integer
+          format: uint16
+          minimum: 1
+          maximum: 50
+          description: The limit of documents to return
+          default: 10
+        metadata_filter:
+          type: object
+          additionalProperties: {}
+          description: Metadata filter to apply to the search
+          default: {}
+        include_embeddings:
+          type: boolean
+          description: Whether to include embeddings in the response
+          default: true
+        vector:
+          type: array
+          items:
+            type: number
+          description: Vector to use in the search. Must be the same dimensions as the embedding model or else an error will be thrown.
+        confidence:
+          type: number
+          minimum: -1
+          maximum: 1
+          description: The confidence cutoff level
+          default: 0.5
+        mmr_strength:
+          type: number
+          minimum: 0
+          maximum: 1
+          exclusiveMaximum: true
+          description: MMR Strength (mmr_strength = 1 - mmr_lambda)
+          default: 0.5
+    Common.canonicalName:
+      type: string
+      minLength: 1
+      maxLength: 255
+      pattern: ^[a-zA-Z][a-zA-Z0-9_]*$
+      description: 'For canonical names (machine-friendly identifiers)
+
+        Must start with a letter and can only contain letters, numbers, and underscores'
+    Users.CreateUserRequest:
+      type: object
+      required:
+      - name
+      - about
+      properties:
+        metadata:
+          type: object
+          additionalProperties: {}
+        name:
+          allOf:
+          - $ref: '#/components/schemas/Common.identifierSafeUnicode'
+          description: Name of the user
+          default: ''
+        about:
+          type: string
+          description: About the user
+          default: ''
+        project:
+          allOf:
+          - $ref: '#/components/schemas/Common.canonicalName'
+          description: Project canonical name of the user
+      description: Payload for creating a user (and associated documents)
+    Common.limit:
+      type: integer
+      format: uint16
+      minimum: 1
+      maximum: 1000
+      exclusiveMaximum: true
+      description: Limit the number of results
+    Docs.TextOnlyDocSearchRequest:
+      type: object
+      required:
+      - limit
+      - metadata_filter
+      - include_embeddings
+      - text
+      - lang
+      - trigram_similarity_threshold
+      properties:
+        limit:
+          type: integer
+          format: uint16
+          minimum: 1
+          maximum: 50
+          description: The limit of documents to return
+          default: 10
+        metadata_filter:
+          type: object
+          additionalProperties: {}
+          description: Metadata filter to apply to the search
+          default: {}
+        include_embeddings:
+          type: boolean
+          description: Whether to include embeddings in the response
+          default: true
+        text:
+          type: string
+          description: Text to use in the search
+        lang:
+          type: string
+          description: The language to be used for text search. Support for other languages coming soon.
+          default: en-US
+        trigram_similarity_threshold:
+          type: number
+          nullable: true
+          minimum: 0
+          maximum: 1
+          description: Trigram similarity threshold for fuzzy matching. Set to null to disable trigram search.
+          default: null
+    Docs.Doc:
+      type: object
+      required:
+      - id
+      - created_at
+      - title
+      - content
+      - embeddings
+      properties:
+        id:
+          allOf:
+          - $ref: '#/components/schemas/Common.uuid'
+          readOnly: true
+        metadata:
+          type: object
+          additionalProperties: {}
+        created_at:
+          type: string
+          format: date-time
+          description: When this resource was created as UTC date-time
+          readOnly: true
+        title:
+          type: string
+          maxLength: 800
+          description: Title describing what this document contains
+        content:
+          anyOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+          description: Contents of the document
+        embeddings:
+          anyOf:
+          - type: array
+            items:
+              type: number
+              format: float
+          - type: array
+            items:
+              type: array
+              items:
+                type: number
+                format: float
+          nullable: true
+          description: Embeddings for the document
+          default: null
+          readOnly: true
+        modality:
+          type: string
+          description: Modality of the document
+          readOnly: true
+        language:
+          type: string
+          description: Language of the document
+          readOnly: true
+        embedding_model:
+          type: string
+          description: Embedding model used for the document
+          readOnly: true
+        embedding_dimensions:
+          type: integer
+          format: uint16
+          description: Dimensions of the embedding model
+          readOnly: true
+    Common.content:
+      type: string
+      maxLength: 30000
+      description: Contents of a document
+    Docs.Snippet:
+      type: object
+      required:
+      - index
+      - content
+      properties:
+        index:
+          type: integer
+          format: uint16
+        content:
+          type: string
+        embedding:
+          type: array
+          items:
+            type: number
+    Users.PatchUserRequest:
+      type: object
+      properties:
+        metadata:
+          type: object
+          additionalProperties: {}
+        name:
+          allOf:
+          - $ref: '#/components/schemas/Common.identifierSafeUnicode'
+          description: Name of the user
+          default: ''
+        about:
+          type: string
+          description: About the user
+          default: ''
+        project:
+          allOf:
+          - $ref: '#/components/schemas/Common.canonicalName'
+          description: Project canonical name of the user
+      description: Payload for patching a user
+    Docs.DocSearchResponse:
+      type: object
+      required:
+      - docs
+      - time
+      properties:
+        docs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Docs.DocReference'
+          description: The documents that were found
+        time:
+          type: number
+          minimum: 0
+          exclusiveMinimum: true
+          description: The time taken to search in seconds
+    Common.identifierSafeUnicode:
+      type: string
+      maxLength: 120
+      pattern: ^[\p{L}\p{Nl}\p{Pattern_Syntax}\p{Pattern_White_Space}]+[\p{ID_Start}\p{Mn}\p{Mc}\p{Nd}\p{Pc}\p{Pattern_Syntax}\p{Pattern_White_Space}]*$
+      description: 'For Unicode character safety
+
+        See: https://unicode.org/reports/tr31/
+
+        See: https://www.unicode.org/reports/tr39/#Identifier_Characters'
+    Common.offset:
+      type: integer
+      format: uint32
+      minimum: 0
+      description: Offset to apply to the results
+    Users.User:
+      type: object
+      required:
+      - id
+      - created_at
+      - updated_at
+      - name
+      - about
+      properties:
+        id:
+          allOf:
+          - $ref: '#/components/schemas/Common.uuid'
+          readOnly: true
+        metadata:
+          type: object
+          additionalProperties: {}
+        created_at:
+          type: string
+          format: date-time
+          description: When this resource was created as UTC date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          description: When this resource was updated as UTC date-time
+          readOnly: true
+        name:
+          allOf:
+          - $ref: '#/components/schemas/Common.identifierSafeUnicode'
+          description: Name of the user
+          default: ''
+        about:
+          type: string
+          description: About the user
+          default: ''
+        project:
+          allOf:
+          - $ref: '#/components/schemas/Common.canonicalName'
+          description: Project canonical name of the user
+    Docs.CreateDocRequest:
+      type: object
+      required:
+      - title
+      - content
+      - embed_instruction
+      properties:
+        metadata:
+          type: object
+          additionalProperties: {}
+        title:
+          type: string
+          maxLength: 800
+          description: Title describing what this document contains
+        content:
+          anyOf:
+          - $ref: '#/components/schemas/Common.content'
+          - type: array
+            items:
+              $ref: '#/components/schemas/Common.content'
+          description: Contents of the document. Each string is limited to 30k characters.
+        embed_instruction:
+          type: string
+          nullable: true
+          description: Instruction for the embedding model.
+          default: null
+      description: Payload for creating a doc
+    Docs.DocOwner:
+      type: object
+      required:
+      - id
+      - role
+      properties:
+        id:
+          anyOf:
+          - allOf:
+            - $ref: '#/components/schemas/Common.uuid'
+            readOnly: true
+          - allOf:
+            - $ref: '#/components/schemas/Common.uuid'
+            readOnly: true
+        role:
+          type: string
+          enum:
+          - user
+          - agent
+    Docs.HybridDocSearchRequest:
+      type: object
+      required:
+      - limit
+      - metadata_filter
+      - include_embeddings
+      - text
+      - lang
+      - trigram_similarity_threshold
+      - vector
+      - confidence
+      - alpha
+      - k_multiplier
+      properties:
+        limit:
+          type: integer
+          format: uint16
+          minimum: 1
+          maximum: 50
+          description: The limit of documents to return
+          default: 10
+        metadata_filter:
+          type: object
+          additionalProperties: {}
+          description: Metadata filter to apply to the search
+          default: {}
+        include_embeddings:
+          type: boolean
+          description: Whether to include embeddings in the response
+          default: true
+        text:
+          type: string
+          description: Text to use in the search
+        lang:
+          type: string
+          description: The language to be used for text search. Support for other languages coming soon.
+          default: en-US
+        trigram_similarity_threshold:
+          type: number
+          nullable: true
+          minimum: 0
+          maximum: 1
+          description: Trigram similarity threshold for fuzzy matching. Set to null to disable trigram search.
+          default: null
+        vector:
+          type: array
+          items:
+            type: number
+          description: Vector to use in the search. Must be the same dimensions as the embedding model or else an error will be thrown.
+        confidence:
+          type: number
+          minimum: -1
+          maximum: 1
+          description: The confidence cutoff level
+          default: 0.5
+        mmr_strength:
+          type: number
+          minimum: 0
+          maximum: 1
+          exclusiveMaximum: true
+          description: MMR Strength (mmr_strength = 1 - mmr_lambda)
+          default: 0.5
+        alpha:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: The weight to apply to BM25 vs Vector search results. 0 => pure BM25; 1 => pure vector;
+          default: 0.5
+        k_multiplier:
+          type: integer
+          format: int8
+          minimum: 1
+          maximum: 10
+          description: The k_multiplier to control how many intermediate results to fetch before final scoring
+          default: 5
+  parameters:
+    Common.PaginationOptions.offset:
+      name: offset
+      in: query
+      required: true
+      description: Offset the items returned
+      schema:
+        $ref: '#/components/schemas/Common.offset'
+        default: 0
+      explode: false
+    Common.PaginationOptions.direction:
+      name: direction
+      in: query
+      required: true
+      description: Sort direction
+      schema:
+        type: string
+        enum:
+        - asc
+        - desc
+        default: asc
+      explode: false
+    Users.CreateOrUpdateUserRequest:
+      name: id
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/Common.uuid'
+    Common.PaginationOptions.limit:
+      name: limit
+      in: query
+      required: true
+      description: Limit the number of items returned
+      schema:
+        $ref: '#/components/schemas/Common.limit'
+        default: 100
+      explode: false
+    Common.PaginationOptions.sort_by:
+      name: sort_by
+      in: query
+      required: true
+      description: Sort by a field
+      schema:
+        type: string
+        enum:
+        - created_at
+        - updated_at
+        default: created_at
+      explode: false
+    Common.PaginationOptions.metadata_filter:
+      name: metadata_filter
+      in: query
+      required: true
+      description: Object to filter results by metadata
+      schema:
+        type: object
+        additionalProperties: {}
+        default: {}
+      explode: false
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+    ApiKeyAuth_:
+      type: apiKey
+      in: header
+      name: X-Auth-Key
+externalDocs:
+  url: https://docs.julep.ai
+  description: Julep API documentation

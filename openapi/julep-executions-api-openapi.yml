@@ -1,0 +1,470 @@
+openapi: 3.0.0
+info:
+  title: Julep Agents Executions API
+  termsOfService: https://julep.ai/terms
+  contact:
+    name: Julep AI
+    url: https://julep.ai
+    email: developers@julep.ai
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  description: Julep is a backend for creating stateful AI apps with background tasks and long-term memory easily.
+  version: 1.0.0
+servers:
+- url: https://{serverEnv}.julep.ai/api
+  description: The julep cloud service endpoint
+  variables:
+    serverEnv:
+      default: api
+      description: The environment to use
+      enum:
+      - api
+      - dev
+security:
+- ApiKeyAuth: []
+- ApiKeyAuth_: []
+tags:
+- name: Executions
+paths:
+  /executions:
+    post:
+      operationId: ExecutionsRoute_resumeWithTaskToken
+      description: Resume an execution with a task token
+      parameters:
+      - name: task_token
+        in: query
+        required: true
+        description: A Task Token is a unique identifier for a specific Task Execution.
+        schema:
+          type: string
+        explode: false
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Executions.Execution'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Executions.TaskTokenResumeExecutionRequest'
+        description: Request to resume an execution with a task token
+      security:
+      - {}
+      tags:
+      - Executions
+  /executions/{id}:
+    get:
+      operationId: ExecutionsRoute_get
+      description: Get an Execution by id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the resource
+        schema:
+          $ref: '#/components/schemas/Common.uuid'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Executions.Execution'
+      tags:
+      - Executions
+    put:
+      operationId: ExecutionsRoute_update
+      description: Update an existing Execution
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the resource
+        schema:
+          $ref: '#/components/schemas/Common.uuid'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Executions.Execution'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Executions.UpdateExecutionRequest'
+      tags:
+      - Executions
+  /executions/{id}/status.stream:
+    get:
+      operationId: ExecutionStatusStreamRoute_stream
+      description: Stream the status of an execution
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of parent
+        schema:
+          $ref: '#/components/schemas/Common.uuid'
+      - name: next_token
+        in: query
+        required: true
+        description: Next page token
+        schema:
+          type: string
+          nullable: true
+          default: null
+        explode: false
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            text/event-stream:
+              schema:
+                type: string
+      tags:
+      - Executions
+  /executions/{id}/transitions:
+    get:
+      operationId: ExecutionTransitionsRoute_list
+      description: List the Transitions of an Execution by id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of parent
+        schema:
+          $ref: '#/components/schemas/Common.uuid'
+      - $ref: '#/components/parameters/Common.PaginationOptions.limit'
+      - $ref: '#/components/parameters/Common.PaginationOptions.offset'
+      - $ref: '#/components/parameters/Common.PaginationOptions.sort_by'
+      - $ref: '#/components/parameters/Common.PaginationOptions.direction'
+      - $ref: '#/components/parameters/Common.PaginationOptions.metadata_filter'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        transitions:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/Executions.Transition'
+                      required:
+                      - transitions
+                required:
+                - items
+      tags:
+      - Executions
+  /executions/{id}/transitions.stream:
+    get:
+      operationId: ExecutionTransitionsStreamRoute_stream
+      description: Stream events emitted by the given execution
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of parent
+        schema:
+          $ref: '#/components/schemas/Common.uuid'
+      - name: next_token
+        in: query
+        required: true
+        description: Next page token
+        schema:
+          type: string
+          nullable: true
+          default: null
+        explode: false
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            text/event-stream:
+              schema:
+                type: string
+      tags:
+      - Executions
+components:
+  schemas:
+    Executions.TaskTokenResumeExecutionRequest:
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          enum:
+          - running
+          default: running
+        input:
+          type: object
+          additionalProperties: {}
+          description: The input to resume the execution with
+    Executions.Execution:
+      type: object
+      required:
+      - task_id
+      - status
+      - input
+      - created_at
+      - updated_at
+      - id
+      properties:
+        task_id:
+          allOf:
+          - $ref: '#/components/schemas/Common.uuid'
+          readOnly: true
+          description: The ID of the task that the execution is running
+        status:
+          type: string
+          enum:
+          - queued
+          - starting
+          - running
+          - awaiting_input
+          - succeeded
+          - failed
+          - cancelled
+          description: The status of the execution
+          readOnly: true
+        input:
+          type: object
+          additionalProperties: {}
+          description: The input to the execution
+        output:
+          description: The output of the execution if it succeeded
+        error:
+          type: string
+          description: The error of the execution if it failed
+        transition_count:
+          type: integer
+          format: uint8
+          description: The number of transitions in this execution
+        created_at:
+          type: string
+          format: date-time
+          description: When this resource was created as UTC date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          description: When this resource was updated as UTC date-time
+          readOnly: true
+        metadata:
+          type: object
+          additionalProperties: {}
+        id:
+          allOf:
+          - $ref: '#/components/schemas/Common.uuid'
+          readOnly: true
+    Executions.Transition:
+      type: object
+      required:
+      - execution_id
+      - current
+      - next
+      - id
+      properties:
+        execution_id:
+          allOf:
+          - $ref: '#/components/schemas/Common.uuid'
+          readOnly: true
+        current:
+          allOf:
+          - $ref: '#/components/schemas/Executions.TransitionTarget'
+          readOnly: true
+        next:
+          type: object
+          allOf:
+          - $ref: '#/components/schemas/Executions.TransitionTarget'
+          nullable: true
+          readOnly: true
+        step_label:
+          allOf:
+          - $ref: '#/components/schemas/Common.stepLabel'
+          readOnly: true
+        id:
+          allOf:
+          - $ref: '#/components/schemas/Common.uuid'
+          readOnly: true
+        metadata:
+          type: object
+          additionalProperties: {}
+      allOf:
+      - $ref: '#/components/schemas/Executions.TransitionEvent'
+    Common.uuid:
+      type: string
+      format: uuid
+    Executions.TransitionTarget:
+      type: object
+      required:
+      - workflow
+      - step
+      - scope_id
+      properties:
+        workflow:
+          $ref: '#/components/schemas/Common.identifierSafeUnicode'
+        step:
+          type: integer
+          format: uint16
+        scope_id:
+          $ref: '#/components/schemas/Common.uuid'
+    Executions.TransitionEvent:
+      type: object
+      required:
+      - type
+      - output
+      - created_at
+      - updated_at
+      properties:
+        type:
+          type: string
+          enum:
+          - init
+          - init_branch
+          - finish
+          - finish_branch
+          - wait
+          - resume
+          - error
+          - step
+          - cancelled
+          readOnly: true
+        output:
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          description: When this resource was created as UTC date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          description: When this resource was updated as UTC date-time
+          readOnly: true
+    Common.limit:
+      type: integer
+      format: uint16
+      minimum: 1
+      maximum: 1000
+      exclusiveMaximum: true
+      description: Limit the number of results
+    Executions.UpdateExecutionRequest:
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          enum:
+          - queued
+          - starting
+          - running
+          - awaiting_input
+          - succeeded
+          - failed
+          - cancelled
+      discriminator:
+        propertyName: status
+        mapping:
+          cancelled: '#/components/schemas/Executions.StopExecutionRequest'
+          running: '#/components/schemas/Executions.ResumeExecutionRequest'
+    Common.stepLabel:
+      type: string
+      maxLength: 120
+      pattern: ^[^0-9]|^[0-9]+[^0-9].*$
+      description: A valid step label
+    Common.identifierSafeUnicode:
+      type: string
+      maxLength: 120
+      pattern: ^[\p{L}\p{Nl}\p{Pattern_Syntax}\p{Pattern_White_Space}]+[\p{ID_Start}\p{Mn}\p{Mc}\p{Nd}\p{Pc}\p{Pattern_Syntax}\p{Pattern_White_Space}]*$
+      description: 'For Unicode character safety
+
+        See: https://unicode.org/reports/tr31/
+
+        See: https://www.unicode.org/reports/tr39/#Identifier_Characters'
+    Common.offset:
+      type: integer
+      format: uint32
+      minimum: 0
+      description: Offset to apply to the results
+  parameters:
+    Common.PaginationOptions.limit:
+      name: limit
+      in: query
+      required: true
+      description: Limit the number of items returned
+      schema:
+        $ref: '#/components/schemas/Common.limit'
+        default: 100
+      explode: false
+    Common.PaginationOptions.sort_by:
+      name: sort_by
+      in: query
+      required: true
+      description: Sort by a field
+      schema:
+        type: string
+        enum:
+        - created_at
+        - updated_at
+        default: created_at
+      explode: false
+    Common.PaginationOptions.direction:
+      name: direction
+      in: query
+      required: true
+      description: Sort direction
+      schema:
+        type: string
+        enum:
+        - asc
+        - desc
+        default: asc
+      explode: false
+    Common.PaginationOptions.metadata_filter:
+      name: metadata_filter
+      in: query
+      required: true
+      description: Object to filter results by metadata
+      schema:
+        type: object
+        additionalProperties: {}
+        default: {}
+      explode: false
+    Common.PaginationOptions.offset:
+      name: offset
+      in: query
+      required: true
+      description: Offset the items returned
+      schema:
+        $ref: '#/components/schemas/Common.offset'
+        default: 0
+      explode: false
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+    ApiKeyAuth_:
+      type: apiKey
+      in: header
+      name: X-Auth-Key
+externalDocs:
+  url: https://docs.julep.ai
+  description: Julep API documentation
