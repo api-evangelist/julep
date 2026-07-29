@@ -1,0 +1,34 @@
+generated: '2026-07-19'
+method: searched
+source: https://pypi.org/project/julep-cli/ ; https://github.com/julep-ai/julep
+name: julep
+description: >-
+  First-party command-line interface for Julep — manage agents, tasks, tools, and
+  executions, sync local project definitions, and run task workflows from the terminal.
+install:
+- method: pip
+  command: pip install julep-cli
+  package: julep-cli
+- method: uv
+  command: uv tool install julep-cli
+package: packages/julep-packages.yml
+auth:
+  method: api-key
+  command: julep auth
+resources:
+- agents
+- tasks
+- tools
+- executions
+- projects
+key_flows:
+- name: authenticate
+  summary: Store the Julep API key for subsequent CLI calls.
+- name: project sync
+  summary: Sync a local project (agents, tasks, tools) definition to Julep.
+- name: run task
+  summary: Create and execute a task, streaming execution status.
+notes: >-
+  CLI surface is grouped by resource. The dedicated CLI docs section is linked from the
+  Julep documentation navigation ("Julep CLI"); command details are versioned with the
+  julep-cli package on PyPI.

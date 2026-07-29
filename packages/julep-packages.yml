@@ -1,0 +1,30 @@
+generated: '2026-07-19'
+method: searched
+source: https://pypi.org/project/julep/ ; https://www.npmjs.com/package/@julep/sdk ; https://pypi.org/project/julep-cli/
+packages:
+- language: python
+  registry: pypi
+  name: julep
+  url: https://pypi.org/project/julep/
+  install: pip install julep
+  version: 2.21.0
+  repository: https://github.com/julep-ai/python-sdk
+  official: true
+  description: The official Python library for the Julep API.
+- language: typescript
+  registry: npm
+  name: "@julep/sdk"
+  url: https://www.npmjs.com/package/@julep/sdk
+  install: npm install @julep/sdk
+  version: 2.7.4
+  repository: https://github.com/julep-ai/node-sdk
+  official: true
+  description: The official TypeScript/JavaScript library for the Julep API.
+- language: python
+  registry: pypi
+  name: julep-cli
+  url: https://pypi.org/project/julep-cli/
+  install: pip install julep-cli
+  version: 0.1.13
+  official: true
+  description: The Julep command-line interface (also catalogued in cli/julep-cli.yml).

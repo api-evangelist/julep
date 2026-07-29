@@ -1,22 +1,325 @@
 aid: julep
 name: Julep
-description: Julep is a company surfaced as a portfolio company of version-one-ventures and added to the
-  API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Julep is an open-source platform for building stateful AI agents that remember
+  past interactions and execute long-running, multi-step tasks. Its cloud API and
+  self-hostable server expose agents, sessions, tasks, executions, documents (RAG),
+  tools, users, projects, secrets, and files, along with a task-workflow engine that
+  supports decisions, loops, parallel branches, and integrations to external tools and
+  APIs. Official Python and TypeScript SDKs and a command-line interface wrap the REST
+  API; authentication is via API key. Julep is Apache-2.0 licensed and backed by
+  Version One Ventures.
 url: https://raw.githubusercontent.com/api-evangelist/julep/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - version-one-ventures
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profile
+x-tier-reason: portfolio-lead-enriched
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
+image: https://avatars.githubusercontent.com/u/112750682?v=4
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
-apis: []
+- AI Agents
+- LLM
+- Agents
+- Workflows
+- RAG
+- Memory
+- Orchestration
+- Developer Tools
+- Open Source
+apis:
+- aid: julep:julep-agents-api
+  name: Julep Agents API
+  description: The Agents API from Julep — 13 operation(s) for agents.
+  humanURL: https://docs.julep.ai/api-reference/agents/list-agents
+  baseURL: https://api.julep.ai/api
+  tags:
+  - Agents
+  properties:
+  - type: OpenAPI
+    url: openapi/julep-agents-api-openapi.yml
+  - type: Authentication
+    url: authentication/julep-authentication.yml
+  - type: Conventions
+    url: conventions/julep-conventions.yml
+  - type: DataModel
+    url: data-model/julep-data-model.yml
+  - type: Conformance
+    url: conformance/julep-conformance.yml
+  - type: AgenticAccess
+    url: agentic-access/julep-agentic-access.yml
+- aid: julep:julep-docs-api
+  name: Julep Docs API
+  description: The Docs API from Julep — 1 operation(s) for docs.
+  humanURL: https://docs.julep.ai/api-reference/agents/list-agents
+  baseURL: https://api.julep.ai/api
+  tags:
+  - Docs
+  properties:
+  - type: OpenAPI
+    url: openapi/julep-docs-api-openapi.yml
+  - type: Authentication
+    url: authentication/julep-authentication.yml
+  - type: Conventions
+    url: conventions/julep-conventions.yml
+  - type: DataModel
+    url: data-model/julep-data-model.yml
+  - type: Conformance
+    url: conformance/julep-conformance.yml
+  - type: AgenticAccess
+    url: agentic-access/julep-agentic-access.yml
+- aid: julep:julep-embed-api
+  name: Julep Embed API
+  description: The Embed API from Julep — 1 operation(s) for embed.
+  humanURL: https://docs.julep.ai/api-reference/agents/list-agents
+  baseURL: https://api.julep.ai/api
+  tags:
+  - Embed
+  properties:
+  - type: OpenAPI
+    url: openapi/julep-embed-api-openapi.yml
+  - type: Authentication
+    url: authentication/julep-authentication.yml
+  - type: Conventions
+    url: conventions/julep-conventions.yml
+  - type: DataModel
+    url: data-model/julep-data-model.yml
+  - type: Conformance
+    url: conformance/julep-conformance.yml
+  - type: AgenticAccess
+    url: agentic-access/julep-agentic-access.yml
+- aid: julep:julep-executions-api
+  name: Julep Executions API
+  description: The Executions API from Julep — 5 operation(s) for executions.
+  humanURL: https://docs.julep.ai/api-reference/agents/list-agents
+  baseURL: https://api.julep.ai/api
+  tags:
+  - Executions
+  properties:
+  - type: OpenAPI
+    url: openapi/julep-executions-api-openapi.yml
+  - type: Authentication
+    url: authentication/julep-authentication.yml
+  - type: Conventions
+    url: conventions/julep-conventions.yml
+  - type: DataModel
+    url: data-model/julep-data-model.yml
+  - type: Conformance
+    url: conformance/julep-conformance.yml
+  - type: AgenticAccess
+    url: agentic-access/julep-agentic-access.yml
+- aid: julep:julep-files-api
+  name: Julep Files API
+  description: The Files API from Julep — 2 operation(s) for files.
+  humanURL: https://docs.julep.ai/api-reference/agents/list-agents
+  baseURL: https://api.julep.ai/api
+  tags:
+  - Files
+  properties:
+  - type: OpenAPI
+    url: openapi/julep-files-api-openapi.yml
+  - type: Authentication
+    url: authentication/julep-authentication.yml
+  - type: Conventions
+    url: conventions/julep-conventions.yml
+  - type: DataModel
+    url: data-model/julep-data-model.yml
+  - type: Conformance
+    url: conformance/julep-conformance.yml
+  - type: AgenticAccess
+    url: agentic-access/julep-agentic-access.yml
+- aid: julep:julep-jobs-api
+  name: Julep Jobs API
+  description: The Jobs API from Julep — 1 operation(s) for jobs.
+  humanURL: https://docs.julep.ai/api-reference/agents/list-agents
+  baseURL: https://api.julep.ai/api
+  tags:
+  - Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/julep-jobs-api-openapi.yml
+  - type: Authentication
+    url: authentication/julep-authentication.yml
+  - type: Conventions
+    url: conventions/julep-conventions.yml
+  - type: DataModel
+    url: data-model/julep-data-model.yml
+  - type: Conformance
+    url: conformance/julep-conformance.yml
+  - type: AgenticAccess
+    url: agentic-access/julep-agentic-access.yml
+- aid: julep:julep-projects-api
+  name: Julep Projects API
+  description: The Projects API from Julep — 2 operation(s) for projects.
+  humanURL: https://docs.julep.ai/api-reference/agents/list-agents
+  baseURL: https://api.julep.ai/api
+  tags:
+  - Projects
+  properties:
+  - type: OpenAPI
+    url: openapi/julep-projects-api-openapi.yml
+  - type: Authentication
+    url: authentication/julep-authentication.yml
+  - type: Conventions
+    url: conventions/julep-conventions.yml
+  - type: DataModel
+    url: data-model/julep-data-model.yml
+  - type: Conformance
+    url: conformance/julep-conformance.yml
+  - type: AgenticAccess
+    url: agentic-access/julep-agentic-access.yml
+- aid: julep:julep-responses-api
+  name: Julep Responses API
+  description: The Responses API from Julep — 2 operation(s) for responses.
+  humanURL: https://docs.julep.ai/api-reference/agents/list-agents
+  baseURL: https://api.julep.ai/api
+  tags:
+  - Responses
+  properties:
+  - type: OpenAPI
+    url: openapi/julep-responses-api-openapi.yml
+  - type: Authentication
+    url: authentication/julep-authentication.yml
+  - type: Conventions
+    url: conventions/julep-conventions.yml
+  - type: DataModel
+    url: data-model/julep-data-model.yml
+  - type: Conformance
+    url: conformance/julep-conformance.yml
+  - type: AgenticAccess
+    url: agentic-access/julep-agentic-access.yml
+- aid: julep:julep-secrets-api
+  name: Julep Secrets API
+  description: The Secrets API from Julep — 2 operation(s) for secrets.
+  humanURL: https://docs.julep.ai/api-reference/agents/list-agents
+  baseURL: https://api.julep.ai/api
+  tags:
+  - Secrets
+  properties:
+  - type: OpenAPI
+    url: openapi/julep-secrets-api-openapi.yml
+  - type: Authentication
+    url: authentication/julep-authentication.yml
+  - type: Conventions
+    url: conventions/julep-conventions.yml
+  - type: DataModel
+    url: data-model/julep-data-model.yml
+  - type: Conformance
+    url: conformance/julep-conformance.yml
+  - type: AgenticAccess
+    url: agentic-access/julep-agentic-access.yml
+- aid: julep:julep-sessions-api
+  name: Julep Sessions API
+  description: The Sessions API from Julep — 5 operation(s) for sessions.
+  humanURL: https://docs.julep.ai/api-reference/agents/list-agents
+  baseURL: https://api.julep.ai/api
+  tags:
+  - Sessions
+  properties:
+  - type: OpenAPI
+    url: openapi/julep-sessions-api-openapi.yml
+  - type: Authentication
+    url: authentication/julep-authentication.yml
+  - type: Conventions
+    url: conventions/julep-conventions.yml
+  - type: DataModel
+    url: data-model/julep-data-model.yml
+  - type: Conformance
+    url: conformance/julep-conformance.yml
+  - type: AgenticAccess
+    url: agentic-access/julep-agentic-access.yml
+- aid: julep:julep-tasks-api
+  name: Julep Tasks API
+  description: The Tasks API from Julep — 2 operation(s) for tasks.
+  humanURL: https://docs.julep.ai/api-reference/agents/list-agents
+  baseURL: https://api.julep.ai/api
+  tags:
+  - Tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/julep-tasks-api-openapi.yml
+  - type: Authentication
+    url: authentication/julep-authentication.yml
+  - type: Conventions
+    url: conventions/julep-conventions.yml
+  - type: DataModel
+    url: data-model/julep-data-model.yml
+  - type: Conformance
+    url: conformance/julep-conformance.yml
+  - type: AgenticAccess
+    url: agentic-access/julep-agentic-access.yml
+- aid: julep:julep-users-api
+  name: Julep Users API
+  description: The Users API from Julep — 5 operation(s) for users.
+  humanURL: https://docs.julep.ai/api-reference/agents/list-agents
+  baseURL: https://api.julep.ai/api
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/julep-users-api-openapi.yml
+  - type: Authentication
+    url: authentication/julep-authentication.yml
+  - type: Conventions
+    url: conventions/julep-conventions.yml
+  - type: DataModel
+    url: data-model/julep-data-model.yml
+  - type: Conformance
+    url: conformance/julep-conformance.yml
+  - type: AgenticAccess
+    url: agentic-access/julep-agentic-access.yml
+common:
+- type: DomainSecurity
+  url: security/julep-domain-security.yml
+- type: Documentation
+  url: https://docs.julep.ai
+- type: DeveloperPortal
+  url: https://docs.julep.ai
+- type: APIReference
+  url: https://docs.julep.ai/api-reference/agents/list-agents
+- type: GettingStarted
+  url: https://docs.julep.ai/introduction/quickstart
+- type: GitHubOrganization
+  url: https://github.com/julep-ai
+- type: SourceCode
+  url: https://github.com/julep-ai/julep
+- type: Packages
+  url: packages/julep-packages.yml
+- type: SDKs
+  url: packages/julep-packages.yml
+- type: CLI
+  url: cli/julep-cli.yml
+- type: LLMsTxt
+  url: llms/julep-llms.txt
+- type: Lifecycle
+  url: lifecycle/julep-lifecycle.yml
+- type: ChangeLog
+  url: changelog/julep-changelog.yml
+- type: AgentSkill
+  url: skills/_index.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

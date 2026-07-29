@@ -1,0 +1,36 @@
+{
+  "provider": "julep",
+  "sources": [
+    "julep-agents-api-openapi.yml",
+    "julep-docs-api-openapi.yml",
+    "julep-embed-api-openapi.yml",
+    "julep-executions-api-openapi.yml",
+    "julep-files-api-openapi.yml",
+    "julep-jobs-api-openapi.yml",
+    "julep-projects-api-openapi.yml",
+    "julep-responses-api-openapi.yml",
+    "julep-secrets-api-openapi.yml",
+    "julep-sessions-api-openapi.yml",
+    "julep-tasks-api-openapi.yml",
+    "julep-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "julep-agents-api-openapi.yml",
+    "julep-docs-api-openapi.yml",
+    "julep-embed-api-openapi.yml",
+    "julep-executions-api-openapi.yml",
+    "julep-files-api-openapi.yml",
+    "julep-jobs-api-openapi.yml",
+    "julep-projects-api-openapi.yml",
+    "julep-responses-api-openapi.yml",
+    "julep-secrets-api-openapi.yml",
+    "julep-sessions-api-openapi.yml",
+    "julep-tasks-api-openapi.yml",
+    "julep-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

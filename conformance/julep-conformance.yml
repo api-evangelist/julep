@@ -1,0 +1,29 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/julep-openapi-original.yml
+standards:
+- id: openapi-3.0
+  conforms: true
+  evidence: 'openapi: 3.0.0 document published (TypeSpec-generated)'
+- id: apikey-auth
+  conforms: true
+  evidence: securitySchemes ApiKeyAuth (Authorization header) and ApiKeyAuth_ (X-Auth-Key header)
+- id: oauth2
+  conforms: false
+  evidence: no oauth2 security scheme in spec
+- id: oidc
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: no application/problem+json responses declared in spec
+- id: json:api
+  conforms: false
+- id: cursor-pagination
+  conforms: true
+  evidence: list endpoints use next_token cursor parameter
+- id: sse-streaming
+  conforms: true
+  evidence: 'text/event-stream endpoints: executions status.stream and transitions.stream'
+- id: openai-responses-api
+  conforms: true
+  evidence: ResponsesRoute (Open Responses API, alpha) mirrors the OpenAI Responses API shape

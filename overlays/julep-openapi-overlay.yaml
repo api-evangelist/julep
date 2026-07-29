@@ -1,0 +1,28 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Julep API
+  version: 1.0.0
+extends: openapi/julep-openapi-original.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: julep
+    x-apievangelist-enriched: '2026-07-19'
+    x-apievangelist-auth: api-key
+    x-apievangelist-pagination: cursor
+- target: $.info
+  update:
+    x-apievangelist-artifacts:
+      authentication: authentication/julep-authentication.yml
+      conventions: conventions/julep-conventions.yml
+      data-model: data-model/julep-data-model.yml
+      conformance: conformance/julep-conformance.yml
+      lifecycle: lifecycle/julep-lifecycle.yml
+      mcp: mcp/julep-mcp.yml
+      skills: skills/_index.yml
+- target: $.info
+  update:
+    x-apievangelist-note: >-
+      Julep publishes an OpenAPI 3.0 contract generated from TypeSpec. It declares only
+      success responses (no 4xx/5xx or problem+json schemas) — a follow-up with the provider
+      could add typed error responses to raise the contract-quality score.

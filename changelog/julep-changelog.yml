@@ -1,0 +1,26 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/julep-ai/julep/tags ; https://docs.julep.ai/changelog
+scheme: semver
+current_version: '1.0.0'
+docs: https://docs.julep.ai/changelog
+note: >-
+  A live changelog is published in the Julep documentation. The structured entries below are
+  the platform release tags from the julep-ai/julep repository (the API contract is at 1.0.0;
+  the SDKs version independently — Python julep 2.x, TypeScript @julep/sdk 2.x).
+entries:
+- version: v1.0.0
+  date: '2024-10-13'
+  highlights: First stable 1.0 release of the Julep server and API.
+- version: v1.0.0-alpha1
+  date: '2024-09-30'
+  highlights: 1.0 alpha — new task-workflow syntax and agent architecture.
+- version: v0.4.1
+  date: '2024-09-28'
+  highlights: 0.4.x maintenance release.
+- version: v0.4.0
+  date: '2024-09-28'
+  highlights: 0.4 feature release.
+- version: v0.3.4
+  date: '2024-05-31'
+  highlights: 0.3.x maintenance release.

@@ -1,0 +1,95 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/julep-openapi-original.yml
+note: >-
+  Entity-relationship graph derived from the Julep OpenAPI paths, schema $ref links, and
+  id-reference fields across 369 component schemas. Relationships reflect the resource
+  nesting in the REST paths (e.g. /agents/{id}/tasks) and id fields in request/response
+  models.
+entities:
+- name: Project
+  summary: Organizational unit that groups related resources (agents, users, files).
+  path: /projects
+- name: Agent
+  summary: A configured AI agent (model, instructions, tools, memory).
+  path: /agents
+  relationships:
+  - belongs_to: Project
+    via: project
+  - has_many: Task
+    via: /agents/{id}/tasks
+  - has_many: Doc
+    via: /agents/{id}/docs
+  - has_many: Tool
+    via: /agents/{id}/tools
+  - has_many: Secret
+    via: /agents/{id}/secrets
+- name: User
+  summary: An end user whose interactions and documents an agent can reference.
+  path: /users
+  relationships:
+  - belongs_to: Project
+    via: project
+  - has_many: Doc
+    via: /users/{id}/docs
+- name: Session
+  summary: A stateful conversation binding agents and users with persisted history.
+  path: /sessions
+  relationships:
+  - has_many: Entry
+    via: /sessions/{id}/history
+- name: Task
+  summary: A declarative multi-step workflow attached to an agent.
+  path: /agents/{id}/tasks
+  relationships:
+  - belongs_to: Agent
+    via: parent_id
+  - has_many: Execution
+    via: /tasks/{id}/executions
+- name: Execution
+  summary: A single run of a task, progressing through transitions.
+  path: /executions
+  relationships:
+  - belongs_to: Task
+    via: task_id
+  - has_many: Transition
+    via: /executions/{id}/transitions
+- name: Doc
+  summary: A document indexed for retrieval (RAG), owned by an agent or user.
+  path: /docs/{id}
+  relationships:
+  - belongs_to: Agent
+  - belongs_to: User
+- name: Tool
+  summary: An integration or function an agent can call.
+  path: /agents/{id}/tools
+  relationships:
+  - belongs_to: Agent
+- name: Secret
+  summary: A securely stored value (e.g. an integration credential).
+  path: /secrets/{id}
+- name: File
+  summary: An uploaded file/attachment.
+  path: /files
+  relationships:
+  - belongs_to: Project
+    via: project
+- name: Response
+  summary: An Open Responses API (alpha) response object, OpenAI-Responses compatible.
+  path: /responses
+  relationships:
+  - belongs_to: Response
+    via: previous_response_id
+id_reference_fields:
+- entity: Agent
+  fields: [project]
+- entity: User
+  fields: [project]
+- entity: File
+  fields: [project]
+- entity: Entry
+  fields: [session_id, tool_call_id]
+- entity: Execution
+  fields: [execution_id, scope_id, task_id]
+- entity: Response
+  fields: [call_id, file_id, previous_response_id]

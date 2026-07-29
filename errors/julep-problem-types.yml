@@ -1,0 +1,10 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/julep-openapi-original.yml
+format: none-declared
+note: The Julep OpenAPI (TypeSpec-generated) declares only success responses; no 4xx/5xx schemas or application/problem+json
+  bodies are present in the spec. Error semantics are therefore not derivable from the contract. Runtime
+  errors follow standard HTTP status codes (401 on missing/invalid API key, 404 on unknown resource id,
+  422 on validation).
+declared_error_responses: {}
+problems: []

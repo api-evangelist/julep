@@ -1,0 +1,58 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/julep-openapi-original.yml ; https://docs.julep.ai
+note: >-
+  Cross-cutting request/response semantics for the Julep API, derived from the OpenAPI
+  contract and the developer documentation. Julep uses API-key auth and cursor pagination;
+  no idempotency-key contract or RFC 9457 problem+json envelope is declared in the spec.
+authentication:
+  style: api-key
+  schemes:
+  - name: ApiKeyAuth
+    in: header
+    header: Authorization
+  - name: ApiKeyAuth_
+    in: header
+    header: X-Auth-Key
+  per_request_override:
+    header: x-custom-api-key
+    summary: Optional per-request API key override parameter present on some operations.
+  ref: authentication/julep-authentication.yml
+idempotency:
+  supported: false
+  note: No Idempotency-Key header or idempotency contract is declared in the OpenAPI or docs.
+pagination:
+  style: cursor
+  request_params:
+  - next_token
+  response_fields:
+  - next_token
+  note: List endpoints (list agents/users/sessions/tasks/executions/docs) return a next_token cursor.
+field_expansion:
+  supported: true
+  params:
+  - include
+  - include_embeddings
+  note: Some read/list operations accept include / include_embeddings to expand related data.
+streaming:
+  style: server-sent-events
+  content_type: text/event-stream
+  endpoints:
+  - GET /executions/{id}/status.stream
+  - GET /executions/{id}/transitions.stream
+metadata:
+  supported: true
+  note: Agents, users, sessions, tasks, docs and executions carry an open metadata object used for filtering and bulk operations.
+versioning:
+  scheme: server-environment
+  detail: >-
+    A single API version (1.0.0) selected by server environment variable serverEnv in the
+    base URL https://{serverEnv}.julep.ai/api (api | dev). See lifecycle/julep-lifecycle.yml.
+  ref: lifecycle/julep-lifecycle.yml
+error_envelope:
+  declared: false
+  note: The spec declares no error schemas; runtime uses standard HTTP status codes. See errors/julep-problem-types.yml.
+  ref: errors/julep-problem-types.yml
+rate_limit_signaling:
+  declared: false
+  note: No rate-limit response headers are declared in the OpenAPI.

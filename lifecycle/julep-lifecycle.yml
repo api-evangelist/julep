@@ -1,0 +1,29 @@
+generated: '2026-07-19'
+method: searched
+source: openapi/julep-openapi-original.yml ; https://github.com/julep-ai/julep ; https://docs.julep.ai/changelog
+versioning:
+  scheme: server-environment
+  current: '1.0.0'
+  detail: >-
+    The Julep API is served at https://{serverEnv}.julep.ai/api where serverEnv selects the
+    environment (api = cloud, dev = development). The OpenAPI info.version is 1.0.0.
+  docs: https://docs.julep.ai
+license:
+  name: Apache-2.0
+  url: https://www.apache.org/licenses/LICENSE-2.0.html
+  note: Julep server is open source (Apache-2.0) and self-hostable.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No formal deprecation policy or RFC 8594 Sunset/Deprecation header support was found.
+sla:
+  url: null
+  note: No published SLA found.
+status_page: null
+status_page_note: >-
+  No live status page found. status.julep.ai resolves but redirects to memory.store (the
+  Julep team's newer product), so it is not treated as a Julep API status page.
+deprecated_operations: []
+notes: >-
+  The hosted julep.ai marketing/apex domains now redirect to memory.store, but the Julep
+  API, documentation (docs.julep.ai), SDKs, and CLI remain live and maintained.

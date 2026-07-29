@@ -1,0 +1,16 @@
+generated: '2026-07-19'
+method: generated
+source: openapi/julep-openapi-original.yml
+skills:
+- file: julep-chat-with-an-agent.md
+  name: Chat with a Julep agent
+  api: openapi/julep-openapi-original.yml
+  operations: [AgentsRoute_create, SessionsRoute_create, ChatRoute_generate]
+- file: julep-create-and-run-task.md
+  name: Create and run a Julep task
+  api: openapi/julep-openapi-original.yml
+  operations: [AgentsRoute_create, TasksRoute_create, TaskExecutionsRoute_create, ExecutionStatusStreamRoute_stream, ExecutionsRoute_get]
+- file: julep-rag-search-docs.md
+  name: Ground a Julep agent with documents (RAG)
+  api: openapi/julep-openapi-original.yml
+  operations: [AgentsRoute_create, AgentDocsRoute_create, AgentsDocsSearchRoute_search]

@@ -1,0 +1,245 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: openapi/julep-openapi-original.yml
+note: No official hosted Julep MCP server was found. Julep itself consumes MCP servers as a tool-integration
+  type (see components.schemas Tools.Mcp*). This is a CANDIDATE tool list derived one-per-operation from
+  the Julep OpenAPI, suitable for generating an MCP facade over the Julep REST API.
+server:
+  name: julep
+  transport: http
+tools:
+- name: AgentsRoute_list
+  description: List Agents (paginated)
+  source_operation: openapi/julep-openapi-original.yml#AgentsRoute_list
+- name: AgentsRoute_create
+  description: Create a new Agent
+  source_operation: openapi/julep-openapi-original.yml#AgentsRoute_create
+- name: AgentsRoute_listModels
+  description: List all available models
+  source_operation: openapi/julep-openapi-original.yml#AgentsRoute_listModels
+- name: AgentsRoute_createOrUpdate
+  description: Create or update an Agent
+  source_operation: openapi/julep-openapi-original.yml#AgentsRoute_createOrUpdate
+- name: AgentsRoute_update
+  description: Update an existing Agent by id (overwrites existing values; use PATCH for merging instead)
+  source_operation: openapi/julep-openapi-original.yml#AgentsRoute_update
+- name: AgentsRoute_patch
+  description: Update an existing Agent by id (merges with existing values)
+  source_operation: openapi/julep-openapi-original.yml#AgentsRoute_patch
+- name: AgentsRoute_delete
+  description: Delete Agent by id
+  source_operation: openapi/julep-openapi-original.yml#AgentsRoute_delete
+- name: AgentsRoute_get
+  description: Get an Agent by id
+  source_operation: openapi/julep-openapi-original.yml#AgentsRoute_get
+- name: AgentDocsRoute_create
+  description: Create a Doc for this Agent
+  source_operation: openapi/julep-openapi-original.yml#AgentDocsRoute_create
+- name: AgentDocsRoute_list
+  description: List Docs owned by an Agent
+  source_operation: openapi/julep-openapi-original.yml#AgentDocsRoute_list
+- name: AgentDocsRoute_deleteBulk
+  description: Bulk delete Docs owned by an Agent
+  source_operation: openapi/julep-openapi-original.yml#AgentDocsRoute_deleteBulk
+- name: AgentDocsRoute_delete
+  description: Delete a Doc for this Agent
+  source_operation: openapi/julep-openapi-original.yml#AgentDocsRoute_delete
+- name: AgentsDocsSearchRoute_search
+  description: Search Docs owned by an Agent
+  source_operation: openapi/julep-openapi-original.yml#AgentsDocsSearchRoute_search
+- name: AgentSecretsRoute_list
+  description: List secrets (paginated)
+  source_operation: openapi/julep-openapi-original.yml#AgentSecretsRoute_list
+- name: AgentSecretsRoute_create
+  description: Create a new secret
+  source_operation: openapi/julep-openapi-original.yml#AgentSecretsRoute_create
+- name: AgentSecretsRoute_update
+  description: Update an existing secret by id (overwrites existing values)
+  source_operation: openapi/julep-openapi-original.yml#AgentSecretsRoute_update
+- name: AgentSecretsRoute_delete
+  description: Delete a secret by id
+  source_operation: openapi/julep-openapi-original.yml#AgentSecretsRoute_delete
+- name: TasksRoute_list
+  description: List tasks (paginated)
+  source_operation: openapi/julep-openapi-original.yml#TasksRoute_list
+- name: TasksRoute_create
+  description: Create a new task
+  source_operation: openapi/julep-openapi-original.yml#TasksRoute_create
+- name: TasksRoute_update
+  description: Update an existing task (overwrite existing values)
+  source_operation: openapi/julep-openapi-original.yml#TasksRoute_update
+- name: TasksRoute_patch
+  description: Update an existing task (merges with existing values)
+  source_operation: openapi/julep-openapi-original.yml#TasksRoute_patch
+- name: TasksRoute_delete
+  description: Delete a task by its id
+  source_operation: openapi/julep-openapi-original.yml#TasksRoute_delete
+- name: AgentToolsRoute_list
+  description: List tools of the given agent
+  source_operation: openapi/julep-openapi-original.yml#AgentToolsRoute_list
+- name: AgentToolsRoute_create
+  description: Create a new resource owned by the given parent
+  source_operation: openapi/julep-openapi-original.yml#AgentToolsRoute_create
+- name: AgentToolsRoute_update
+  description: Update a resource owned by the given parent using its id
+  source_operation: openapi/julep-openapi-original.yml#AgentToolsRoute_update
+- name: AgentToolsRoute_patch
+  description: Patch a resource owned by the given parent using its id
+  source_operation: openapi/julep-openapi-original.yml#AgentToolsRoute_patch
+- name: AgentToolsRoute_delete
+  description: Delete an existing tool by id
+  source_operation: openapi/julep-openapi-original.yml#AgentToolsRoute_delete
+- name: TasksCreateOrUpdateRoute_createOrUpdate
+  description: Create or update a task
+  source_operation: openapi/julep-openapi-original.yml#TasksCreateOrUpdateRoute_createOrUpdate
+- name: IndividualDocsRoute_get
+  description: Get Doc by id
+  source_operation: openapi/julep-openapi-original.yml#IndividualDocsRoute_get
+- name: EmbedRoute_embed
+  description: Embed a query for search
+  source_operation: openapi/julep-openapi-original.yml#EmbedRoute_embed
+- name: ExecutionsRoute_resumeWithTaskToken
+  description: Resume an execution with a task token
+  source_operation: openapi/julep-openapi-original.yml#ExecutionsRoute_resumeWithTaskToken
+- name: ExecutionsRoute_get
+  description: Get an Execution by id
+  source_operation: openapi/julep-openapi-original.yml#ExecutionsRoute_get
+- name: ExecutionsRoute_update
+  description: Update an existing Execution
+  source_operation: openapi/julep-openapi-original.yml#ExecutionsRoute_update
+- name: ExecutionStatusStreamRoute_stream
+  description: Stream the status of an execution
+  source_operation: openapi/julep-openapi-original.yml#ExecutionStatusStreamRoute_stream
+- name: ExecutionTransitionsRoute_list
+  description: List the Transitions of an Execution by id
+  source_operation: openapi/julep-openapi-original.yml#ExecutionTransitionsRoute_list
+- name: ExecutionTransitionsStreamRoute_stream
+  description: Stream events emitted by the given execution
+  source_operation: openapi/julep-openapi-original.yml#ExecutionTransitionsStreamRoute_stream
+- name: FilesRoute_create
+  description: Create a new File
+  source_operation: openapi/julep-openapi-original.yml#FilesRoute_create
+- name: FilesRoute_get
+  description: Get a File by its id
+  source_operation: openapi/julep-openapi-original.yml#FilesRoute_get
+- name: JobRoute_get
+  description: Get the status of an existing Job by its id
+  source_operation: openapi/julep-openapi-original.yml#JobRoute_get
+- name: ProjectsRoute_list
+  description: List Projects (paginated)
+  source_operation: openapi/julep-openapi-original.yml#ProjectsRoute_list
+- name: ProjectsRoute_create
+  description: Create a new Project
+  source_operation: openapi/julep-openapi-original.yml#ProjectsRoute_create
+- name: ProjectsRoute_createOrUpdate
+  description: Create or update a Project
+  source_operation: openapi/julep-openapi-original.yml#ProjectsRoute_createOrUpdate
+- name: ProjectsRoute_update
+  description: Update an existing Project by id (overwrites existing values; use PATCH for merging instead)
+  source_operation: openapi/julep-openapi-original.yml#ProjectsRoute_update
+- name: ProjectsRoute_patch
+  description: Update an existing Project by id (merges with existing values)
+  source_operation: openapi/julep-openapi-original.yml#ProjectsRoute_patch
+- name: ProjectsRoute_delete
+  description: Delete Project by id
+  source_operation: openapi/julep-openapi-original.yml#ProjectsRoute_delete
+- name: ProjectsRoute_get
+  description: Get a Project by id
+  source_operation: openapi/julep-openapi-original.yml#ProjectsRoute_get
+- name: ResponsesRoute_createResponse
+  description: Creates a model response. Provide text or image inputs to generate text or JSON outputs.
+  source_operation: openapi/julep-openapi-original.yml#ResponsesRoute_createResponse
+- name: ResponsesRoute_getResponse
+  description: Get a response by id
+  source_operation: openapi/julep-openapi-original.yml#ResponsesRoute_getResponse
+- name: DeveloperSecretsRoute_list
+  description: List secrets (paginated)
+  source_operation: openapi/julep-openapi-original.yml#DeveloperSecretsRoute_list
+- name: DeveloperSecretsRoute_create
+  description: Create a new secret
+  source_operation: openapi/julep-openapi-original.yml#DeveloperSecretsRoute_create
+- name: DeveloperSecretsRoute_update
+  description: Update an existing secret by id (overwrites existing values)
+  source_operation: openapi/julep-openapi-original.yml#DeveloperSecretsRoute_update
+- name: DeveloperSecretsRoute_delete
+  description: Delete a secret by id
+  source_operation: openapi/julep-openapi-original.yml#DeveloperSecretsRoute_delete
+- name: SessionsRoute_list
+  description: List sessions (paginated)
+  source_operation: openapi/julep-openapi-original.yml#SessionsRoute_list
+- name: SessionsRoute_create
+  description: Create a new session
+  source_operation: openapi/julep-openapi-original.yml#SessionsRoute_create
+- name: SessionsRoute_createOrUpdate
+  description: Create or update a session
+  source_operation: openapi/julep-openapi-original.yml#SessionsRoute_createOrUpdate
+- name: SessionsRoute_update
+  description: Update an existing session by its id (overwrites all existing values)
+  source_operation: openapi/julep-openapi-original.yml#SessionsRoute_update
+- name: SessionsRoute_patch
+  description: Update an existing session by its id (merges with existing values)
+  source_operation: openapi/julep-openapi-original.yml#SessionsRoute_patch
+- name: SessionsRoute_delete
+  description: Delete a session by its id
+  source_operation: openapi/julep-openapi-original.yml#SessionsRoute_delete
+- name: SessionsRoute_get
+  description: Get a session by id
+  source_operation: openapi/julep-openapi-original.yml#SessionsRoute_get
+- name: ChatRoute_generate
+  description: Generate a response from the model
+  source_operation: openapi/julep-openapi-original.yml#ChatRoute_generate
+- name: HistoryRoute_delete
+  description: Clear the history of a Session (resets the Session)
+  source_operation: openapi/julep-openapi-original.yml#HistoryRoute_delete
+- name: HistoryRoute_history
+  description: Get history of a Session
+  source_operation: openapi/julep-openapi-original.yml#HistoryRoute_history
+- name: RenderRoute_render
+  description: Render system prompt for the session
+  source_operation: openapi/julep-openapi-original.yml#RenderRoute_render
+- name: TasksGetRoute_get
+  description: Get a task by id
+  source_operation: openapi/julep-openapi-original.yml#TasksGetRoute_get
+- name: TaskExecutionsRoute_create
+  description: Create an execution for the given task
+  source_operation: openapi/julep-openapi-original.yml#TaskExecutionsRoute_create
+- name: TaskExecutionsRoute_list
+  description: List executions of the given task
+  source_operation: openapi/julep-openapi-original.yml#TaskExecutionsRoute_list
+- name: UsersRoute_list
+  description: List users (paginated)
+  source_operation: openapi/julep-openapi-original.yml#UsersRoute_list
+- name: UsersRoute_create
+  description: Create a new user
+  source_operation: openapi/julep-openapi-original.yml#UsersRoute_create
+- name: UsersRoute_createOrUpdate
+  description: Create or update a user
+  source_operation: openapi/julep-openapi-original.yml#UsersRoute_createOrUpdate
+- name: UsersRoute_update
+  description: Update an existing user by id (overwrite existing values)
+  source_operation: openapi/julep-openapi-original.yml#UsersRoute_update
+- name: UsersRoute_patch
+  description: Update an existing user by id (merge with existing values)
+  source_operation: openapi/julep-openapi-original.yml#UsersRoute_patch
+- name: UsersRoute_delete
+  description: Delete a user by id
+  source_operation: openapi/julep-openapi-original.yml#UsersRoute_delete
+- name: UsersRoute_get
+  description: Get a user by id
+  source_operation: openapi/julep-openapi-original.yml#UsersRoute_get
+- name: UserDocsRoute_create
+  description: Create a Doc for this User
+  source_operation: openapi/julep-openapi-original.yml#UserDocsRoute_create
+- name: UserDocsRoute_list
+  description: List Docs owned by a User
+  source_operation: openapi/julep-openapi-original.yml#UserDocsRoute_list
+- name: UserDocsRoute_deleteBulk
+  description: Bulk delete Docs owned by a User
+  source_operation: openapi/julep-openapi-original.yml#UserDocsRoute_deleteBulk
+- name: UserDocsRoute_delete
+  description: Delete a Doc for this User
+  source_operation: openapi/julep-openapi-original.yml#UserDocsRoute_delete
+- name: UserDocsSearchRoute_search
+  description: Search Docs owned by a User
+  source_operation: openapi/julep-openapi-original.yml#UserDocsSearchRoute_search
