@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Julep Agents Responses API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Responses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ResponsesRoute_createResponse",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverEnv}.julep.ai/api/responses",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a model response. Provide text or image inputs to generate text or JSON outputs."
+        },
+        {
+          "info": {
+            "name": "ResponsesRoute_getResponse",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverEnv}.julep.ai/api/responses/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the response"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Specify additional output data to include in the model response"
+              }
+            ]
+          },
+          "docs": "Get a response by id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

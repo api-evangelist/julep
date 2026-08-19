@@ -1,0 +1,178 @@
+{
+  "item": [
+    {
+      "id": "7fcd8dc5-0b01-421b-8c4c-be30ed74f625",
+      "name": "Docs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "12218669-e969-4456-830e-86a8659834b8",
+          "name": "Individual Docs Route get",
+          "request": {
+            "name": "Individual Docs Route get",
+            "description": {
+              "content": "Get Doc by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "docs",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_embeddings",
+                  "value": "true",
+                  "description": "Whether to include embeddings in the response"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of the resource"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "50782b96-7abd-4830-ab6b-16cb9aab49e2",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "docs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_embeddings",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the resource"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"created_at\": \"1995-08-15T03:37:44.022Z\",\n  \"title\": \"string\",\n  \"content\": \"string\",\n  \"embeddings\": [\n    2225.111215696224,\n    5415.216866099172\n  ],\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"modality\": \"string\",\n  \"language\": \"string\",\n  \"embedding_model\": \"string\",\n  \"embedding_dimensions\": 6230\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The environment to use (This can only be one of api,dev)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "api",
+      "key": "serverEnv"
+    },
+    {
+      "type": "string",
+      "value": "https://{{serverEnv}}.julep.ai/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f6bea0c8-3fb9-403f-bc1f-228a17b2b17c",
+    "name": "Julep Agents Docs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Julep is a backend for creating stateful AI apps with background tasks and long-term memory easily.\n\nContact Support:\n Name: Julep AI\n Email: developers@julep.ai",
+      "type": "text/plain"
+    }
+  }
+}

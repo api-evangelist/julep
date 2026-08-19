@@ -1,0 +1,1412 @@
+{
+  "item": [
+    {
+      "id": "5afaf931-b791-47f9-ad7c-7362adbddcb0",
+      "name": "Sessions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "da1e4c74-f723-4aa0-973f-f3fa719c3868",
+          "name": "Sessions Route list",
+          "request": {
+            "name": "Sessions Route list",
+            "description": {
+              "content": "List sessions (paginated)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sessions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<uint16>",
+                  "description": "(Required) Limit the number of items returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<uint32>",
+                  "description": "(Required) Offset the items returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "created_at",
+                  "description": "(Required) Sort by a field"
+                },
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "asc",
+                  "description": "(Required) Sort direction"
+                },
+                {
+                  "disabled": false,
+                  "key": "metadata_filter",
+                  "value": "",
+                  "description": "(Required) Object to filter results by metadata"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f86f565-e2e0-4197-98cc-516e9408ddcf",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<uint16>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<uint32>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "created_at"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "metadata_filter",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"situation\": null,\n      \"summary\": null,\n      \"render_templates\": true,\n      \"token_budget\": null,\n      \"context_overflow\": \"adaptive\",\n      \"auto_run_tools\": false,\n      \"forward_tool_calls\": false,\n      \"id\": \"42b6457f-0f8a-5d7e-d231-fc97d8646d37\",\n      \"created_at\": \"1981-01-18T23:36:54.544Z\",\n      \"updated_at\": \"1992-05-03T19:25:17.057Z\",\n      \"system_template\": \"string\",\n      \"recall_options\": {\n        \"confidence\": 0.5,\n        \"include_embeddings\": true,\n        \"lang\": \"en-US\",\n        \"limit\": 10,\n        \"max_query_length\": 1000,\n        \"metadata_filter\": {},\n        \"mode\": \"vector\",\n        \"num_search_messages\": 4,\n        \"mmr_strength\": 0.5\n      },\n      \"metadata\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"kind\": \"string\"\n    },\n    {\n      \"situation\": null,\n      \"summary\": null,\n      \"render_templates\": true,\n      \"token_budget\": null,\n      \"context_overflow\": \"truncate\",\n      \"auto_run_tools\": false,\n      \"forward_tool_calls\": false,\n      \"id\": \"81bdc5d0-7686-8955-d22a-f5cc37cf86f6\",\n      \"created_at\": \"1958-12-04T10:23:18.738Z\",\n      \"updated_at\": \"2009-04-13T15:44:48.314Z\",\n      \"system_template\": \"string\",\n      \"recall_options\": {\n        \"confidence\": 0.5,\n        \"include_embeddings\": true,\n        \"lang\": \"en-US\",\n        \"limit\": 10,\n        \"max_query_length\": 1000,\n        \"metadata_filter\": {},\n        \"mode\": \"vector\",\n        \"num_search_messages\": 4,\n        \"mmr_strength\": 0.5\n      },\n      \"metadata\": {\n        \"key_0\": {}\n      },\n      \"kind\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6c02f65-c0eb-4e72-941f-806d7bef64b4",
+          "name": "Sessions Route create",
+          "request": {
+            "name": "Sessions Route create",
+            "description": {
+              "content": "Create a new session",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sessions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"situation\": null,\n  \"render_templates\": true,\n  \"token_budget\": null,\n  \"context_overflow\": \"<string>\",\n  \"auto_run_tools\": false,\n  \"forward_tool_calls\": false,\n  \"user\": \"<uuid>\",\n  \"users\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"agent\": \"<uuid>\",\n  \"agents\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"system_template\": \"<string>\",\n  \"recall_options\": {\n    \"confidence\": 0.5,\n    \"include_embeddings\": true,\n    \"lang\": \"en-US\",\n    \"limit\": 10,\n    \"max_query_length\": 1000,\n    \"metadata_filter\": {},\n    \"mode\": \"vector\",\n    \"num_search_messages\": 4,\n    \"mmr_strength\": 0.5\n  },\n  \"metadata\": {\n    \"key_0\": {}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "435da962-bcab-44cc-9da1-6a79702e0c07",
+              "name": "The request has succeeded and a new resource has been created as a result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"situation\": null,\n  \"render_templates\": true,\n  \"token_budget\": null,\n  \"context_overflow\": \"<string>\",\n  \"auto_run_tools\": false,\n  \"forward_tool_calls\": false,\n  \"user\": \"<uuid>\",\n  \"users\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"agent\": \"<uuid>\",\n  \"agents\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"system_template\": \"<string>\",\n  \"recall_options\": {\n    \"confidence\": 0.5,\n    \"include_embeddings\": true,\n    \"lang\": \"en-US\",\n    \"limit\": 10,\n    \"max_query_length\": 1000,\n    \"metadata_filter\": {},\n    \"mode\": \"vector\",\n    \"num_search_messages\": 4,\n    \"mmr_strength\": 0.5\n  },\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"situation\": null,\n  \"summary\": null,\n  \"render_templates\": true,\n  \"token_budget\": null,\n  \"context_overflow\": \"<string>\",\n  \"auto_run_tools\": false,\n  \"forward_tool_calls\": false,\n  \"id\": \"<uuid>\",\n  \"created_at\": \"2010-07-22T10:44:12.797Z\",\n  \"updated_at\": \"1951-01-07T21:05:07.748Z\",\n  \"system_template\": \"string\",\n  \"recall_options\": {\n    \"confidence\": 0.5,\n    \"include_embeddings\": true,\n    \"lang\": \"en-US\",\n    \"limit\": 10,\n    \"max_query_length\": 1000,\n    \"metadata_filter\": {},\n    \"mode\": \"vector\",\n    \"num_search_messages\": 4,\n    \"mmr_strength\": 0.5\n  },\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"kind\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b3f32f5-9036-4a48-baaa-24a74d2deb2f",
+          "name": "Sessions Route create Or Update",
+          "request": {
+            "name": "Sessions Route create Or Update",
+            "description": {
+              "content": "Create or update a session",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sessions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"situation\": null,\n  \"render_templates\": true,\n  \"token_budget\": null,\n  \"context_overflow\": \"<string>\",\n  \"auto_run_tools\": false,\n  \"forward_tool_calls\": false,\n  \"user\": \"<uuid>\",\n  \"users\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"agent\": \"<uuid>\",\n  \"agents\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"system_template\": \"<string>\",\n  \"recall_options\": {\n    \"confidence\": 0.5,\n    \"include_embeddings\": true,\n    \"lang\": \"en-US\",\n    \"limit\": 10,\n    \"max_query_length\": 1000,\n    \"metadata_filter\": {},\n    \"mode\": \"vector\",\n    \"num_search_messages\": 4,\n    \"mmr_strength\": 0.5\n  },\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f3e52dc2-a623-43f0-a047-eb49edef4d92",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"situation\": null,\n  \"render_templates\": true,\n  \"token_budget\": null,\n  \"context_overflow\": \"<string>\",\n  \"auto_run_tools\": false,\n  \"forward_tool_calls\": false,\n  \"user\": \"<uuid>\",\n  \"users\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"agent\": \"<uuid>\",\n  \"agents\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"system_template\": \"<string>\",\n  \"recall_options\": {\n    \"confidence\": 0.5,\n    \"include_embeddings\": true,\n    \"lang\": \"en-US\",\n    \"limit\": 10,\n    \"max_query_length\": 1000,\n    \"metadata_filter\": {},\n    \"mode\": \"vector\",\n    \"num_search_messages\": 4,\n    \"mmr_strength\": 0.5\n  },\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"situation\": null,\n  \"summary\": null,\n  \"render_templates\": true,\n  \"token_budget\": null,\n  \"context_overflow\": \"<string>\",\n  \"auto_run_tools\": false,\n  \"forward_tool_calls\": false,\n  \"id\": \"<uuid>\",\n  \"created_at\": \"2010-07-22T10:44:12.797Z\",\n  \"updated_at\": \"1951-01-07T21:05:07.748Z\",\n  \"system_template\": \"string\",\n  \"recall_options\": {\n    \"confidence\": 0.5,\n    \"include_embeddings\": true,\n    \"lang\": \"en-US\",\n    \"limit\": 10,\n    \"max_query_length\": 1000,\n    \"metadata_filter\": {},\n    \"mode\": \"vector\",\n    \"num_search_messages\": 4,\n    \"mmr_strength\": 0.5\n  },\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"kind\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66152ad3-4db0-4023-8880-7f7552f216ad",
+          "name": "Sessions Route update",
+          "request": {
+            "name": "Sessions Route update",
+            "description": {
+              "content": "Update an existing session by its id (overwrites all existing values)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sessions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of the resource"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"situation\": null,\n  \"render_templates\": true,\n  \"token_budget\": null,\n  \"context_overflow\": \"<string>\",\n  \"auto_run_tools\": false,\n  \"forward_tool_calls\": false,\n  \"system_template\": \"<string>\",\n  \"recall_options\": {\n    \"confidence\": 0.5,\n    \"include_embeddings\": true,\n    \"lang\": \"en-US\",\n    \"limit\": 10,\n    \"max_query_length\": 1000,\n    \"metadata_filter\": {},\n    \"mode\": \"vector\",\n    \"num_search_messages\": 4,\n    \"mmr_strength\": 0.5\n  },\n  \"metadata\": {\n    \"key_0\": {}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6e25cd44-87e7-496f-9bf1-3fcf949383e7",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the resource"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"situation\": null,\n  \"render_templates\": true,\n  \"token_budget\": null,\n  \"context_overflow\": \"<string>\",\n  \"auto_run_tools\": false,\n  \"forward_tool_calls\": false,\n  \"system_template\": \"<string>\",\n  \"recall_options\": {\n    \"confidence\": 0.5,\n    \"include_embeddings\": true,\n    \"lang\": \"en-US\",\n    \"limit\": 10,\n    \"max_query_length\": 1000,\n    \"metadata_filter\": {},\n    \"mode\": \"vector\",\n    \"num_search_messages\": 4,\n    \"mmr_strength\": 0.5\n  },\n  \"metadata\": {\n    \"key_0\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"situation\": null,\n  \"summary\": null,\n  \"render_templates\": true,\n  \"token_budget\": null,\n  \"context_overflow\": \"<string>\",\n  \"auto_run_tools\": false,\n  \"forward_tool_calls\": false,\n  \"id\": \"<uuid>\",\n  \"created_at\": \"2010-07-22T10:44:12.797Z\",\n  \"updated_at\": \"1951-01-07T21:05:07.748Z\",\n  \"system_template\": \"string\",\n  \"recall_options\": {\n    \"confidence\": 0.5,\n    \"include_embeddings\": true,\n    \"lang\": \"en-US\",\n    \"limit\": 10,\n    \"max_query_length\": 1000,\n    \"metadata_filter\": {},\n    \"mode\": \"vector\",\n    \"num_search_messages\": 4,\n    \"mmr_strength\": 0.5\n  },\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"kind\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad9aada5-0b75-4cd1-8a0b-d191aeb18305",
+          "name": "Sessions Route patch",
+          "request": {
+            "name": "Sessions Route patch",
+            "description": {
+              "content": "Update an existing session by its id (merges with existing values)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sessions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of the resource"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"situation\": null,\n  \"system_template\": \"<string>\",\n  \"render_templates\": true,\n  \"token_budget\": null,\n  \"context_overflow\": \"<string>\",\n  \"auto_run_tools\": false,\n  \"forward_tool_calls\": false,\n  \"recall_options\": {\n    \"mode\": \"vector\",\n    \"confidence\": 0.5,\n    \"mmr_strength\": 0.5,\n    \"limit\": 10,\n    \"lang\": \"en-US\",\n    \"metadata_filter\": {},\n    \"num_search_messages\": 4,\n    \"max_query_length\": 1000,\n    \"include_embeddings\": true\n  },\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a0320e1e-4129-4818-943f-ff09e8b806b0",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the resource"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"situation\": null,\n  \"system_template\": \"<string>\",\n  \"render_templates\": true,\n  \"token_budget\": null,\n  \"context_overflow\": \"<string>\",\n  \"auto_run_tools\": false,\n  \"forward_tool_calls\": false,\n  \"recall_options\": {\n    \"mode\": \"vector\",\n    \"confidence\": 0.5,\n    \"mmr_strength\": 0.5,\n    \"limit\": 10,\n    \"lang\": \"en-US\",\n    \"metadata_filter\": {},\n    \"num_search_messages\": 4,\n    \"max_query_length\": 1000,\n    \"include_embeddings\": true\n  },\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"situation\": null,\n  \"summary\": null,\n  \"render_templates\": true,\n  \"token_budget\": null,\n  \"context_overflow\": \"<string>\",\n  \"auto_run_tools\": false,\n  \"forward_tool_calls\": false,\n  \"id\": \"<uuid>\",\n  \"created_at\": \"2010-07-22T10:44:12.797Z\",\n  \"updated_at\": \"1951-01-07T21:05:07.748Z\",\n  \"system_template\": \"string\",\n  \"recall_options\": {\n    \"confidence\": 0.5,\n    \"include_embeddings\": true,\n    \"lang\": \"en-US\",\n    \"limit\": 10,\n    \"max_query_length\": 1000,\n    \"metadata_filter\": {},\n    \"mode\": \"vector\",\n    \"num_search_messages\": 4,\n    \"mmr_strength\": 0.5\n  },\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"kind\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e8a3ae6-31fa-4e29-b2da-2aec9ca55507",
+          "name": "Sessions Route delete",
+          "request": {
+            "name": "Sessions Route delete",
+            "description": {
+              "content": "Delete a session by its id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sessions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of the resource"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "df85ded1-c25b-45d3-b9b2-8e5a7d198d0c",
+              "name": "The request has been accepted for processing, but processing has not yet completed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the resource"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"deleted_at\": \"1979-01-28T11:45:50.949Z\",\n  \"jobs\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6f2861c0-6f48-46ca-a679-d36005a736a6",
+          "name": "Sessions Route get",
+          "request": {
+            "name": "Sessions Route get",
+            "description": {
+              "content": "Get a session by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sessions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of the resource"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a5b4e5f0-e948-47be-9b6e-bcd3b3c9a5d3",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the resource"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"situation\": null,\n  \"summary\": null,\n  \"render_templates\": true,\n  \"token_budget\": null,\n  \"context_overflow\": \"<string>\",\n  \"auto_run_tools\": false,\n  \"forward_tool_calls\": false,\n  \"id\": \"<uuid>\",\n  \"created_at\": \"2010-07-22T10:44:12.797Z\",\n  \"updated_at\": \"1951-01-07T21:05:07.748Z\",\n  \"system_template\": \"string\",\n  \"recall_options\": {\n    \"confidence\": 0.5,\n    \"include_embeddings\": true,\n    \"lang\": \"en-US\",\n    \"limit\": 10,\n    \"max_query_length\": 1000,\n    \"metadata_filter\": {},\n    \"mode\": \"vector\",\n    \"num_search_messages\": 4,\n    \"mmr_strength\": 0.5\n  },\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"kind\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a00eaec-1d51-45a7-a7b5-8d5e8e55e613",
+          "name": "Chat Route generate",
+          "request": {
+            "name": "Chat Route generate",
+            "description": {
+              "content": "Generate a response from the model",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sessions",
+                ":id",
+                "chat"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The session ID"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Custom API key",
+                "key": "x-custom-api-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"auto_run_tools\": false,\n  \"messages\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\",\n      \"tool_call_id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"recall\": true,\n  \"recall_tools\": true,\n  \"save\": true,\n  \"stop\": [],\n  \"stream\": false,\n  \"tools\": null,\n  \"model\": \"<string>\",\n  \"seed\": \"<int16>\",\n  \"max_tokens\": \"<uint32>\",\n  \"logit_bias\": {\n    \"key_0\": \"<float>\",\n    \"key_1\": \"<float>\"\n  },\n  \"response_format\": {\n    \"type\": \"text\"\n  },\n  \"agent\": \"<uuid>\",\n  \"repetition_penalty\": \"<float>\",\n  \"length_penalty\": \"<float>\",\n  \"min_p\": \"<float>\",\n  \"frequency_penalty\": \"<float>\",\n  \"presence_penalty\": \"<float>\",\n  \"temperature\": \"<float>\",\n  \"top_p\": \"<float>\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"tool_choice\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8969f7a1-708a-4559-8107-7b82e3faf73f",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions",
+                    ":id",
+                    "chat"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The session ID"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Custom API key",
+                    "key": "x-custom-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"auto_run_tools\": false,\n  \"messages\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\",\n      \"tool_call_id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"recall\": true,\n  \"recall_tools\": true,\n  \"save\": true,\n  \"stop\": [],\n  \"stream\": false,\n  \"tools\": null,\n  \"model\": \"<string>\",\n  \"seed\": \"<int16>\",\n  \"max_tokens\": \"<uint32>\",\n  \"logit_bias\": {\n    \"key_0\": \"<float>\",\n    \"key_1\": \"<float>\",\n    \"key_2\": \"<float>\"\n  },\n  \"response_format\": {\n    \"type\": \"text\"\n  },\n  \"agent\": \"<uuid>\",\n  \"repetition_penalty\": \"<float>\",\n  \"length_penalty\": \"<float>\",\n  \"min_p\": \"<float>\",\n  \"frequency_penalty\": \"<float>\",\n  \"presence_penalty\": \"<float>\",\n  \"temperature\": \"<float>\",\n  \"top_p\": \"<float>\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"tool_choice\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"choices\": [\n    {\n      \"delta\": {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"content\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"tool_call_id\": \"string\",\n        \"name\": \"string\"\n      },\n      \"finish_reason\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"index\": 3438,\n      \"logprobs\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"tool_calls\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    {\n      \"delta\": {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"content\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"tool_call_id\": \"string\",\n        \"name\": \"string\"\n      },\n      \"finish_reason\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"index\": 6589,\n      \"logprobs\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"tool_calls\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    }\n  ],\n  \"created_at\": \"1954-02-27T15:41:35.275Z\",\n  \"docs\": [],\n  \"id\": \"<uuid>\",\n  \"jobs\": [],\n  \"usage\": {\n    \"completion_tokens\": 9639,\n    \"prompt_tokens\": 1012,\n    \"total_tokens\": 112\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "708ebdc3-73e6-4308-ad66-e1907319fc38",
+          "name": "History Route delete",
+          "request": {
+            "name": "History Route delete",
+            "description": {
+              "content": "Clear the history of a Session (resets the Session)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sessions",
+                ":id",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of the resource"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b1bcb20f-5ded-484b-8965-a1c3a7c7fb9b",
+              "name": "The request has been accepted for processing, but processing has not yet completed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions",
+                    ":id",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the resource"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"deleted_at\": \"2020-01-20T01:11:44.725Z\",\n  \"jobs\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d4768cde-10cd-46e8-b578-a63355ec3e9b",
+          "name": "History Route history",
+          "request": {
+            "name": "History Route history",
+            "description": {
+              "content": "Get history of a Session",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sessions",
+                ":id",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of parent"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7b8cd590-43ed-43d0-a35b-064efdcb1e1c",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions",
+                    ":id",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of parent"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"content\": [\n        {\n          \"text\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"text\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"created_at\": \"1995-05-04T14:38:27.693Z\",\n      \"id\": \"<uuid>\",\n      \"model\": \"gpt-4o-mini\",\n      \"name\": null,\n      \"role\": \"<string>\",\n      \"source\": \"tool_response\",\n      \"timestamp\": \"1968-12-22T23:27:13.524Z\",\n      \"token_count\": 8681,\n      \"tokenizer\": \"string\",\n      \"tool_calls\": null,\n      \"tool_call_id\": null\n    },\n    {\n      \"content\": [\n        {\n          \"text\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"text\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"created_at\": \"1996-10-17T22:13:01.464Z\",\n      \"id\": \"<uuid>\",\n      \"model\": \"gpt-4o-mini\",\n      \"name\": null,\n      \"role\": \"<string>\",\n      \"source\": \"api_response\",\n      \"timestamp\": \"1994-11-06T18:22:22.000Z\",\n      \"token_count\": 3759,\n      \"tokenizer\": \"string\",\n      \"tool_calls\": null,\n      \"tool_call_id\": null\n    }\n  ],\n  \"relations\": [\n    {\n      \"head\": \"<uuid>\",\n      \"relation\": \"string\",\n      \"tail\": \"<uuid>\"\n    },\n    {\n      \"head\": \"<uuid>\",\n      \"relation\": \"string\",\n      \"tail\": \"<uuid>\"\n    }\n  ],\n  \"session_id\": \"<uuid>\",\n  \"created_at\": \"1960-07-09T16:54:53.429Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d1507a9d-3916-4a7f-ad18-b254c9f1749a",
+          "name": "Render Route render",
+          "request": {
+            "name": "Render Route render",
+            "description": {
+              "content": "Render system prompt for the session",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sessions",
+                ":id",
+                "render"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The session ID"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"auto_run_tools\": false,\n  \"messages\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\",\n      \"tool_call_id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"recall\": true,\n  \"recall_tools\": true,\n  \"save\": true,\n  \"stop\": [],\n  \"stream\": false,\n  \"tools\": null,\n  \"model\": \"<string>\",\n  \"seed\": \"<int16>\",\n  \"max_tokens\": \"<uint32>\",\n  \"logit_bias\": {\n    \"key_0\": \"<float>\",\n    \"key_1\": \"<float>\",\n    \"key_2\": \"<float>\"\n  },\n  \"response_format\": {\n    \"type\": \"text\"\n  },\n  \"agent\": \"<uuid>\",\n  \"repetition_penalty\": \"<float>\",\n  \"length_penalty\": \"<float>\",\n  \"min_p\": \"<float>\",\n  \"frequency_penalty\": \"<float>\",\n  \"presence_penalty\": \"<float>\",\n  \"temperature\": \"<float>\",\n  \"top_p\": \"<float>\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {}\n  },\n  \"tool_choice\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c5f6eeca-7dbd-4806-aaf3-4f9bfe9435ce",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions",
+                    ":id",
+                    "render"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The session ID"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"auto_run_tools\": false,\n  \"messages\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\",\n      \"tool_call_id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"recall\": true,\n  \"recall_tools\": true,\n  \"save\": true,\n  \"stop\": [],\n  \"stream\": false,\n  \"tools\": null,\n  \"model\": \"<string>\",\n  \"seed\": \"<int16>\",\n  \"max_tokens\": \"<uint32>\",\n  \"logit_bias\": {\n    \"key_0\": \"<float>\",\n    \"key_1\": \"<float>\",\n    \"key_2\": \"<float>\"\n  },\n  \"response_format\": {\n    \"type\": \"text\"\n  },\n  \"agent\": \"<uuid>\",\n  \"repetition_penalty\": \"<float>\",\n  \"length_penalty\": \"<float>\",\n  \"min_p\": \"<float>\",\n  \"frequency_penalty\": \"<float>\",\n  \"presence_penalty\": \"<float>\",\n  \"temperature\": \"<float>\",\n  \"top_p\": \"<float>\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"tool_choice\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"docs\": [],\n  \"messages\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\",\n      \"tool_call_id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"tools\": null,\n  \"tool_choice\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The environment to use (This can only be one of api,dev)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "api",
+      "key": "serverEnv"
+    },
+    {
+      "type": "string",
+      "value": "https://{{serverEnv}}.julep.ai/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0af0a4ad-e741-4202-9865-0b33649fb39a",
+    "name": "Julep Agents Sessions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Julep is a backend for creating stateful AI apps with background tasks and long-term memory easily.\n\nContact Support:\n Name: Julep AI\n Email: developers@julep.ai",
+      "type": "text/plain"
+    }
+  }
+}

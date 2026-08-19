@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Julep Agents Files API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "FilesRoute_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverEnv}.julep.ai/api/files",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new File"
+        },
+        {
+          "info": {
+            "name": "FilesRoute_get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverEnv}.julep.ai/api/files/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the resource"
+              }
+            ]
+          },
+          "docs": "Get a File by its id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

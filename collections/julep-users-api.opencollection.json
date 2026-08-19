@@ -1,0 +1,339 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Julep Agents Users API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "UsersRoute_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverEnv}.julep.ai/api/users",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit the number of items returned"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset the items returned"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort by a field"
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Sort direction"
+              },
+              {
+                "name": "metadata_filter",
+                "value": "",
+                "type": "query",
+                "description": "Object to filter results by metadata"
+              }
+            ]
+          },
+          "docs": "List users (paginated)"
+        },
+        {
+          "info": {
+            "name": "UsersRoute_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverEnv}.julep.ai/api/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new user"
+        },
+        {
+          "info": {
+            "name": "UsersRoute_get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverEnv}.julep.ai/api/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the resource"
+              }
+            ]
+          },
+          "docs": "Get a user by id"
+        },
+        {
+          "info": {
+            "name": "UsersRoute_createOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverEnv}.julep.ai/api/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update a user"
+        },
+        {
+          "info": {
+            "name": "UsersRoute_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{serverEnv}.julep.ai/api/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing user by id (overwrite existing values)"
+        },
+        {
+          "info": {
+            "name": "UsersRoute_patch",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{serverEnv}.julep.ai/api/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing user by id (merge with existing values)"
+        },
+        {
+          "info": {
+            "name": "UsersRoute_delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{serverEnv}.julep.ai/api/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the resource"
+              }
+            ]
+          },
+          "docs": "Delete a user by id"
+        },
+        {
+          "info": {
+            "name": "UserDocsRoute_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverEnv}.julep.ai/api/users/:id/docs",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of parent"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit the number of items returned"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset the items returned"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort by a field"
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Sort direction"
+              },
+              {
+                "name": "metadata_filter",
+                "value": "",
+                "type": "query",
+                "description": "Object to filter results by metadata"
+              },
+              {
+                "name": "include_embeddings",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include embeddings in the response"
+              }
+            ]
+          },
+          "docs": "List Docs owned by a User"
+        },
+        {
+          "info": {
+            "name": "UserDocsRoute_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverEnv}.julep.ai/api/users/:id/docs",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of parent resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Doc for this User"
+        },
+        {
+          "info": {
+            "name": "UserDocsRoute_deleteBulk",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{serverEnv}.julep.ai/api/users/:id/docs",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the parent"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk delete Docs owned by a User"
+        },
+        {
+          "info": {
+            "name": "UserDocsRoute_delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{serverEnv}.julep.ai/api/users/:id/docs/:child_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of parent resource"
+              },
+              {
+                "name": "child_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the resource to be deleted"
+              }
+            ]
+          },
+          "docs": "Delete a Doc for this User"
+        },
+        {
+          "info": {
+            "name": "UserDocsSearchRoute_search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverEnv}.julep.ai/api/users/:id/search",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the parent"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search Docs owned by a User"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

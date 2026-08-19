@@ -1,0 +1,814 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Julep Agents API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Agents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AgentsRoute_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverEnv}.julep.ai/api/agents",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit the number of items returned"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset the items returned"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort by a field"
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Sort direction"
+              },
+              {
+                "name": "metadata_filter",
+                "value": "",
+                "type": "query",
+                "description": "Object to filter results by metadata"
+              }
+            ]
+          },
+          "docs": "List Agents (paginated)"
+        },
+        {
+          "info": {
+            "name": "AgentsRoute_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverEnv}.julep.ai/api/agents",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Agent"
+        },
+        {
+          "info": {
+            "name": "AgentsRoute_listModels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverEnv}.julep.ai/api/agents/models"
+          },
+          "docs": "List all available models"
+        },
+        {
+          "info": {
+            "name": "AgentsRoute_get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverEnv}.julep.ai/api/agents/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the resource"
+              }
+            ]
+          },
+          "docs": "Get an Agent by id"
+        },
+        {
+          "info": {
+            "name": "AgentsRoute_createOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverEnv}.julep.ai/api/agents/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update an Agent"
+        },
+        {
+          "info": {
+            "name": "AgentsRoute_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{serverEnv}.julep.ai/api/agents/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing Agent by id (overwrites existing values; use PATCH for merging instead)"
+        },
+        {
+          "info": {
+            "name": "AgentsRoute_patch",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{serverEnv}.julep.ai/api/agents/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing Agent by id (merges with existing values)"
+        },
+        {
+          "info": {
+            "name": "AgentsRoute_delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{serverEnv}.julep.ai/api/agents/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the resource"
+              }
+            ]
+          },
+          "docs": "Delete Agent by id"
+        },
+        {
+          "info": {
+            "name": "AgentDocsRoute_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverEnv}.julep.ai/api/agents/:id/docs",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of parent"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit the number of items returned"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset the items returned"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort by a field"
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Sort direction"
+              },
+              {
+                "name": "metadata_filter",
+                "value": "",
+                "type": "query",
+                "description": "Object to filter results by metadata"
+              },
+              {
+                "name": "include_embeddings",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include embeddings in the response"
+              }
+            ]
+          },
+          "docs": "List Docs owned by an Agent"
+        },
+        {
+          "info": {
+            "name": "AgentDocsRoute_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverEnv}.julep.ai/api/agents/:id/docs",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of parent resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Doc for this Agent"
+        },
+        {
+          "info": {
+            "name": "AgentDocsRoute_deleteBulk",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{serverEnv}.julep.ai/api/agents/:id/docs",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the parent"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk delete Docs owned by an Agent"
+        },
+        {
+          "info": {
+            "name": "AgentDocsRoute_delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{serverEnv}.julep.ai/api/agents/:id/docs/:child_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of parent resource"
+              },
+              {
+                "name": "child_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the resource to be deleted"
+              }
+            ]
+          },
+          "docs": "Delete a Doc for this Agent"
+        },
+        {
+          "info": {
+            "name": "AgentsDocsSearchRoute_search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverEnv}.julep.ai/api/agents/:id/search",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the parent"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search Docs owned by an Agent"
+        },
+        {
+          "info": {
+            "name": "AgentSecretsRoute_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverEnv}.julep.ai/api/agents/:id/secrets",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of parent"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit the number of items returned"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset the items returned"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort by a field"
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Sort direction"
+              },
+              {
+                "name": "metadata_filter",
+                "value": "",
+                "type": "query",
+                "description": "Object to filter results by metadata"
+              }
+            ]
+          },
+          "docs": "List secrets (paginated)"
+        },
+        {
+          "info": {
+            "name": "AgentSecretsRoute_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverEnv}.julep.ai/api/agents/:id/secrets",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of parent resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new secret"
+        },
+        {
+          "info": {
+            "name": "AgentSecretsRoute_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{serverEnv}.julep.ai/api/agents/:id/secrets/:child_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of parent resource"
+              },
+              {
+                "name": "child_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the resource to be updated"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing secret by id (overwrites existing values)"
+        },
+        {
+          "info": {
+            "name": "AgentSecretsRoute_delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{serverEnv}.julep.ai/api/agents/:id/secrets/:child_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of parent resource"
+              },
+              {
+                "name": "child_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the resource to be deleted"
+              }
+            ]
+          },
+          "docs": "Delete a secret by id"
+        },
+        {
+          "info": {
+            "name": "TasksRoute_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverEnv}.julep.ai/api/agents/:id/tasks",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of parent"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit the number of items returned"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset the items returned"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort by a field"
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Sort direction"
+              },
+              {
+                "name": "metadata_filter",
+                "value": "",
+                "type": "query",
+                "description": "Object to filter results by metadata"
+              }
+            ]
+          },
+          "docs": "List tasks (paginated)"
+        },
+        {
+          "info": {
+            "name": "TasksRoute_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverEnv}.julep.ai/api/agents/:id/tasks",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of parent resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new task"
+        },
+        {
+          "info": {
+            "name": "TasksRoute_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{serverEnv}.julep.ai/api/agents/:id/tasks/:child_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of parent resource"
+              },
+              {
+                "name": "child_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the resource to be updated"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing task (overwrite existing values)"
+        },
+        {
+          "info": {
+            "name": "TasksRoute_patch",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{serverEnv}.julep.ai/api/agents/:id/tasks/:child_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of parent resource"
+              },
+              {
+                "name": "child_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the resource to be patched"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing task (merges with existing values)"
+        },
+        {
+          "info": {
+            "name": "TasksRoute_delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{serverEnv}.julep.ai/api/agents/:id/tasks/:child_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of parent resource"
+              },
+              {
+                "name": "child_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the resource to be deleted"
+              }
+            ]
+          },
+          "docs": "Delete a task by its id"
+        },
+        {
+          "info": {
+            "name": "AgentToolsRoute_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverEnv}.julep.ai/api/agents/:id/tools",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of parent"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit the number of items returned"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset the items returned"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort by a field"
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Sort direction"
+              },
+              {
+                "name": "metadata_filter",
+                "value": "",
+                "type": "query",
+                "description": "Object to filter results by metadata"
+              }
+            ]
+          },
+          "docs": "List tools of the given agent"
+        },
+        {
+          "info": {
+            "name": "AgentToolsRoute_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverEnv}.julep.ai/api/agents/:id/tools",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of parent resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new resource owned by the given parent"
+        },
+        {
+          "info": {
+            "name": "AgentToolsRoute_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{serverEnv}.julep.ai/api/agents/:id/tools/:child_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of parent resource"
+              },
+              {
+                "name": "child_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the resource to be updated"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a resource owned by the given parent using its id"
+        },
+        {
+          "info": {
+            "name": "AgentToolsRoute_patch",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{serverEnv}.julep.ai/api/agents/:id/tools/:child_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of parent resource"
+              },
+              {
+                "name": "child_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the resource to be patched"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patch a resource owned by the given parent using its id"
+        },
+        {
+          "info": {
+            "name": "AgentToolsRoute_delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{serverEnv}.julep.ai/api/agents/:id/tools/:child_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of parent resource"
+              },
+              {
+                "name": "child_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the resource to be deleted"
+              }
+            ]
+          },
+          "docs": "Delete an existing tool by id"
+        },
+        {
+          "info": {
+            "name": "TasksCreateOrUpdateRoute_createOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverEnv}.julep.ai/api/agents/:parent_id/tasks/:id",
+            "params": [
+              {
+                "name": "parent_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the agent"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update a task"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

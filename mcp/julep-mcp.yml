@@ -243,3 +243,9 @@ tools:
 - name: UserDocsSearchRoute_search
   description: Search Docs owned by a User
   source_operation: openapi/julep-openapi-original.yml#UserDocsSearchRoute_search
+deployment:
+  mode: none
+  verified: derived
+  tools: 78
+  checked: '2026-08-12'
+  source: catalog MCP census

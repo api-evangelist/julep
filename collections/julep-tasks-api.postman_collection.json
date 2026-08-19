@@ -1,0 +1,459 @@
+{
+  "item": [
+    {
+      "id": "279312e4-4bca-4891-96b2-d47a55958480",
+      "name": "Tasks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e7df2100-654d-4cfa-81f4-c37299fb8a2c",
+          "name": "Tasks Get Route get",
+          "request": {
+            "name": "Tasks Get Route get",
+            "description": {
+              "content": "Get a task by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tasks",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of the resource"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1e9c0332-94ad-4f45-9435-f81fcf17320b",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tasks",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the resource"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"description\": \"\",\n  \"main\": [\n    {\n      \"evaluate\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      },\n      \"kind_\": \"evaluate\",\n      \"label\": \"1014_;]P<+8'\"\n    }\n  ],\n  \"input_schema\": null,\n  \"tools\": [],\n  \"inherit_tools\": false,\n  \"id\": \"<uuid>\",\n  \"created_at\": \"2000-12-02T10:59:57.528Z\",\n  \"updated_at\": \"1994-10-19T06:50:00.784Z\",\n  \"canonical_name\": \"Aw3Ha\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b53a96b2-c45a-46e0-91bf-9f6eab158461",
+          "name": "Task Executions Route create",
+          "request": {
+            "name": "Task Executions Route create",
+            "description": {
+              "content": "Create an execution for the given task",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tasks",
+                ":id",
+                "executions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of parent resource"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"input\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"output\": {},\n  \"error\": \"<string>\",\n  \"transition_count\": \"<uint8>\",\n  \"metadata\": {\n    \"key_0\": {}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6b84bc42-c606-4478-ae31-dd50e661f3d8",
+              "name": "The request has succeeded and a new resource has been created as a result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tasks",
+                    ":id",
+                    "executions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of parent resource"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"output\": {},\n  \"error\": \"<string>\",\n  \"transition_count\": \"<uint8>\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"task_id\": \"<uuid>\",\n  \"status\": \"cancelled\",\n  \"input\": {\n    \"key_0\": {}\n  },\n  \"created_at\": \"1982-09-28T09:23:20.349Z\",\n  \"updated_at\": \"1971-01-04T13:18:49.312Z\",\n  \"id\": \"<uuid>\",\n  \"output\": {},\n  \"error\": \"string\",\n  \"transition_count\": 9567,\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4f75a223-afdd-4614-ab67-bcf1ca82e413",
+          "name": "Task Executions Route list",
+          "request": {
+            "name": "Task Executions Route list",
+            "description": {
+              "content": "List executions of the given task",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tasks",
+                ":id",
+                "executions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<uint16>",
+                  "description": "(Required) Limit the number of items returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<uint32>",
+                  "description": "(Required) Offset the items returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "created_at",
+                  "description": "(Required) Sort by a field"
+                },
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "asc",
+                  "description": "(Required) Sort direction"
+                },
+                {
+                  "disabled": false,
+                  "key": "metadata_filter",
+                  "value": "",
+                  "description": "(Required) Object to filter results by metadata"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of parent"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "08a43c11-4014-4327-a713-7527c667cdf0",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tasks",
+                    ":id",
+                    "executions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<uint16>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<uint32>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "created_at"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "metadata_filter",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of parent"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"task_id\": \"<uuid>\",\n      \"status\": \"running\",\n      \"input\": {\n        \"key_0\": {}\n      },\n      \"created_at\": \"2023-03-15T12:23:19.511Z\",\n      \"updated_at\": \"1948-10-24T06:46:29.505Z\",\n      \"id\": \"<uuid>\",\n      \"output\": {},\n      \"error\": \"string\",\n      \"transition_count\": 2268,\n      \"metadata\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      }\n    },\n    {\n      \"task_id\": \"<uuid>\",\n      \"status\": \"queued\",\n      \"input\": {\n        \"key_0\": {}\n      },\n      \"created_at\": \"2011-11-17T11:14:45.968Z\",\n      \"updated_at\": \"1991-08-06T10:38:09.892Z\",\n      \"id\": \"<uuid>\",\n      \"output\": {},\n      \"error\": \"string\",\n      \"transition_count\": 2367,\n      \"metadata\": {\n        \"key_0\": {}\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The environment to use (This can only be one of api,dev)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "api",
+      "key": "serverEnv"
+    },
+    {
+      "type": "string",
+      "value": "https://{{serverEnv}}.julep.ai/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6e59fb72-980c-4b64-95f3-7172b4199e83",
+    "name": "Julep Agents Tasks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Julep is a backend for creating stateful AI apps with background tasks and long-term memory easily.\n\nContact Support:\n Name: Julep AI\n Email: developers@julep.ai",
+      "type": "text/plain"
+    }
+  }
+}

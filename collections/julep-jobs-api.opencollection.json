@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Julep Agents Jobs API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "JobRoute_get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverEnv}.julep.ai/api/jobs/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the resource"
+              }
+            ]
+          },
+          "docs": "Get the status of an existing Job by its id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

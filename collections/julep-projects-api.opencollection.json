@@ -1,0 +1,190 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Julep Agents Projects API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ProjectsRoute_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverEnv}.julep.ai/api/projects",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit the number of items returned"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset the items returned"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort by a field"
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Sort direction"
+              },
+              {
+                "name": "metadata_filter",
+                "value": "",
+                "type": "query",
+                "description": "Object to filter results by metadata"
+              }
+            ]
+          },
+          "docs": "List Projects (paginated)"
+        },
+        {
+          "info": {
+            "name": "ProjectsRoute_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverEnv}.julep.ai/api/projects",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Project"
+        },
+        {
+          "info": {
+            "name": "ProjectsRoute_get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverEnv}.julep.ai/api/projects/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the resource"
+              }
+            ]
+          },
+          "docs": "Get a Project by id"
+        },
+        {
+          "info": {
+            "name": "ProjectsRoute_createOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverEnv}.julep.ai/api/projects/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update a Project"
+        },
+        {
+          "info": {
+            "name": "ProjectsRoute_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{serverEnv}.julep.ai/api/projects/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing Project by id (overwrites existing values; use PATCH for merging instead)"
+        },
+        {
+          "info": {
+            "name": "ProjectsRoute_patch",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{serverEnv}.julep.ai/api/projects/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing Project by id (merges with existing values)"
+        },
+        {
+          "info": {
+            "name": "ProjectsRoute_delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{serverEnv}.julep.ai/api/projects/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the resource"
+              }
+            ]
+          },
+          "docs": "Delete Project by id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

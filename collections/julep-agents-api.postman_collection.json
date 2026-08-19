@@ -1,0 +1,3842 @@
+{
+  "item": [
+    {
+      "id": "e9db95eb-a98b-48c2-b451-a1dc9272ad58",
+      "name": "Agents",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6bd986d0-71a2-4ebf-ae8a-effb9d2a8034",
+          "name": "Agents Route list",
+          "request": {
+            "name": "Agents Route list",
+            "description": {
+              "content": "List Agents (paginated)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<uint16>",
+                  "description": "(Required) Limit the number of items returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<uint32>",
+                  "description": "(Required) Offset the items returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "created_at",
+                  "description": "(Required) Sort by a field"
+                },
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "asc",
+                  "description": "(Required) Sort direction"
+                },
+                {
+                  "disabled": false,
+                  "key": "metadata_filter",
+                  "value": "",
+                  "description": "(Required) Object to filter results by metadata"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "46142e38-aeda-4e5b-a8ff-bb5860fa56e3",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<uint16>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<uint32>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "created_at"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "metadata_filter",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": {\n        \"readOnly\": true,\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"created_at\": \"1954-10-07T05:28:41.593Z\",\n      \"updated_at\": \"1954-06-26T19:37:59.932Z\",\n      \"name\": {\n        \"description\": \"Name of the agent\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"about\": \"\",\n      \"model\": \"\",\n      \"instructions\": \"string\",\n      \"default_system_template\": \"{%- if agent.name -%}\\nYou are {{agent.name}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if agent.about -%}\\nAbout you: {{agent.about}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if user -%}\\nYou are talking to a user\\n  {%- if user.name -%}{{\\\" \\\"}} and their name is {{user.name}}\\n    {%- if user.about -%}. About the user: {{user.about}}.{%- else -%}.{%- endif -%}\\n  {%- endif -%}\\n{%- endif -%}\\n\\n{{NEWLINE}}\\n\\n{%- if session.situation -%}\\nSituation: {{session.situation}}\\n{%- endif -%}\\n\\n{{NEWLINE+NEWLINE}}\\n\\n{%- if agent.instructions -%}\\nInstructions:{{NEWLINE}}\\n  {%- if agent.instructions is string -%}\\n    {{agent.instructions}}{{NEWLINE}}\\n  {%- else -%}\\n    {%- for instruction in agent.instructions -%}\\n      - {{instruction}}{{NEWLINE}}\\n    {%- endfor -%}\\n  {%- endif -%}\\n  {{NEWLINE}}\\n{%- endif -%}\\n\\n{%- if docs -%}\\nRelevant documents:{{NEWLINE}}\\n  {%- for doc in docs -%}\\n    {{doc.title}}{{NEWLINE}}\\n    {%- if doc.content is string -%}\\n      {{doc.content}}{{NEWLINE}}\\n    {%- else -%}\\n      {%- for snippet in doc.content -%}\\n        {{snippet}}{{NEWLINE}}\\n      {%- endfor -%}\\n    {%- endif -%}\\n    {{\\\"---\\\"}}\\n  {%- endfor -%}\\n{%- endif -%}\",\n      \"metadata\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"project\": {\n        \"description\": \"Project canonical name of the agent\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"canonical_name\": {\n        \"description\": \"Canonical name of the agent\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"default_settings\": {\n        \"key_0\": {}\n      }\n    },\n    {\n      \"id\": {\n        \"readOnly\": true,\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"created_at\": \"1977-05-02T19:46:31.232Z\",\n      \"updated_at\": \"2005-08-27T23:22:07.671Z\",\n      \"name\": {\n        \"description\": \"Name of the agent\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"about\": \"\",\n      \"model\": \"\",\n      \"instructions\": \"string\",\n      \"default_system_template\": \"{%- if agent.name -%}\\nYou are {{agent.name}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if agent.about -%}\\nAbout you: {{agent.about}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if user -%}\\nYou are talking to a user\\n  {%- if user.name -%}{{\\\" \\\"}} and their name is {{user.name}}\\n    {%- if user.about -%}. About the user: {{user.about}}.{%- else -%}.{%- endif -%}\\n  {%- endif -%}\\n{%- endif -%}\\n\\n{{NEWLINE}}\\n\\n{%- if session.situation -%}\\nSituation: {{session.situation}}\\n{%- endif -%}\\n\\n{{NEWLINE+NEWLINE}}\\n\\n{%- if agent.instructions -%}\\nInstructions:{{NEWLINE}}\\n  {%- if agent.instructions is string -%}\\n    {{agent.instructions}}{{NEWLINE}}\\n  {%- else -%}\\n    {%- for instruction in agent.instructions -%}\\n      - {{instruction}}{{NEWLINE}}\\n    {%- endfor -%}\\n  {%- endif -%}\\n  {{NEWLINE}}\\n{%- endif -%}\\n\\n{%- if docs -%}\\nRelevant documents:{{NEWLINE}}\\n  {%- for doc in docs -%}\\n    {{doc.title}}{{NEWLINE}}\\n    {%- if doc.content is string -%}\\n      {{doc.content}}{{NEWLINE}}\\n    {%- else -%}\\n      {%- for snippet in doc.content -%}\\n        {{snippet}}{{NEWLINE}}\\n      {%- endfor -%}\\n    {%- endif -%}\\n    {{\\\"---\\\"}}\\n  {%- endfor -%}\\n{%- endif -%}\",\n      \"metadata\": {\n        \"key_0\": {}\n      },\n      \"project\": {\n        \"description\": \"Project canonical name of the agent\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"canonical_name\": {\n        \"description\": \"Canonical name of the agent\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"default_settings\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0b7059b5-9e1f-4621-9f35-5106f239e45f",
+          "name": "Agents Route create",
+          "request": {
+            "name": "Agents Route create",
+            "description": {
+              "content": "Create a new Agent",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"about\": \"\",\n  \"model\": \"\",\n  \"instructions\": \"<string>\",\n  \"default_system_template\": \"{%- if agent.name -%}\\nYou are {{agent.name}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if agent.about -%}\\nAbout you: {{agent.about}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if user -%}\\nYou are talking to a user\\n  {%- if user.name -%}{{\\\" \\\"}} and their name is {{user.name}}\\n    {%- if user.about -%}. About the user: {{user.about}}.{%- else -%}.{%- endif -%}\\n  {%- endif -%}\\n{%- endif -%}\\n\\n{{NEWLINE}}\\n\\n{%- if session.situation -%}\\nSituation: {{session.situation}}\\n{%- endif -%}\\n\\n{{NEWLINE+NEWLINE}}\\n\\n{%- if agent.instructions -%}\\nInstructions:{{NEWLINE}}\\n  {%- if agent.instructions is string -%}\\n    {{agent.instructions}}{{NEWLINE}}\\n  {%- else -%}\\n    {%- for instruction in agent.instructions -%}\\n      - {{instruction}}{{NEWLINE}}\\n    {%- endfor -%}\\n  {%- endif -%}\\n  {{NEWLINE}}\\n{%- endif -%}\\n\\n{%- if docs -%}\\nRelevant documents:{{NEWLINE}}\\n  {%- for doc in docs -%}\\n    {{doc.title}}{{NEWLINE}}\\n    {%- if doc.content is string -%}\\n      {{doc.content}}{{NEWLINE}}\\n    {%- else -%}\\n      {%- for snippet in doc.content -%}\\n        {{snippet}}{{NEWLINE}}\\n      {%- endfor -%}\\n    {%- endif -%}\\n    {{\\\"---\\\"}}\\n  {%- endfor -%}\\n{%- endif -%}\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {}\n  },\n  \"project\": \"<string>\",\n  \"canonical_name\": \"<string>\",\n  \"default_settings\": {\n    \"key_0\": {}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "19450f45-ee47-493c-a903-80cd5057bd07",
+              "name": "The request has succeeded and a new resource has been created as a result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"about\": \"\",\n  \"model\": \"\",\n  \"instructions\": \"<string>\",\n  \"default_system_template\": \"{%- if agent.name -%}\\nYou are {{agent.name}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if agent.about -%}\\nAbout you: {{agent.about}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if user -%}\\nYou are talking to a user\\n  {%- if user.name -%}{{\\\" \\\"}} and their name is {{user.name}}\\n    {%- if user.about -%}. About the user: {{user.about}}.{%- else -%}.{%- endif -%}\\n  {%- endif -%}\\n{%- endif -%}\\n\\n{{NEWLINE}}\\n\\n{%- if session.situation -%}\\nSituation: {{session.situation}}\\n{%- endif -%}\\n\\n{{NEWLINE+NEWLINE}}\\n\\n{%- if agent.instructions -%}\\nInstructions:{{NEWLINE}}\\n  {%- if agent.instructions is string -%}\\n    {{agent.instructions}}{{NEWLINE}}\\n  {%- else -%}\\n    {%- for instruction in agent.instructions -%}\\n      - {{instruction}}{{NEWLINE}}\\n    {%- endfor -%}\\n  {%- endif -%}\\n  {{NEWLINE}}\\n{%- endif -%}\\n\\n{%- if docs -%}\\nRelevant documents:{{NEWLINE}}\\n  {%- for doc in docs -%}\\n    {{doc.title}}{{NEWLINE}}\\n    {%- if doc.content is string -%}\\n      {{doc.content}}{{NEWLINE}}\\n    {%- else -%}\\n      {%- for snippet in doc.content -%}\\n        {{snippet}}{{NEWLINE}}\\n      {%- endfor -%}\\n    {%- endif -%}\\n    {{\\\"---\\\"}}\\n  {%- endfor -%}\\n{%- endif -%}\",\n  \"metadata\": {\n    \"key_0\": {}\n  },\n  \"project\": \"<string>\",\n  \"canonical_name\": \"<string>\",\n  \"default_settings\": {\n    \"key_0\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"d59c7f0c-6638-34ec-0cef-b8451aec6e58\",\n  \"created_at\": \"1971-11-28T03:57:26.266Z\",\n  \"updated_at\": \"1982-10-14T20:57:45.649Z\",\n  \"name\": \"<string>\",\n  \"about\": \"\",\n  \"model\": \"\",\n  \"instructions\": \"string\",\n  \"default_system_template\": \"{%- if agent.name -%}\\nYou are {{agent.name}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if agent.about -%}\\nAbout you: {{agent.about}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if user -%}\\nYou are talking to a user\\n  {%- if user.name -%}{{\\\" \\\"}} and their name is {{user.name}}\\n    {%- if user.about -%}. About the user: {{user.about}}.{%- else -%}.{%- endif -%}\\n  {%- endif -%}\\n{%- endif -%}\\n\\n{{NEWLINE}}\\n\\n{%- if session.situation -%}\\nSituation: {{session.situation}}\\n{%- endif -%}\\n\\n{{NEWLINE+NEWLINE}}\\n\\n{%- if agent.instructions -%}\\nInstructions:{{NEWLINE}}\\n  {%- if agent.instructions is string -%}\\n    {{agent.instructions}}{{NEWLINE}}\\n  {%- else -%}\\n    {%- for instruction in agent.instructions -%}\\n      - {{instruction}}{{NEWLINE}}\\n    {%- endfor -%}\\n  {%- endif -%}\\n  {{NEWLINE}}\\n{%- endif -%}\\n\\n{%- if docs -%}\\nRelevant documents:{{NEWLINE}}\\n  {%- for doc in docs -%}\\n    {{doc.title}}{{NEWLINE}}\\n    {%- if doc.content is string -%}\\n      {{doc.content}}{{NEWLINE}}\\n    {%- else -%}\\n      {%- for snippet in doc.content -%}\\n        {{snippet}}{{NEWLINE}}\\n      {%- endfor -%}\\n    {%- endif -%}\\n    {{\\\"---\\\"}}\\n  {%- endfor -%}\\n{%- endif -%}\",\n  \"metadata\": {\n    \"key_0\": {}\n  },\n  \"project\": \"<string>\",\n  \"canonical_name\": \"<string>\",\n  \"default_settings\": {\n    \"key_0\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0233c144-f15d-4367-a1e9-5b81b36498b1",
+          "name": "Agents Route list Models",
+          "request": {
+            "name": "Agents Route list Models",
+            "description": {
+              "content": "List all available models",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                "models"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8ad3ac7a-8015-4609-b933-e9ca29ffb81f",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"models\": [\n    {\n      \"id\": \"string\"\n    },\n    {\n      \"id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "18528a0b-f9f5-45e8-a4c5-682ea0dda53f",
+          "name": "Agents Route create Or Update",
+          "request": {
+            "name": "Agents Route create Or Update",
+            "description": {
+              "content": "Create or update an Agent",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"about\": \"\",\n  \"model\": \"\",\n  \"instructions\": \"<string>\",\n  \"default_system_template\": \"{%- if agent.name -%}\\nYou are {{agent.name}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if agent.about -%}\\nAbout you: {{agent.about}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if user -%}\\nYou are talking to a user\\n  {%- if user.name -%}{{\\\" \\\"}} and their name is {{user.name}}\\n    {%- if user.about -%}. About the user: {{user.about}}.{%- else -%}.{%- endif -%}\\n  {%- endif -%}\\n{%- endif -%}\\n\\n{{NEWLINE}}\\n\\n{%- if session.situation -%}\\nSituation: {{session.situation}}\\n{%- endif -%}\\n\\n{{NEWLINE+NEWLINE}}\\n\\n{%- if agent.instructions -%}\\nInstructions:{{NEWLINE}}\\n  {%- if agent.instructions is string -%}\\n    {{agent.instructions}}{{NEWLINE}}\\n  {%- else -%}\\n    {%- for instruction in agent.instructions -%}\\n      - {{instruction}}{{NEWLINE}}\\n    {%- endfor -%}\\n  {%- endif -%}\\n  {{NEWLINE}}\\n{%- endif -%}\\n\\n{%- if docs -%}\\nRelevant documents:{{NEWLINE}}\\n  {%- for doc in docs -%}\\n    {{doc.title}}{{NEWLINE}}\\n    {%- if doc.content is string -%}\\n      {{doc.content}}{{NEWLINE}}\\n    {%- else -%}\\n      {%- for snippet in doc.content -%}\\n        {{snippet}}{{NEWLINE}}\\n      {%- endfor -%}\\n    {%- endif -%}\\n    {{\\\"---\\\"}}\\n  {%- endfor -%}\\n{%- endif -%}\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"project\": \"<string>\",\n  \"canonical_name\": \"<string>\",\n  \"default_settings\": {\n    \"key_0\": {}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "866e336a-39d2-449f-b4d8-720d81d75c2a",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"about\": \"\",\n  \"model\": \"\",\n  \"instructions\": \"<string>\",\n  \"default_system_template\": \"{%- if agent.name -%}\\nYou are {{agent.name}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if agent.about -%}\\nAbout you: {{agent.about}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if user -%}\\nYou are talking to a user\\n  {%- if user.name -%}{{\\\" \\\"}} and their name is {{user.name}}\\n    {%- if user.about -%}. About the user: {{user.about}}.{%- else -%}.{%- endif -%}\\n  {%- endif -%}\\n{%- endif -%}\\n\\n{{NEWLINE}}\\n\\n{%- if session.situation -%}\\nSituation: {{session.situation}}\\n{%- endif -%}\\n\\n{{NEWLINE+NEWLINE}}\\n\\n{%- if agent.instructions -%}\\nInstructions:{{NEWLINE}}\\n  {%- if agent.instructions is string -%}\\n    {{agent.instructions}}{{NEWLINE}}\\n  {%- else -%}\\n    {%- for instruction in agent.instructions -%}\\n      - {{instruction}}{{NEWLINE}}\\n    {%- endfor -%}\\n  {%- endif -%}\\n  {{NEWLINE}}\\n{%- endif -%}\\n\\n{%- if docs -%}\\nRelevant documents:{{NEWLINE}}\\n  {%- for doc in docs -%}\\n    {{doc.title}}{{NEWLINE}}\\n    {%- if doc.content is string -%}\\n      {{doc.content}}{{NEWLINE}}\\n    {%- else -%}\\n      {%- for snippet in doc.content -%}\\n        {{snippet}}{{NEWLINE}}\\n      {%- endfor -%}\\n    {%- endif -%}\\n    {{\\\"---\\\"}}\\n  {%- endfor -%}\\n{%- endif -%}\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"project\": \"<string>\",\n  \"canonical_name\": \"<string>\",\n  \"default_settings\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"created_at\": \"1984-04-02T01:40:37.917Z\",\n  \"updated_at\": \"1960-10-10T03:50:49.907Z\",\n  \"name\": \"<string>\",\n  \"about\": \"\",\n  \"model\": \"\",\n  \"instructions\": \"string\",\n  \"default_system_template\": \"{%- if agent.name -%}\\nYou are {{agent.name}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if agent.about -%}\\nAbout you: {{agent.about}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if user -%}\\nYou are talking to a user\\n  {%- if user.name -%}{{\\\" \\\"}} and their name is {{user.name}}\\n    {%- if user.about -%}. About the user: {{user.about}}.{%- else -%}.{%- endif -%}\\n  {%- endif -%}\\n{%- endif -%}\\n\\n{{NEWLINE}}\\n\\n{%- if session.situation -%}\\nSituation: {{session.situation}}\\n{%- endif -%}\\n\\n{{NEWLINE+NEWLINE}}\\n\\n{%- if agent.instructions -%}\\nInstructions:{{NEWLINE}}\\n  {%- if agent.instructions is string -%}\\n    {{agent.instructions}}{{NEWLINE}}\\n  {%- else -%}\\n    {%- for instruction in agent.instructions -%}\\n      - {{instruction}}{{NEWLINE}}\\n    {%- endfor -%}\\n  {%- endif -%}\\n  {{NEWLINE}}\\n{%- endif -%}\\n\\n{%- if docs -%}\\nRelevant documents:{{NEWLINE}}\\n  {%- for doc in docs -%}\\n    {{doc.title}}{{NEWLINE}}\\n    {%- if doc.content is string -%}\\n      {{doc.content}}{{NEWLINE}}\\n    {%- else -%}\\n      {%- for snippet in doc.content -%}\\n        {{snippet}}{{NEWLINE}}\\n      {%- endfor -%}\\n    {%- endif -%}\\n    {{\\\"---\\\"}}\\n  {%- endfor -%}\\n{%- endif -%}\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"project\": \"<string>\",\n  \"canonical_name\": \"<string>\",\n  \"default_settings\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "12a48751-7e30-4eeb-9d34-57b6d33bb7a0",
+          "name": "Agents Route update",
+          "request": {
+            "name": "Agents Route update",
+            "description": {
+              "content": "Update an existing Agent by id (overwrites existing values; use PATCH for merging instead)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of the resource"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"about\": \"\",\n  \"model\": \"\",\n  \"instructions\": \"<string>\",\n  \"default_system_template\": \"{%- if agent.name -%}\\nYou are {{agent.name}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if agent.about -%}\\nAbout you: {{agent.about}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if user -%}\\nYou are talking to a user\\n  {%- if user.name -%}{{\\\" \\\"}} and their name is {{user.name}}\\n    {%- if user.about -%}. About the user: {{user.about}}.{%- else -%}.{%- endif -%}\\n  {%- endif -%}\\n{%- endif -%}\\n\\n{{NEWLINE}}\\n\\n{%- if session.situation -%}\\nSituation: {{session.situation}}\\n{%- endif -%}\\n\\n{{NEWLINE+NEWLINE}}\\n\\n{%- if agent.instructions -%}\\nInstructions:{{NEWLINE}}\\n  {%- if agent.instructions is string -%}\\n    {{agent.instructions}}{{NEWLINE}}\\n  {%- else -%}\\n    {%- for instruction in agent.instructions -%}\\n      - {{instruction}}{{NEWLINE}}\\n    {%- endfor -%}\\n  {%- endif -%}\\n  {{NEWLINE}}\\n{%- endif -%}\\n\\n{%- if docs -%}\\nRelevant documents:{{NEWLINE}}\\n  {%- for doc in docs -%}\\n    {{doc.title}}{{NEWLINE}}\\n    {%- if doc.content is string -%}\\n      {{doc.content}}{{NEWLINE}}\\n    {%- else -%}\\n      {%- for snippet in doc.content -%}\\n        {{snippet}}{{NEWLINE}}\\n      {%- endfor -%}\\n    {%- endif -%}\\n    {{\\\"---\\\"}}\\n  {%- endfor -%}\\n{%- endif -%}\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"project\": \"<string>\",\n  \"canonical_name\": \"<string>\",\n  \"default_settings\": {\n    \"key_0\": {}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "de29851d-1a78-4a45-82ce-10bee4c60608",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the resource"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"about\": \"\",\n  \"model\": \"\",\n  \"instructions\": \"<string>\",\n  \"default_system_template\": \"{%- if agent.name -%}\\nYou are {{agent.name}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if agent.about -%}\\nAbout you: {{agent.about}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if user -%}\\nYou are talking to a user\\n  {%- if user.name -%}{{\\\" \\\"}} and their name is {{user.name}}\\n    {%- if user.about -%}. About the user: {{user.about}}.{%- else -%}.{%- endif -%}\\n  {%- endif -%}\\n{%- endif -%}\\n\\n{{NEWLINE}}\\n\\n{%- if session.situation -%}\\nSituation: {{session.situation}}\\n{%- endif -%}\\n\\n{{NEWLINE+NEWLINE}}\\n\\n{%- if agent.instructions -%}\\nInstructions:{{NEWLINE}}\\n  {%- if agent.instructions is string -%}\\n    {{agent.instructions}}{{NEWLINE}}\\n  {%- else -%}\\n    {%- for instruction in agent.instructions -%}\\n      - {{instruction}}{{NEWLINE}}\\n    {%- endfor -%}\\n  {%- endif -%}\\n  {{NEWLINE}}\\n{%- endif -%}\\n\\n{%- if docs -%}\\nRelevant documents:{{NEWLINE}}\\n  {%- for doc in docs -%}\\n    {{doc.title}}{{NEWLINE}}\\n    {%- if doc.content is string -%}\\n      {{doc.content}}{{NEWLINE}}\\n    {%- else -%}\\n      {%- for snippet in doc.content -%}\\n        {{snippet}}{{NEWLINE}}\\n      {%- endfor -%}\\n    {%- endif -%}\\n    {{\\\"---\\\"}}\\n  {%- endfor -%}\\n{%- endif -%}\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"project\": \"<string>\",\n  \"canonical_name\": \"<string>\",\n  \"default_settings\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"created_at\": \"1984-04-02T01:40:37.917Z\",\n  \"updated_at\": \"1960-10-10T03:50:49.907Z\",\n  \"name\": \"<string>\",\n  \"about\": \"\",\n  \"model\": \"\",\n  \"instructions\": \"string\",\n  \"default_system_template\": \"{%- if agent.name -%}\\nYou are {{agent.name}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if agent.about -%}\\nAbout you: {{agent.about}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if user -%}\\nYou are talking to a user\\n  {%- if user.name -%}{{\\\" \\\"}} and their name is {{user.name}}\\n    {%- if user.about -%}. About the user: {{user.about}}.{%- else -%}.{%- endif -%}\\n  {%- endif -%}\\n{%- endif -%}\\n\\n{{NEWLINE}}\\n\\n{%- if session.situation -%}\\nSituation: {{session.situation}}\\n{%- endif -%}\\n\\n{{NEWLINE+NEWLINE}}\\n\\n{%- if agent.instructions -%}\\nInstructions:{{NEWLINE}}\\n  {%- if agent.instructions is string -%}\\n    {{agent.instructions}}{{NEWLINE}}\\n  {%- else -%}\\n    {%- for instruction in agent.instructions -%}\\n      - {{instruction}}{{NEWLINE}}\\n    {%- endfor -%}\\n  {%- endif -%}\\n  {{NEWLINE}}\\n{%- endif -%}\\n\\n{%- if docs -%}\\nRelevant documents:{{NEWLINE}}\\n  {%- for doc in docs -%}\\n    {{doc.title}}{{NEWLINE}}\\n    {%- if doc.content is string -%}\\n      {{doc.content}}{{NEWLINE}}\\n    {%- else -%}\\n      {%- for snippet in doc.content -%}\\n        {{snippet}}{{NEWLINE}}\\n      {%- endfor -%}\\n    {%- endif -%}\\n    {{\\\"---\\\"}}\\n  {%- endfor -%}\\n{%- endif -%}\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"project\": \"<string>\",\n  \"canonical_name\": \"<string>\",\n  \"default_settings\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb1e4b91-b3bb-44ac-8165-ec5d7502e952",
+          "name": "Agents Route patch",
+          "request": {
+            "name": "Agents Route patch",
+            "description": {
+              "content": "Update an existing Agent by id (merges with existing values)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of the resource"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"name\": \"<string>\",\n  \"project\": \"<string>\",\n  \"canonical_name\": \"<string>\",\n  \"about\": \"\",\n  \"model\": \"\",\n  \"instructions\": \"<string>\",\n  \"default_settings\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"default_system_template\": \"{%- if agent.name -%}\\nYou are {{agent.name}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if agent.about -%}\\nAbout you: {{agent.about}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if user -%}\\nYou are talking to a user\\n  {%- if user.name -%}{{\\\" \\\"}} and their name is {{user.name}}\\n    {%- if user.about -%}. About the user: {{user.about}}.{%- else -%}.{%- endif -%}\\n  {%- endif -%}\\n{%- endif -%}\\n\\n{{NEWLINE}}\\n\\n{%- if session.situation -%}\\nSituation: {{session.situation}}\\n{%- endif -%}\\n\\n{{NEWLINE+NEWLINE}}\\n\\n{%- if agent.instructions -%}\\nInstructions:{{NEWLINE}}\\n  {%- if agent.instructions is string -%}\\n    {{agent.instructions}}{{NEWLINE}}\\n  {%- else -%}\\n    {%- for instruction in agent.instructions -%}\\n      - {{instruction}}{{NEWLINE}}\\n    {%- endfor -%}\\n  {%- endif -%}\\n  {{NEWLINE}}\\n{%- endif -%}\\n\\n{%- if docs -%}\\nRelevant documents:{{NEWLINE}}\\n  {%- for doc in docs -%}\\n    {{doc.title}}{{NEWLINE}}\\n    {%- if doc.content is string -%}\\n      {{doc.content}}{{NEWLINE}}\\n    {%- else -%}\\n      {%- for snippet in doc.content -%}\\n        {{snippet}}{{NEWLINE}}\\n      {%- endfor -%}\\n    {%- endif -%}\\n    {{\\\"---\\\"}}\\n  {%- endfor -%}\\n{%- endif -%}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "560c389a-a7c3-45a5-8645-358d8d1c2308",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the resource"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"name\": \"<string>\",\n  \"project\": \"<string>\",\n  \"canonical_name\": \"<string>\",\n  \"about\": \"\",\n  \"model\": \"\",\n  \"instructions\": \"<string>\",\n  \"default_settings\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"default_system_template\": \"{%- if agent.name -%}\\nYou are {{agent.name}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if agent.about -%}\\nAbout you: {{agent.about}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if user -%}\\nYou are talking to a user\\n  {%- if user.name -%}{{\\\" \\\"}} and their name is {{user.name}}\\n    {%- if user.about -%}. About the user: {{user.about}}.{%- else -%}.{%- endif -%}\\n  {%- endif -%}\\n{%- endif -%}\\n\\n{{NEWLINE}}\\n\\n{%- if session.situation -%}\\nSituation: {{session.situation}}\\n{%- endif -%}\\n\\n{{NEWLINE+NEWLINE}}\\n\\n{%- if agent.instructions -%}\\nInstructions:{{NEWLINE}}\\n  {%- if agent.instructions is string -%}\\n    {{agent.instructions}}{{NEWLINE}}\\n  {%- else -%}\\n    {%- for instruction in agent.instructions -%}\\n      - {{instruction}}{{NEWLINE}}\\n    {%- endfor -%}\\n  {%- endif -%}\\n  {{NEWLINE}}\\n{%- endif -%}\\n\\n{%- if docs -%}\\nRelevant documents:{{NEWLINE}}\\n  {%- for doc in docs -%}\\n    {{doc.title}}{{NEWLINE}}\\n    {%- if doc.content is string -%}\\n      {{doc.content}}{{NEWLINE}}\\n    {%- else -%}\\n      {%- for snippet in doc.content -%}\\n        {{snippet}}{{NEWLINE}}\\n      {%- endfor -%}\\n    {%- endif -%}\\n    {{\\\"---\\\"}}\\n  {%- endfor -%}\\n{%- endif -%}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"created_at\": \"1984-04-02T01:40:37.917Z\",\n  \"updated_at\": \"1960-10-10T03:50:49.907Z\",\n  \"name\": \"<string>\",\n  \"about\": \"\",\n  \"model\": \"\",\n  \"instructions\": \"string\",\n  \"default_system_template\": \"{%- if agent.name -%}\\nYou are {{agent.name}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if agent.about -%}\\nAbout you: {{agent.about}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if user -%}\\nYou are talking to a user\\n  {%- if user.name -%}{{\\\" \\\"}} and their name is {{user.name}}\\n    {%- if user.about -%}. About the user: {{user.about}}.{%- else -%}.{%- endif -%}\\n  {%- endif -%}\\n{%- endif -%}\\n\\n{{NEWLINE}}\\n\\n{%- if session.situation -%}\\nSituation: {{session.situation}}\\n{%- endif -%}\\n\\n{{NEWLINE+NEWLINE}}\\n\\n{%- if agent.instructions -%}\\nInstructions:{{NEWLINE}}\\n  {%- if agent.instructions is string -%}\\n    {{agent.instructions}}{{NEWLINE}}\\n  {%- else -%}\\n    {%- for instruction in agent.instructions -%}\\n      - {{instruction}}{{NEWLINE}}\\n    {%- endfor -%}\\n  {%- endif -%}\\n  {{NEWLINE}}\\n{%- endif -%}\\n\\n{%- if docs -%}\\nRelevant documents:{{NEWLINE}}\\n  {%- for doc in docs -%}\\n    {{doc.title}}{{NEWLINE}}\\n    {%- if doc.content is string -%}\\n      {{doc.content}}{{NEWLINE}}\\n    {%- else -%}\\n      {%- for snippet in doc.content -%}\\n        {{snippet}}{{NEWLINE}}\\n      {%- endfor -%}\\n    {%- endif -%}\\n    {{\\\"---\\\"}}\\n  {%- endfor -%}\\n{%- endif -%}\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"project\": \"<string>\",\n  \"canonical_name\": \"<string>\",\n  \"default_settings\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1a821e5-884b-4eca-94a7-e539efcb2b01",
+          "name": "Agents Route delete",
+          "request": {
+            "name": "Agents Route delete",
+            "description": {
+              "content": "Delete Agent by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of the resource"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c1dc30a6-f77e-4d37-bad2-d3181ee7bf99",
+              "name": "The request has been accepted for processing, but processing has not yet completed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the resource"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"deleted_at\": \"1993-05-17T10:33:12.560Z\",\n  \"jobs\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "efd309e0-2a75-4e71-a1b8-b41c8903be5c",
+          "name": "Agents Route get",
+          "request": {
+            "name": "Agents Route get",
+            "description": {
+              "content": "Get an Agent by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of the resource"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a054d85f-0468-4313-b6c2-2a1cc5b95d22",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the resource"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"created_at\": \"1984-04-02T01:40:37.917Z\",\n  \"updated_at\": \"1960-10-10T03:50:49.907Z\",\n  \"name\": \"<string>\",\n  \"about\": \"\",\n  \"model\": \"\",\n  \"instructions\": \"string\",\n  \"default_system_template\": \"{%- if agent.name -%}\\nYou are {{agent.name}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if agent.about -%}\\nAbout you: {{agent.about}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if user -%}\\nYou are talking to a user\\n  {%- if user.name -%}{{\\\" \\\"}} and their name is {{user.name}}\\n    {%- if user.about -%}. About the user: {{user.about}}.{%- else -%}.{%- endif -%}\\n  {%- endif -%}\\n{%- endif -%}\\n\\n{{NEWLINE}}\\n\\n{%- if session.situation -%}\\nSituation: {{session.situation}}\\n{%- endif -%}\\n\\n{{NEWLINE+NEWLINE}}\\n\\n{%- if agent.instructions -%}\\nInstructions:{{NEWLINE}}\\n  {%- if agent.instructions is string -%}\\n    {{agent.instructions}}{{NEWLINE}}\\n  {%- else -%}\\n    {%- for instruction in agent.instructions -%}\\n      - {{instruction}}{{NEWLINE}}\\n    {%- endfor -%}\\n  {%- endif -%}\\n  {{NEWLINE}}\\n{%- endif -%}\\n\\n{%- if docs -%}\\nRelevant documents:{{NEWLINE}}\\n  {%- for doc in docs -%}\\n    {{doc.title}}{{NEWLINE}}\\n    {%- if doc.content is string -%}\\n      {{doc.content}}{{NEWLINE}}\\n    {%- else -%}\\n      {%- for snippet in doc.content -%}\\n        {{snippet}}{{NEWLINE}}\\n      {%- endfor -%}\\n    {%- endif -%}\\n    {{\\\"---\\\"}}\\n  {%- endfor -%}\\n{%- endif -%}\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"project\": \"<string>\",\n  \"canonical_name\": \"<string>\",\n  \"default_settings\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0e3a6c3-378f-46b4-bd06-3ba437198579",
+          "name": "Agent Docs Route create",
+          "request": {
+            "name": "Agent Docs Route create",
+            "description": {
+              "content": "Create a Doc for this Agent",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id",
+                "docs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of parent resource"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"content\": \"<string>\",\n  \"embed_instruction\": null,\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fb5bcc6d-ce74-46f9-bbf5-40bae7610b53",
+              "name": "The request has succeeded and a new resource has been created as a result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id",
+                    "docs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of parent resource"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"content\": \"<string>\",\n  \"embed_instruction\": null,\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"created_at\": \"1975-07-21T07:15:12.445Z\",\n  \"title\": \"string\",\n  \"content\": \"string\",\n  \"embeddings\": [\n    2600.00070322982,\n    2486.5667610812256\n  ],\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"modality\": \"string\",\n  \"language\": \"string\",\n  \"embedding_model\": \"string\",\n  \"embedding_dimensions\": 1169\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "394976e5-4f7b-434c-9cfb-bada967a1093",
+          "name": "Agent Docs Route list",
+          "request": {
+            "name": "Agent Docs Route list",
+            "description": {
+              "content": "List Docs owned by an Agent",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id",
+                "docs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<uint16>",
+                  "description": "(Required) Limit the number of items returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<uint32>",
+                  "description": "(Required) Offset the items returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "created_at",
+                  "description": "(Required) Sort by a field"
+                },
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "asc",
+                  "description": "(Required) Sort direction"
+                },
+                {
+                  "disabled": false,
+                  "key": "metadata_filter",
+                  "value": "",
+                  "description": "(Required) Object to filter results by metadata"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_embeddings",
+                  "value": "true",
+                  "description": "Whether to include embeddings in the response"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of parent"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "948bd253-6fae-405c-bb0e-34a514076d6f",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id",
+                    "docs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<uint16>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<uint32>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "created_at"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "metadata_filter",
+                      "value": ""
+                    },
+                    {
+                      "key": "include_embeddings",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of parent"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": {\n        \"readOnly\": true,\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"created_at\": \"1969-09-21T14:59:39.134Z\",\n      \"title\": \"string\",\n      \"content\": \"string\",\n      \"embeddings\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"metadata\": {\n        \"key_0\": {}\n      },\n      \"modality\": \"string\",\n      \"language\": \"string\",\n      \"embedding_model\": \"string\",\n      \"embedding_dimensions\": 233\n    },\n    {\n      \"id\": {\n        \"readOnly\": true,\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"created_at\": \"1950-11-27T19:02:27.008Z\",\n      \"title\": \"string\",\n      \"content\": \"string\",\n      \"embeddings\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"metadata\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"modality\": \"string\",\n      \"language\": \"string\",\n      \"embedding_model\": \"string\",\n      \"embedding_dimensions\": 1787\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f4b554a5-0b21-4fed-aac5-19e6d6c54077",
+          "name": "Agent Docs Route delete Bulk",
+          "request": {
+            "name": "Agent Docs Route delete Bulk",
+            "description": {
+              "content": "Bulk delete Docs owned by an Agent",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id",
+                "docs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of the parent"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"metadata_filter\": {},\n  \"delete_all\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "31bce2da-6814-4dc9-a8fd-0981c4281aaa",
+              "name": "The request has been accepted for processing, but processing has not yet completed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id",
+                    "docs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the parent"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"metadata_filter\": {},\n  \"delete_all\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"deleted_at\": \"2017-02-25T18:28:21.919Z\",\n    \"jobs\": []\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"deleted_at\": \"2023-03-19T04:03:13.000Z\",\n    \"jobs\": []\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3de46998-4a37-45f3-928b-7596d6ae5584",
+          "name": "Agent Docs Route delete",
+          "request": {
+            "name": "Agent Docs Route delete",
+            "description": {
+              "content": "Delete a Doc for this Agent",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id",
+                "docs",
+                ":child_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of parent resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "child_id",
+                  "description": "(Required) ID of the resource to be deleted"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "55a4bb0a-5027-4d0e-98ce-c8a5c4bcb795",
+              "name": "The request has been accepted for processing, but processing has not yet completed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id",
+                    "docs",
+                    ":child_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of parent resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "child_id",
+                      "description": "(Required) ID of the resource to be deleted"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"deleted_at\": \"2002-06-23T13:16:49.313Z\",\n  \"jobs\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ffb77fbe-c227-41fd-baf4-1622b0cc3028",
+          "name": "Agents Docs Search Route search",
+          "request": {
+            "name": "Agents Docs Search Route search",
+            "description": {
+              "content": "Search Docs owned by an Agent",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of the parent"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"body\": {\n    \"limit\": 10,\n    \"metadata_filter\": {},\n    \"include_embeddings\": true,\n    \"vector\": [\n      \"<number>\",\n      \"<number>\"\n    ],\n    \"confidence\": 0.5,\n    \"mmr_strength\": 0.5\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8bbf12b6-2f64-4aa6-a119-886e4d404c92",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of the parent"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": {\n    \"limit\": 10,\n    \"metadata_filter\": {},\n    \"include_embeddings\": true,\n    \"vector\": [\n      \"<number>\",\n      \"<number>\"\n    ],\n    \"confidence\": 0.5,\n    \"mmr_strength\": 0.5\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"docs\": [\n    {\n      \"owner\": {\n        \"description\": \"The owner of this document.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"id\": {\n        \"readOnly\": true,\n        \"description\": \"ID of the document\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"snippet\": {\n        \"index\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"content\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"embedding\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"distance\": null,\n      \"metadata\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"owner\": {\n        \"description\": \"The owner of this document.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"id\": {\n        \"readOnly\": true,\n        \"description\": \"ID of the document\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"snippet\": {\n        \"index\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"content\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"embedding\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"distance\": null,\n      \"metadata\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"title\": \"string\"\n    }\n  ],\n  \"time\": 7411.419981947833\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0fa290df-0709-4bc4-9d65-f000e088ccdf",
+          "name": "Agent Secrets Route list",
+          "request": {
+            "name": "Agent Secrets Route list",
+            "description": {
+              "content": "List secrets (paginated)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id",
+                "secrets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<uint16>",
+                  "description": "(Required) Limit the number of items returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<uint32>",
+                  "description": "(Required) Offset the items returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "created_at",
+                  "description": "(Required) Sort by a field"
+                },
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "asc",
+                  "description": "(Required) Sort direction"
+                },
+                {
+                  "disabled": false,
+                  "key": "metadata_filter",
+                  "value": "",
+                  "description": "(Required) Object to filter results by metadata"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of parent"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1ee5eb2a-d3c7-469e-8706-e3159d56379d",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id",
+                    "secrets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<uint16>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<uint32>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "created_at"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "metadata_filter",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of parent"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": {\n        \"readOnly\": true,\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"created_at\": \"1974-04-22T23:30:10.978Z\",\n      \"updated_at\": \"2013-08-30T05:21:15.791Z\",\n      \"name\": \"string\",\n      \"value\": \"string\",\n      \"metadata\": {\n        \"key_0\": {}\n      },\n      \"description\": \"string\"\n    },\n    {\n      \"id\": {\n        \"readOnly\": true,\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"created_at\": \"1995-03-20T14:47:36.333Z\",\n      \"updated_at\": \"1964-06-05T05:39:08.344Z\",\n      \"name\": \"string\",\n      \"value\": \"string\",\n      \"metadata\": {\n        \"key_0\": {}\n      },\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9709eb74-97bd-438e-a966-792f816f990a",
+          "name": "Agent Secrets Route create",
+          "request": {
+            "name": "Agent Secrets Route create",
+            "description": {
+              "content": "Create a new secret",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id",
+                "secrets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of parent resource"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"value\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3f15c268-e8fb-45b1-a52a-e1a496f7023f",
+              "name": "The request has succeeded and a new resource has been created as a result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id",
+                    "secrets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of parent resource"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"value\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {},\n    \"key_4\": {}\n  },\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"created_at\": \"1992-04-26T06:38:48.552Z\",\n  \"updated_at\": \"1991-11-08T05:51:51.259Z\",\n  \"name\": \"string\",\n  \"value\": \"string\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5e68b3e3-4765-4f39-89a5-f8f0275ca293",
+          "name": "Agent Secrets Route update",
+          "request": {
+            "name": "Agent Secrets Route update",
+            "description": {
+              "content": "Update an existing secret by id (overwrites existing values)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id",
+                "secrets",
+                ":child_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of parent resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "child_id",
+                  "description": "(Required) ID of the resource to be updated"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"value\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f2d07d18-b845-4cf3-adf3-230d5e5b06ed",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id",
+                    "secrets",
+                    ":child_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of parent resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "child_id",
+                      "description": "(Required) ID of the resource to be updated"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"value\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {},\n    \"key_4\": {}\n  },\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"created_at\": \"1992-04-26T06:38:48.552Z\",\n  \"updated_at\": \"1991-11-08T05:51:51.259Z\",\n  \"name\": \"string\",\n  \"value\": \"string\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe796eec-eeeb-4c07-8d10-66b9599bb131",
+          "name": "Agent Secrets Route delete",
+          "request": {
+            "name": "Agent Secrets Route delete",
+            "description": {
+              "content": "Delete a secret by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id",
+                "secrets",
+                ":child_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of parent resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "child_id",
+                  "description": "(Required) ID of the resource to be deleted"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "756ab8d2-d597-4235-954b-12d8f859c163",
+              "name": "The request has been accepted for processing, but processing has not yet completed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id",
+                    "secrets",
+                    ":child_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of parent resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "child_id",
+                      "description": "(Required) ID of the resource to be deleted"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"deleted_at\": \"2002-06-23T13:16:49.313Z\",\n  \"jobs\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4be5d3da-0082-4154-ad9c-6eaa733f75bc",
+          "name": "Tasks Route list",
+          "request": {
+            "name": "Tasks Route list",
+            "description": {
+              "content": "List tasks (paginated)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id",
+                "tasks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<uint16>",
+                  "description": "(Required) Limit the number of items returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<uint32>",
+                  "description": "(Required) Offset the items returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "created_at",
+                  "description": "(Required) Sort by a field"
+                },
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "asc",
+                  "description": "(Required) Sort direction"
+                },
+                {
+                  "disabled": false,
+                  "key": "metadata_filter",
+                  "value": "",
+                  "description": "(Required) Object to filter results by metadata"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of parent"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "93b72a6d-6a00-4279-ab0c-975418440148",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id",
+                    "tasks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<uint16>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<uint32>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "created_at"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "metadata_filter",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of parent"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"name\": {\n        \"description\": \"The name of the task.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"description\": \"\",\n      \"main\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"input_schema\": null,\n      \"inherit_tools\": false,\n      \"id\": {\n        \"readOnly\": true,\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"created_at\": \"2011-05-09T11:00:22.257Z\",\n      \"updated_at\": \"2003-05-16T17:17:19.295Z\",\n      \"canonical_name\": {\n        \"description\": \"The canonical name of the task.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"metadata\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      }\n    },\n    {\n      \"name\": {\n        \"description\": \"The name of the task.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"description\": \"\",\n      \"main\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"input_schema\": null,\n      \"inherit_tools\": false,\n      \"id\": {\n        \"readOnly\": true,\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"created_at\": \"1967-08-07T03:37:42.713Z\",\n      \"updated_at\": \"1953-06-17T06:52:45.920Z\",\n      \"canonical_name\": {\n        \"description\": \"The canonical name of the task.\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"metadata\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e057a7b3-8642-4fd7-86ce-25a4708fdba1",
+          "name": "Tasks Route create",
+          "request": {
+            "name": "Tasks Route create",
+            "description": {
+              "content": "Create a new task",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id",
+                "tasks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of parent resource"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"\",\n  \"main\": [\n    {\n      \"evaluate\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"label\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  ],\n  \"input_schema\": null,\n  \"tools\": [],\n  \"inherit_tools\": false,\n  \"canonical_name\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": {}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "728bdf60-8b07-46fe-81f8-e43708459545",
+              "name": "The request has succeeded and a new resource has been created as a result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id",
+                    "tasks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of parent resource"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"\",\n  \"main\": [\n    {\n      \"evaluate\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"label\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  ],\n  \"input_schema\": null,\n  \"tools\": [],\n  \"inherit_tools\": false,\n  \"canonical_name\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"description\": \"\",\n  \"main\": [\n    {\n      \"evaluate\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"kind_\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"label\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  ],\n  \"input_schema\": null,\n  \"tools\": [],\n  \"inherit_tools\": false,\n  \"id\": \"<uuid>\",\n  \"created_at\": \"2018-08-30T06:41:35.104Z\",\n  \"updated_at\": \"1960-01-31T04:36:17.279Z\",\n  \"canonical_name\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f6251d3d-5dab-40ae-87b7-293bd92badb9",
+          "name": "Tasks Route update",
+          "request": {
+            "name": "Tasks Route update",
+            "description": {
+              "content": "Update an existing task (overwrite existing values)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id",
+                "tasks",
+                ":child_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of parent resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "child_id",
+                  "description": "(Required) ID of the resource to be updated"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"\",\n  \"main\": [\n    {\n      \"evaluate\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"label\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  ],\n  \"input_schema\": null,\n  \"tools\": [],\n  \"inherit_tools\": false,\n  \"canonical_name\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8254a856-7926-4b2e-a738-8081b0bf483f",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id",
+                    "tasks",
+                    ":child_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of parent resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "child_id",
+                      "description": "(Required) ID of the resource to be updated"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"\",\n  \"main\": [\n    {\n      \"evaluate\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"label\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  ],\n  \"input_schema\": null,\n  \"tools\": [],\n  \"inherit_tools\": false,\n  \"canonical_name\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"description\": \"\",\n  \"main\": [\n    {\n      \"evaluate\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"kind_\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"label\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  ],\n  \"input_schema\": null,\n  \"tools\": [],\n  \"inherit_tools\": false,\n  \"id\": \"<uuid>\",\n  \"created_at\": \"2018-08-30T06:41:35.104Z\",\n  \"updated_at\": \"1960-01-31T04:36:17.279Z\",\n  \"canonical_name\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca51bd81-cc95-4d3e-9013-7574bcb560cb",
+          "name": "Tasks Route patch",
+          "request": {
+            "name": "Tasks Route patch",
+            "description": {
+              "content": "Update an existing task (merges with existing values)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id",
+                "tasks",
+                ":child_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of parent resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "child_id",
+                  "description": "(Required) ID of the resource to be patched"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"canonical_name\": \"<string>\",\n  \"description\": \"\",\n  \"main\": [\n    {\n      \"evaluate\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"label\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  ],\n  \"input_schema\": null,\n  \"inherit_tools\": false,\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {},\n    \"key_4\": {}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5d1ce219-0a37-4fc1-8217-e2b68b416f85",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id",
+                    "tasks",
+                    ":child_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of parent resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "child_id",
+                      "description": "(Required) ID of the resource to be patched"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"canonical_name\": \"<string>\",\n  \"description\": \"\",\n  \"main\": [\n    {\n      \"evaluate\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"label\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  ],\n  \"input_schema\": null,\n  \"inherit_tools\": false,\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"description\": \"\",\n  \"main\": [\n    {\n      \"evaluate\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"kind_\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"label\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  ],\n  \"input_schema\": null,\n  \"tools\": [],\n  \"inherit_tools\": false,\n  \"id\": \"<uuid>\",\n  \"created_at\": \"2018-08-30T06:41:35.104Z\",\n  \"updated_at\": \"1960-01-31T04:36:17.279Z\",\n  \"canonical_name\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dcb31bc0-8139-4995-b3fe-d35612242008",
+          "name": "Tasks Route delete",
+          "request": {
+            "name": "Tasks Route delete",
+            "description": {
+              "content": "Delete a task by its id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id",
+                "tasks",
+                ":child_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of parent resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "child_id",
+                  "description": "(Required) ID of the resource to be deleted"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4bc980d5-b964-4d22-b5db-bf17fdc22374",
+              "name": "The request has been accepted for processing, but processing has not yet completed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id",
+                    "tasks",
+                    ":child_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of parent resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "child_id",
+                      "description": "(Required) ID of the resource to be deleted"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"deleted_at\": \"2002-06-23T13:16:49.313Z\",\n  \"jobs\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5dc4e025-b45a-4c79-9b15-745d5d6e3dfa",
+          "name": "Agent Tools Route list",
+          "request": {
+            "name": "Agent Tools Route list",
+            "description": {
+              "content": "List tools of the given agent",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id",
+                "tools"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<uint16>",
+                  "description": "(Required) Limit the number of items returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<uint32>",
+                  "description": "(Required) Offset the items returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "created_at",
+                  "description": "(Required) Sort by a field"
+                },
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "asc",
+                  "description": "(Required) Sort direction"
+                },
+                {
+                  "disabled": false,
+                  "key": "metadata_filter",
+                  "value": "",
+                  "description": "(Required) Object to filter results by metadata"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of parent"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "966548c0-557e-42a0-8e48-f72d5f57201b",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id",
+                    "tools"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<uint16>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<uint32>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "created_at"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "metadata_filter",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of parent"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"name\": {\n        \"description\": \"Name of the tool (must be unique for this agent and a valid python identifier string )\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"type\": {\n        \"description\": \"Type of the tool\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"created_at\": \"2009-07-15T20:34:47.954Z\",\n      \"updated_at\": \"1987-09-15T06:04:13.189Z\",\n      \"id\": {\n        \"readOnly\": true,\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"description\": \"string\",\n      \"function\": {\n        \"description\": \"The function to call\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"integration\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"system\": {\n        \"description\": \"The system to call\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"api_call\": {\n        \"description\": \"The API call to make\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"computer_20241022\": {\n        \"description\": \"(Alpha) Anthropic new tools\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"text_editor_20241022\": {\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"bash_20241022\": {\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    {\n      \"name\": {\n        \"description\": \"Name of the tool (must be unique for this agent and a valid python identifier string )\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"type\": {\n        \"description\": \"Type of the tool\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"created_at\": \"1985-01-02T12:00:49.518Z\",\n      \"updated_at\": \"2009-08-05T00:05:54.907Z\",\n      \"id\": {\n        \"readOnly\": true,\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"description\": \"string\",\n      \"function\": {\n        \"description\": \"The function to call\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"integration\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"system\": {\n        \"description\": \"The system to call\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"api_call\": {\n        \"description\": \"The API call to make\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"computer_20241022\": {\n        \"description\": \"(Alpha) Anthropic new tools\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"text_editor_20241022\": {\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"bash_20241022\": {\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cbdc5c42-a659-4cff-9d80-e91c99055d85",
+          "name": "Agent Tools Route create",
+          "request": {
+            "name": "Agent Tools Route create",
+            "description": {
+              "content": "Create a new resource owned by the given parent",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id",
+                "tools"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of parent resource"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"about\": \"\",\n  \"model\": \"\",\n  \"instructions\": \"<string>\",\n  \"default_system_template\": \"{%- if agent.name -%}\\nYou are {{agent.name}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if agent.about -%}\\nAbout you: {{agent.about}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if user -%}\\nYou are talking to a user\\n  {%- if user.name -%}{{\\\" \\\"}} and their name is {{user.name}}\\n    {%- if user.about -%}. About the user: {{user.about}}.{%- else -%}.{%- endif -%}\\n  {%- endif -%}\\n{%- endif -%}\\n\\n{{NEWLINE}}\\n\\n{%- if session.situation -%}\\nSituation: {{session.situation}}\\n{%- endif -%}\\n\\n{{NEWLINE+NEWLINE}}\\n\\n{%- if agent.instructions -%}\\nInstructions:{{NEWLINE}}\\n  {%- if agent.instructions is string -%}\\n    {{agent.instructions}}{{NEWLINE}}\\n  {%- else -%}\\n    {%- for instruction in agent.instructions -%}\\n      - {{instruction}}{{NEWLINE}}\\n    {%- endfor -%}\\n  {%- endif -%}\\n  {{NEWLINE}}\\n{%- endif -%}\\n\\n{%- if docs -%}\\nRelevant documents:{{NEWLINE}}\\n  {%- for doc in docs -%}\\n    {{doc.title}}{{NEWLINE}}\\n    {%- if doc.content is string -%}\\n      {{doc.content}}{{NEWLINE}}\\n    {%- else -%}\\n      {%- for snippet in doc.content -%}\\n        {{snippet}}{{NEWLINE}}\\n      {%- endfor -%}\\n    {%- endif -%}\\n    {{\\\"---\\\"}}\\n  {%- endfor -%}\\n{%- endif -%}\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {}\n  },\n  \"project\": \"<string>\",\n  \"canonical_name\": \"<string>\",\n  \"default_settings\": {\n    \"key_0\": {}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5c511dbf-8f27-44a3-8272-ee069066ac96",
+              "name": "The request has succeeded and a new resource has been created as a result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id",
+                    "tools"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of parent resource"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"about\": \"\",\n  \"model\": \"\",\n  \"instructions\": \"<string>\",\n  \"default_system_template\": \"{%- if agent.name -%}\\nYou are {{agent.name}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if agent.about -%}\\nAbout you: {{agent.about}}.{{\\\" \\\"}}\\n{%- endif -%}\\n\\n{%- if user -%}\\nYou are talking to a user\\n  {%- if user.name -%}{{\\\" \\\"}} and their name is {{user.name}}\\n    {%- if user.about -%}. About the user: {{user.about}}.{%- else -%}.{%- endif -%}\\n  {%- endif -%}\\n{%- endif -%}\\n\\n{{NEWLINE}}\\n\\n{%- if session.situation -%}\\nSituation: {{session.situation}}\\n{%- endif -%}\\n\\n{{NEWLINE+NEWLINE}}\\n\\n{%- if agent.instructions -%}\\nInstructions:{{NEWLINE}}\\n  {%- if agent.instructions is string -%}\\n    {{agent.instructions}}{{NEWLINE}}\\n  {%- else -%}\\n    {%- for instruction in agent.instructions -%}\\n      - {{instruction}}{{NEWLINE}}\\n    {%- endfor -%}\\n  {%- endif -%}\\n  {{NEWLINE}}\\n{%- endif -%}\\n\\n{%- if docs -%}\\nRelevant documents:{{NEWLINE}}\\n  {%- for doc in docs -%}\\n    {{doc.title}}{{NEWLINE}}\\n    {%- if doc.content is string -%}\\n      {{doc.content}}{{NEWLINE}}\\n    {%- else -%}\\n      {%- for snippet in doc.content -%}\\n        {{snippet}}{{NEWLINE}}\\n      {%- endfor -%}\\n    {%- endif -%}\\n    {{\\\"---\\\"}}\\n  {%- endfor -%}\\n{%- endif -%}\",\n  \"metadata\": {\n    \"key_0\": {}\n  },\n  \"project\": \"<string>\",\n  \"canonical_name\": \"<string>\",\n  \"default_settings\": {\n    \"key_0\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"Create a new tool for this agent\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7752c67-f874-4e45-ac0f-d28adaaf6f77",
+          "name": "Agent Tools Route update",
+          "request": {
+            "name": "Agent Tools Route update",
+            "description": {
+              "content": "Update a resource owned by the given parent using its id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id",
+                "tools",
+                ":child_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of parent resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "child_id",
+                  "description": "(Required) ID of the resource to be updated"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"description\": \"<string>\",\n  \"function\": {\n    \"name\": null,\n    \"description\": null,\n    \"parameters\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {}\n    }\n  },\n  \"integration\": {\n    \"provider\": \"dummy\",\n    \"method\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"setup\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"arguments\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    }\n  },\n  \"system\": {\n    \"resource\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"resource_id\": {\n      \"description\": \"Resource id (if applicable)\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"subresource\": \"<string>\",\n    \"arguments\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    }\n  },\n  \"api_call\": {\n    \"method\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"schema\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"headers\": {\n      \"key_0\": \"<string>\"\n    },\n    \"secrets\": {\n      \"key_0\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"key_1\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"content\": \"<string>\",\n    \"data\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"files\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {},\n      \"key_4\": {}\n    },\n    \"json\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"cookies\": {\n      \"key_0\": \"<string>\"\n    },\n    \"params\": \"<string>\",\n    \"params_schema\": {\n      \"description\": \"The schema of the parameters\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"follow_redirects\": \"<boolean>\",\n    \"timeout\": \"<uint8>\",\n    \"include_response_content\": true\n  },\n  \"computer_20241022\": {\n    \"type\": \"computer_20241022\",\n    \"display_width_px\": 1024,\n    \"display_height_px\": 768,\n    \"name\": \"computer\",\n    \"display_number\": 1\n  },\n  \"text_editor_20241022\": {\n    \"type\": \"text_editor_20241022\",\n    \"name\": \"str_replace_editor\"\n  },\n  \"bash_20241022\": {\n    \"type\": \"bash_20241022\",\n    \"name\": \"bash\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5d44892d-7f2c-4e5f-8da0-e4d1334b15db",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id",
+                    "tools",
+                    ":child_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of parent resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "child_id",
+                      "description": "(Required) ID of the resource to be updated"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"description\": \"<string>\",\n  \"function\": {\n    \"name\": null,\n    \"description\": null,\n    \"parameters\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  },\n  \"integration\": {\n    \"provider\": \"dummy\",\n    \"method\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"setup\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"arguments\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    }\n  },\n  \"system\": {\n    \"resource\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"resource_id\": {\n      \"description\": \"Resource id (if applicable)\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"subresource\": \"<string>\",\n    \"arguments\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  },\n  \"api_call\": {\n    \"method\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"schema\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"headers\": {\n      \"key_0\": \"<string>\"\n    },\n    \"secrets\": {\n      \"key_0\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"content\": \"<string>\",\n    \"data\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"files\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {}\n    },\n    \"json\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"cookies\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"params\": \"<string>\",\n    \"params_schema\": {\n      \"description\": \"The schema of the parameters\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"follow_redirects\": \"<boolean>\",\n    \"timeout\": \"<uint8>\",\n    \"include_response_content\": true\n  },\n  \"computer_20241022\": {\n    \"type\": \"computer_20241022\",\n    \"display_width_px\": 1024,\n    \"display_height_px\": 768,\n    \"name\": \"computer\",\n    \"display_number\": 1\n  },\n  \"text_editor_20241022\": {\n    \"type\": \"text_editor_20241022\",\n    \"name\": \"str_replace_editor\"\n  },\n  \"bash_20241022\": {\n    \"type\": \"bash_20241022\",\n    \"name\": \"bash\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"Update an existing tool (overwrite existing values)\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "65dfee49-2164-4781-9565-bf26ad2026bf",
+          "name": "Agent Tools Route patch",
+          "request": {
+            "name": "Agent Tools Route patch",
+            "description": {
+              "content": "Patch a resource owned by the given parent using its id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id",
+                "tools",
+                ":child_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of parent resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "child_id",
+                  "description": "(Required) ID of the resource to be patched"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"description\": \"<string>\",\n  \"function\": {\n    \"name\": null,\n    \"description\": null,\n    \"parameters\": {\n      \"key_0\": {}\n    }\n  },\n  \"integration\": {\n    \"provider\": \"dummy\",\n    \"method\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"setup\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"arguments\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    }\n  },\n  \"system\": {\n    \"resource\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"resource_id\": {\n      \"description\": \"Resource id (if applicable)\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"subresource\": \"<string>\",\n    \"arguments\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    }\n  },\n  \"api_call\": {\n    \"method\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"schema\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    \"headers\": {\n      \"key_0\": \"<string>\"\n    },\n    \"secrets\": {\n      \"key_0\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"content\": \"<string>\",\n    \"data\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"files\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"json\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {}\n    },\n    \"cookies\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"params\": \"<string>\",\n    \"params_schema\": {\n      \"description\": \"The schema of the parameters\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"follow_redirects\": \"<boolean>\",\n    \"timeout\": \"<uint8>\",\n    \"include_response_content\": true\n  },\n  \"computer_20241022\": {\n    \"type\": \"computer_20241022\",\n    \"name\": \"computer\",\n    \"display_width_px\": 1024,\n    \"display_height_px\": 768,\n    \"display_number\": 1\n  },\n  \"text_editor_20241022\": {\n    \"type\": \"text_editor_20241022\",\n    \"name\": \"str_replace_editor\"\n  },\n  \"bash_20241022\": {\n    \"type\": \"bash_20241022\",\n    \"name\": \"bash\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "98e6f8ab-67a1-4e48-bf40-1a1bebc754a2",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id",
+                    "tools",
+                    ":child_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of parent resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "child_id",
+                      "description": "(Required) ID of the resource to be patched"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"description\": \"<string>\",\n  \"function\": {\n    \"name\": null,\n    \"description\": null,\n    \"parameters\": {\n      \"key_0\": {}\n    }\n  },\n  \"integration\": {\n    \"provider\": \"dummy\",\n    \"method\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"setup\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"arguments\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    }\n  },\n  \"system\": {\n    \"resource\": \"<string>\",\n    \"operation\": \"<string>\",\n    \"resource_id\": {\n      \"description\": \"Resource id (if applicable)\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"subresource\": \"<string>\",\n    \"arguments\": {\n      \"key_0\": {}\n    }\n  },\n  \"api_call\": {\n    \"method\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"schema\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"headers\": {\n      \"key_0\": \"<string>\"\n    },\n    \"secrets\": {\n      \"key_0\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"content\": \"<string>\",\n    \"data\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"files\": {\n      \"key_0\": {}\n    },\n    \"json\": {\n      \"key_0\": {}\n    },\n    \"cookies\": {\n      \"key_0\": \"<string>\"\n    },\n    \"params\": \"<string>\",\n    \"params_schema\": {\n      \"description\": \"The schema of the parameters\",\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"follow_redirects\": \"<boolean>\",\n    \"timeout\": \"<uint8>\",\n    \"include_response_content\": true\n  },\n  \"computer_20241022\": {\n    \"type\": \"computer_20241022\",\n    \"name\": \"computer\",\n    \"display_width_px\": 1024,\n    \"display_height_px\": 768,\n    \"display_number\": 1\n  },\n  \"text_editor_20241022\": {\n    \"type\": \"text_editor_20241022\",\n    \"name\": \"str_replace_editor\"\n  },\n  \"bash_20241022\": {\n    \"type\": \"bash_20241022\",\n    \"name\": \"bash\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"Update an existing tool (merges with existing values)\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f0e4dc9-73fa-4db4-90c8-f701f8c38b2e",
+          "name": "Agent Tools Route delete",
+          "request": {
+            "name": "Agent Tools Route delete",
+            "description": {
+              "content": "Delete an existing tool by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id",
+                "tools",
+                ":child_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) ID of parent resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "child_id",
+                  "description": "(Required) ID of the resource to be deleted"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "64098843-69aa-4a27-b0e7-81d4e7388dba",
+              "name": "The request has been accepted for processing, but processing has not yet completed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id",
+                    "tools",
+                    ":child_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) ID of parent resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "child_id",
+                      "description": "(Required) ID of the resource to be deleted"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"deleted_at\": \"2002-06-23T13:16:49.313Z\",\n  \"jobs\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "007dec3c-9616-423a-8d84-968dd0394a1c",
+          "name": "Tasks Create Or Update Route create Or Update",
+          "request": {
+            "name": "Tasks Create Or Update Route create Or Update",
+            "description": {
+              "content": "Create or update a task",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":parent_id",
+                "tasks",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "parent_id",
+                  "description": "(Required) ID of the agent"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"\",\n  \"main\": [\n    {\n      \"evaluate\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"label\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  ],\n  \"input_schema\": null,\n  \"tools\": [],\n  \"inherit_tools\": false,\n  \"canonical_name\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": {}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "37e718fa-0c4d-459c-926d-4b8126dae9a7",
+              "name": "The request has succeeded and a new resource has been created as a result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":parent_id",
+                    "tasks",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "parent_id",
+                      "description": "(Required) ID of the agent"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"\",\n  \"main\": [\n    {\n      \"evaluate\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"label\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  ],\n  \"input_schema\": null,\n  \"tools\": [],\n  \"inherit_tools\": false,\n  \"canonical_name\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"description\": \"\",\n  \"main\": [\n    {\n      \"evaluate\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"kind_\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"label\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  ],\n  \"input_schema\": null,\n  \"tools\": [],\n  \"inherit_tools\": false,\n  \"id\": \"<uuid>\",\n  \"created_at\": \"2018-08-30T06:41:35.104Z\",\n  \"updated_at\": \"1960-01-31T04:36:17.279Z\",\n  \"canonical_name\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The environment to use (This can only be one of api,dev)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "api",
+      "key": "serverEnv"
+    },
+    {
+      "type": "string",
+      "value": "https://{{serverEnv}}.julep.ai/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e374f9cf-33c9-498b-af26-17e25abc17e9",
+    "name": "Julep Agents API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Julep is a backend for creating stateful AI apps with background tasks and long-term memory easily.\n\nContact Support:\n Name: Julep AI\n Email: developers@julep.ai",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,291 @@
+{
+  "item": [
+    {
+      "id": "799f153a-841e-4b43-882c-6975d1676336",
+      "name": "Responses",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a6c982c8-b7fc-496f-84fe-79c412120793",
+          "name": "Responses Route create Response",
+          "request": {
+            "name": "Responses Route create Response",
+            "description": {
+              "content": "Creates a model response. Provide text or image inputs to generate text or JSON outputs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "responses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"include\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parallel_tool_calls\": true,\n  \"store\": true,\n  \"stream\": false,\n  \"max_tokens\": \"<integer>\",\n  \"temperature\": 1,\n  \"top_p\": 1,\n  \"n\": \"<integer>\",\n  \"stop\": \"<string>\",\n  \"presence_penalty\": \"<number>\",\n  \"frequency_penalty\": \"<number>\",\n  \"logit_bias\": {\n    \"key_0\": {}\n  },\n  \"user\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"previous_response_id\": \"<string>\",\n  \"reasoning\": {\n    \"effort\": \"<string>\",\n    \"generate_summary\": \"<string>\"\n  },\n  \"text\": {\n    \"format\": {\n      \"type\": \"<string>\"\n    }\n  },\n  \"tool_choice\": \"<string>\",\n  \"tools\": [\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"type\": \"<string>\",\n      \"description\": \"<string>\",\n      \"strict\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {}\n      },\n      \"type\": \"<string>\",\n      \"description\": \"<string>\",\n      \"strict\": \"<boolean>\"\n    }\n  ],\n  \"truncation\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": {}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0e5a9c05-3c6d-425d-bdae-b99249c53787",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"include\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parallel_tool_calls\": true,\n  \"store\": true,\n  \"stream\": false,\n  \"max_tokens\": \"<integer>\",\n  \"temperature\": 1,\n  \"top_p\": 1,\n  \"n\": \"<integer>\",\n  \"stop\": \"<string>\",\n  \"presence_penalty\": \"<number>\",\n  \"frequency_penalty\": \"<number>\",\n  \"logit_bias\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"user\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"previous_response_id\": \"<string>\",\n  \"reasoning\": {\n    \"effort\": \"<string>\",\n    \"generate_summary\": \"<string>\"\n  },\n  \"text\": {\n    \"format\": {\n      \"type\": \"<string>\"\n    }\n  },\n  \"tool_choice\": \"<string>\",\n  \"tools\": [\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"type\": \"<string>\",\n      \"description\": \"<string>\",\n      \"strict\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"type\": \"<string>\",\n      \"description\": \"<string>\",\n      \"strict\": \"<boolean>\"\n    }\n  ],\n  \"truncation\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"response\",\n  \"created_at\": 3679,\n  \"status\": \"completed\",\n  \"model\": \"string\",\n  \"output\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"message\",\n      \"role\": \"developer\",\n      \"status\": \"completed\",\n      \"content\": [\n        {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"text\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"annotations\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"text\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"annotations\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"message\",\n      \"role\": \"developer\",\n      \"status\": \"in_progress\",\n      \"content\": [\n        {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"text\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"annotations\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"text\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"annotations\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"parallel_tool_calls\": true,\n  \"temperature\": 1,\n  \"tool_choice\": \"none\",\n  \"tools\": [\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"type\": \"<string>\",\n      \"description\": \"<string>\",\n      \"strict\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"type\": \"<string>\",\n      \"description\": \"<string>\",\n      \"strict\": \"<boolean>\"\n    }\n  ],\n  \"top_p\": 1,\n  \"truncation\": \"auto\",\n  \"usage\": {\n    \"input_tokens\": 3253,\n    \"input_tokens_details\": {\n      \"cached_tokens\": 8443\n    },\n    \"output_tokens\": 4723,\n    \"output_tokens_details\": {\n      \"reasoning_tokens\": 3674\n    },\n    \"total_tokens\": 4084\n  },\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"error\": {\n    \"message\": \"string\",\n    \"type\": \"string\",\n    \"param\": \"string\",\n    \"code\": \"string\"\n  },\n  \"incomplete_details\": {\n    \"reason\": \"content_filter\"\n  },\n  \"instructions\": \"string\",\n  \"max_output_tokens\": 1029,\n  \"previous_response_id\": \"string\",\n  \"reasoning\": {\n    \"effort\": \"<string>\",\n    \"generate_summary\": \"<string>\"\n  },\n  \"store\": true,\n  \"text\": {\n    \"format\": {\n      \"type\": \"<string>\"\n    }\n  },\n  \"user\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c87ae65b-6693-4e24-88f4-98d6a0a246db",
+          "name": "Responses Route get Response",
+          "request": {
+            "name": "Responses Route get Response",
+            "description": {
+              "content": "Get a response by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "responses",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>,<string>",
+                  "description": "Specify additional output data to include in the model response"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) ID of the response"
+                },
+                {
+                  "description": "The environment to use (This can only be one of api,dev)",
+                  "type": "any",
+                  "value": "{{serverEnv}}",
+                  "key": "serverEnv"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "89517c61-796b-45cb-94e5-669bb1c084f4",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "responses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the response"
+                    },
+                    {
+                      "description": "The environment to use (This can only be one of api,dev)",
+                      "type": "any",
+                      "value": "{{serverEnv}}",
+                      "key": "serverEnv"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"response\",\n  \"created_at\": 3539,\n  \"status\": \"failed\",\n  \"model\": \"string\",\n  \"output\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"message\",\n      \"role\": \"assistant\",\n      \"status\": \"completed\",\n      \"content\": [\n        {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"text\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"annotations\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"text\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"annotations\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"message\",\n      \"role\": \"user\",\n      \"status\": \"in_progress\",\n      \"content\": [\n        {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"text\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"annotations\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"text\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"annotations\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"parallel_tool_calls\": true,\n  \"temperature\": 1,\n  \"tool_choice\": \"required\",\n  \"tools\": [\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"type\": \"<string>\",\n      \"description\": \"<string>\",\n      \"strict\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"type\": \"<string>\",\n      \"description\": \"<string>\",\n      \"strict\": \"<boolean>\"\n    }\n  ],\n  \"top_p\": 1,\n  \"truncation\": \"disabled\",\n  \"usage\": {\n    \"input_tokens\": 5330,\n    \"input_tokens_details\": {\n      \"cached_tokens\": 3516\n    },\n    \"output_tokens\": 9936,\n    \"output_tokens_details\": {\n      \"reasoning_tokens\": 566\n    },\n    \"total_tokens\": 5687\n  },\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"error\": {\n    \"message\": \"string\",\n    \"type\": \"string\",\n    \"param\": \"string\",\n    \"code\": \"string\"\n  },\n  \"incomplete_details\": {\n    \"reason\": \"content_filter\"\n  },\n  \"instructions\": \"string\",\n  \"max_output_tokens\": 6075,\n  \"previous_response_id\": \"string\",\n  \"reasoning\": {\n    \"effort\": \"<string>\",\n    \"generate_summary\": \"<string>\"\n  },\n  \"store\": true,\n  \"text\": {\n    \"format\": {\n      \"type\": \"<string>\"\n    }\n  },\n  \"user\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The environment to use (This can only be one of api,dev)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "api",
+      "key": "serverEnv"
+    },
+    {
+      "type": "string",
+      "value": "https://{{serverEnv}}.julep.ai/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b1c237c5-8d4b-4008-b00f-2df4bf334f12",
+    "name": "Julep Agents Responses API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Julep is a backend for creating stateful AI apps with background tasks and long-term memory easily.\n\nContact Support:\n Name: Julep AI\n Email: developers@julep.ai",
+      "type": "text/plain"
+    }
+  }
+}
