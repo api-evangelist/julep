@@ -42,6 +42,17 @@ tags:
 - Memory
 - Orchestration
 - Developer Tools
+- Open-Source
+tags_raw:
+- Company
+- AI Agents
+- LLM
+- Agents
+- Workflows
+- RAG
+- Memory
+- Orchestration
+- Developer Tools
 - Open Source
 apis:
 - aid: julep:julep-agents-api
@@ -110,6 +121,8 @@ apis:
   humanURL: https://docs.julep.ai/api-reference/agents/list-agents
   baseURL: https://api.julep.ai/api
   tags:
+  - Execution
+  tags_raw:
   - Executions
   properties:
   - type: OpenAPI
@@ -130,6 +143,8 @@ apis:
   humanURL: https://docs.julep.ai/api-reference/agents/list-agents
   baseURL: https://api.julep.ai/api
   tags:
+  - File
+  tags_raw:
   - Files
   properties:
   - type: OpenAPI
@@ -150,6 +165,8 @@ apis:
   humanURL: https://docs.julep.ai/api-reference/agents/list-agents
   baseURL: https://api.julep.ai/api
   tags:
+  - Job
+  tags_raw:
   - Jobs
   properties:
   - type: OpenAPI
@@ -170,6 +187,8 @@ apis:
   humanURL: https://docs.julep.ai/api-reference/agents/list-agents
   baseURL: https://api.julep.ai/api
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
@@ -250,6 +269,8 @@ apis:
   humanURL: https://docs.julep.ai/api-reference/agents/list-agents
   baseURL: https://api.julep.ai/api
   tags:
+  - Task
+  tags_raw:
   - Tasks
   properties:
   - type: OpenAPI
@@ -270,6 +291,8 @@ apis:
   humanURL: https://docs.julep.ai/api-reference/agents/list-agents
   baseURL: https://api.julep.ai/api
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
