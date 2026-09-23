@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Julep Agents Docs API
+  title: Julep Docs API
   termsOfService: https://julep.ai/terms
   contact:
     name: Julep AI
@@ -55,8 +55,13 @@ paths:
                 $ref: '#/components/schemas/Docs.Doc'
       tags:
       - Docs
+      summary: Individual docs route get
+      x-summary-source: derived
 components:
   schemas:
+    Common.uuid:
+      type: string
+      format: uuid
     Docs.Doc:
       type: object
       required:
@@ -101,7 +106,6 @@ components:
               items:
                 type: number
                 format: float
-          nullable: true
           description: Embeddings for the document
           default: null
           readOnly: true
@@ -122,9 +126,6 @@ components:
           format: uint16
           description: Dimensions of the embedding model
           readOnly: true
-    Common.uuid:
-      type: string
-      format: uuid
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

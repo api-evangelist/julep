@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Julep Agents Jobs API
+  title: Julep Jobs API
   termsOfService: https://julep.ai/terms
   contact:
     name: Julep AI
@@ -47,6 +47,8 @@ paths:
                 $ref: '#/components/schemas/Jobs.JobStatus'
       tags:
       - Jobs
+      summary: Job route get
+      x-summary-source: derived
 components:
   schemas:
     Jobs.JobState:
@@ -69,6 +71,9 @@ components:
         See: https://unicode.org/reports/tr31/
 
         See: https://www.unicode.org/reports/tr39/#Identifier_Characters'
+    Common.uuid:
+      type: string
+      format: uuid
     Jobs.JobStatus:
       type: object
       required:
@@ -120,9 +125,6 @@ components:
           - $ref: '#/components/schemas/Jobs.JobState'
           description: Current state of the job
           default: pending
-    Common.uuid:
-      type: string
-      format: uuid
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

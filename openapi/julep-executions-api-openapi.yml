@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Julep Agents Executions API
+  title: Julep Executions API
   termsOfService: https://julep.ai/terms
   contact:
     name: Julep AI
@@ -57,6 +57,8 @@ paths:
       - {}
       tags:
       - Executions
+      summary: Executions route resume with task token
+      x-summary-source: derived
   /executions/{id}:
     get:
       operationId: ExecutionsRoute_get
@@ -77,6 +79,8 @@ paths:
                 $ref: '#/components/schemas/Executions.Execution'
       tags:
       - Executions
+      summary: Executions route get
+      x-summary-source: derived
     put:
       operationId: ExecutionsRoute_update
       description: Update an existing Execution
@@ -102,6 +106,8 @@ paths:
               $ref: '#/components/schemas/Executions.UpdateExecutionRequest'
       tags:
       - Executions
+      summary: Executions route update
+      x-summary-source: derived
   /executions/{id}/status.stream:
     get:
       operationId: ExecutionStatusStreamRoute_stream
@@ -118,8 +124,9 @@ paths:
         required: true
         description: Next page token
         schema:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           default: null
         explode: false
       responses:
@@ -131,6 +138,8 @@ paths:
                 type: string
       tags:
       - Executions
+      summary: Execution status stream route stream
+      x-summary-source: derived
   /executions/{id}/transitions:
     get:
       operationId: ExecutionTransitionsRoute_list
@@ -170,6 +179,8 @@ paths:
                 - items
       tags:
       - Executions
+      summary: Execution transitions route list
+      x-summary-source: derived
   /executions/{id}/transitions.stream:
     get:
       operationId: ExecutionTransitionsStreamRoute_stream
@@ -186,8 +197,9 @@ paths:
         required: true
         description: Next page token
         schema:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           default: null
         explode: false
       responses:
@@ -199,8 +211,126 @@ paths:
                 type: string
       tags:
       - Executions
+      summary: Execution transitions stream route stream
+      x-summary-source: derived
 components:
   schemas:
+    Executions.Transition:
+      type: object
+      required:
+      - execution_id
+      - current
+      - next
+      - id
+      properties:
+        execution_id:
+          allOf:
+          - $ref: '#/components/schemas/Common.uuid'
+          readOnly: true
+        current:
+          allOf:
+          - $ref: '#/components/schemas/Executions.TransitionTarget'
+          readOnly: true
+        next:
+          type:
+          - object
+          - 'null'
+          allOf:
+          - $ref: '#/components/schemas/Executions.TransitionTarget'
+          readOnly: true
+        step_label:
+          allOf:
+          - $ref: '#/components/schemas/Common.stepLabel'
+          readOnly: true
+        id:
+          allOf:
+          - $ref: '#/components/schemas/Common.uuid'
+          readOnly: true
+        metadata:
+          type: object
+          additionalProperties: {}
+      allOf:
+      - $ref: '#/components/schemas/Executions.TransitionEvent'
+    Common.uuid:
+      type: string
+      format: uuid
+    Common.offset:
+      type: integer
+      format: uint32
+      minimum: 0
+      description: Offset to apply to the results
+    Common.stepLabel:
+      type: string
+      maxLength: 120
+      pattern: ^[^0-9]|^[0-9]+[^0-9].*$
+      description: A valid step label
+    Executions.TransitionEvent:
+      type: object
+      required:
+      - type
+      - output
+      - created_at
+      - updated_at
+      properties:
+        type:
+          type: string
+          enum:
+          - init
+          - init_branch
+          - finish
+          - finish_branch
+          - wait
+          - resume
+          - error
+          - step
+          - cancelled
+          readOnly: true
+        output:
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          description: When this resource was created as UTC date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          description: When this resource was updated as UTC date-time
+          readOnly: true
+    Executions.UpdateExecutionRequest:
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          enum:
+          - queued
+          - starting
+          - running
+          - awaiting_input
+          - succeeded
+          - failed
+          - cancelled
+      discriminator:
+        propertyName: status
+        mapping:
+          cancelled: '#/components/schemas/Executions.StopExecutionRequest'
+          running: '#/components/schemas/Executions.ResumeExecutionRequest'
+    Executions.TransitionTarget:
+      type: object
+      required:
+      - workflow
+      - step
+      - scope_id
+      properties:
+        workflow:
+          $ref: '#/components/schemas/Common.identifierSafeUnicode'
+        step:
+          type: integer
+          format: uint16
+        scope_id:
+          $ref: '#/components/schemas/Common.uuid'
     Executions.TaskTokenResumeExecutionRequest:
       type: object
       required:
@@ -215,6 +345,21 @@ components:
           type: object
           additionalProperties: {}
           description: The input to resume the execution with
+    Common.identifierSafeUnicode:
+      type: string
+      maxLength: 120
+      pattern: ^[\p{L}\p{Nl}\p{Pattern_Syntax}\p{Pattern_White_Space}]+[\p{ID_Start}\p{Mn}\p{Mc}\p{Nd}\p{Pc}\p{Pattern_Syntax}\p{Pattern_White_Space}]*$
+      description: 'For Unicode character safety
+
+        See: https://unicode.org/reports/tr31/
+
+        See: https://www.unicode.org/reports/tr39/#Identifier_Characters'
+    Common.limit:
+      type: integer
+      format: uint16
+      minimum: 1
+      description: Limit the number of results
+      exclusiveMaximum: 1000
     Executions.Execution:
       type: object
       required:
@@ -272,146 +417,16 @@ components:
           allOf:
           - $ref: '#/components/schemas/Common.uuid'
           readOnly: true
-    Executions.Transition:
-      type: object
-      required:
-      - execution_id
-      - current
-      - next
-      - id
-      properties:
-        execution_id:
-          allOf:
-          - $ref: '#/components/schemas/Common.uuid'
-          readOnly: true
-        current:
-          allOf:
-          - $ref: '#/components/schemas/Executions.TransitionTarget'
-          readOnly: true
-        next:
-          type: object
-          allOf:
-          - $ref: '#/components/schemas/Executions.TransitionTarget'
-          nullable: true
-          readOnly: true
-        step_label:
-          allOf:
-          - $ref: '#/components/schemas/Common.stepLabel'
-          readOnly: true
-        id:
-          allOf:
-          - $ref: '#/components/schemas/Common.uuid'
-          readOnly: true
-        metadata:
-          type: object
-          additionalProperties: {}
-      allOf:
-      - $ref: '#/components/schemas/Executions.TransitionEvent'
-    Common.uuid:
-      type: string
-      format: uuid
-    Executions.TransitionTarget:
-      type: object
-      required:
-      - workflow
-      - step
-      - scope_id
-      properties:
-        workflow:
-          $ref: '#/components/schemas/Common.identifierSafeUnicode'
-        step:
-          type: integer
-          format: uint16
-        scope_id:
-          $ref: '#/components/schemas/Common.uuid'
-    Executions.TransitionEvent:
-      type: object
-      required:
-      - type
-      - output
-      - created_at
-      - updated_at
-      properties:
-        type:
-          type: string
-          enum:
-          - init
-          - init_branch
-          - finish
-          - finish_branch
-          - wait
-          - resume
-          - error
-          - step
-          - cancelled
-          readOnly: true
-        output:
-          readOnly: true
-        created_at:
-          type: string
-          format: date-time
-          description: When this resource was created as UTC date-time
-          readOnly: true
-        updated_at:
-          type: string
-          format: date-time
-          description: When this resource was updated as UTC date-time
-          readOnly: true
-    Common.limit:
-      type: integer
-      format: uint16
-      minimum: 1
-      maximum: 1000
-      exclusiveMaximum: true
-      description: Limit the number of results
-    Executions.UpdateExecutionRequest:
-      type: object
-      required:
-      - status
-      properties:
-        status:
-          type: string
-          enum:
-          - queued
-          - starting
-          - running
-          - awaiting_input
-          - succeeded
-          - failed
-          - cancelled
-      discriminator:
-        propertyName: status
-        mapping:
-          cancelled: '#/components/schemas/Executions.StopExecutionRequest'
-          running: '#/components/schemas/Executions.ResumeExecutionRequest'
-    Common.stepLabel:
-      type: string
-      maxLength: 120
-      pattern: ^[^0-9]|^[0-9]+[^0-9].*$
-      description: A valid step label
-    Common.identifierSafeUnicode:
-      type: string
-      maxLength: 120
-      pattern: ^[\p{L}\p{Nl}\p{Pattern_Syntax}\p{Pattern_White_Space}]+[\p{ID_Start}\p{Mn}\p{Mc}\p{Nd}\p{Pc}\p{Pattern_Syntax}\p{Pattern_White_Space}]*$
-      description: 'For Unicode character safety
-
-        See: https://unicode.org/reports/tr31/
-
-        See: https://www.unicode.org/reports/tr39/#Identifier_Characters'
-    Common.offset:
-      type: integer
-      format: uint32
-      minimum: 0
-      description: Offset to apply to the results
   parameters:
-    Common.PaginationOptions.limit:
-      name: limit
+    Common.PaginationOptions.metadata_filter:
+      name: metadata_filter
       in: query
       required: true
-      description: Limit the number of items returned
+      description: Object to filter results by metadata
       schema:
-        $ref: '#/components/schemas/Common.limit'
-        default: 100
+        type: object
+        additionalProperties: {}
+        default: {}
       explode: false
     Common.PaginationOptions.sort_by:
       name: sort_by
@@ -425,6 +440,24 @@ components:
         - updated_at
         default: created_at
       explode: false
+    Common.PaginationOptions.offset:
+      name: offset
+      in: query
+      required: true
+      description: Offset the items returned
+      schema:
+        $ref: '#/components/schemas/Common.offset'
+        default: 0
+      explode: false
+    Common.PaginationOptions.limit:
+      name: limit
+      in: query
+      required: true
+      description: Limit the number of items returned
+      schema:
+        $ref: '#/components/schemas/Common.limit'
+        default: 100
+      explode: false
     Common.PaginationOptions.direction:
       name: direction
       in: query
@@ -436,25 +469,6 @@ components:
         - asc
         - desc
         default: asc
-      explode: false
-    Common.PaginationOptions.metadata_filter:
-      name: metadata_filter
-      in: query
-      required: true
-      description: Object to filter results by metadata
-      schema:
-        type: object
-        additionalProperties: {}
-        default: {}
-      explode: false
-    Common.PaginationOptions.offset:
-      name: offset
-      in: query
-      required: true
-      description: Offset the items returned
-      schema:
-        $ref: '#/components/schemas/Common.offset'
-        default: 0
       explode: false
   securitySchemes:
     ApiKeyAuth:
