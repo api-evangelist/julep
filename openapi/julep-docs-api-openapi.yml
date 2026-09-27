@@ -59,9 +59,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Common.uuid:
-      type: string
-      format: uuid
     Docs.Doc:
       type: object
       required:
@@ -126,6 +123,9 @@ components:
           format: uint16
           description: Dimensions of the embedding model
           readOnly: true
+    Common.uuid:
+      type: string
+      format: uuid
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

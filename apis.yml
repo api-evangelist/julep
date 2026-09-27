@@ -56,7 +56,7 @@ tags:
 - Memory
 - Orchestration
 - Developer Tools
-- Open-Source
+- Open Source
 tags_raw:
 - Company
 - AI Agents
@@ -68,6 +68,7 @@ tags_raw:
 - Orchestration
 - Developer Tools
 - Open Source
+- Open-Source
 apis:
 - aid: julep:julep-agents-api
   name: Julep Agents API

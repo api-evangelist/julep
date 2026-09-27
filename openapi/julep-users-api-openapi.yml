@@ -359,10 +359,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Common.content:
-      type: string
-      maxLength: 30000
-      description: Contents of a document
     Docs.BulkDeleteDocsRequest:
       type: object
       required:
@@ -378,6 +374,96 @@ components:
           type: boolean
           description: Delete all docs
           default: false
+    Users.CreateUserRequest:
+      type: object
+      required:
+      - name
+      - about
+      properties:
+        metadata:
+          type: object
+          additionalProperties: {}
+        name:
+          allOf:
+          - $ref: '#/components/schemas/Common.identifierSafeUnicode'
+          description: Name of the user
+          default: ''
+        about:
+          type: string
+          description: About the user
+          default: ''
+        project:
+          allOf:
+          - $ref: '#/components/schemas/Common.canonicalName'
+          description: Project canonical name of the user
+      description: Payload for creating a user (and associated documents)
+    Common.offset:
+      type: integer
+      format: uint32
+      minimum: 0
+      description: Offset to apply to the results
+    Docs.DocOwner:
+      type: object
+      required:
+      - id
+      - role
+      properties:
+        id:
+          anyOf:
+          - allOf:
+            - $ref: '#/components/schemas/Common.uuid'
+            readOnly: true
+          - allOf:
+            - $ref: '#/components/schemas/Common.uuid'
+            readOnly: true
+        role:
+          type: string
+          enum:
+          - user
+          - agent
+    Common.content:
+      type: string
+      maxLength: 30000
+      description: Contents of a document
+    Users.User:
+      type: object
+      required:
+      - id
+      - created_at
+      - updated_at
+      - name
+      - about
+      properties:
+        id:
+          allOf:
+          - $ref: '#/components/schemas/Common.uuid'
+          readOnly: true
+        metadata:
+          type: object
+          additionalProperties: {}
+        created_at:
+          type: string
+          format: date-time
+          description: When this resource was created as UTC date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          description: When this resource was updated as UTC date-time
+          readOnly: true
+        name:
+          allOf:
+          - $ref: '#/components/schemas/Common.identifierSafeUnicode'
+          description: Name of the user
+          default: ''
+        about:
+          type: string
+          description: About the user
+          default: ''
+        project:
+          allOf:
+          - $ref: '#/components/schemas/Common.canonicalName'
+          description: Project canonical name of the user
     Docs.DocReference:
       type: object
       required:
@@ -422,6 +508,21 @@ components:
           type: number
           description: The time taken to search in seconds
           exclusiveMinimum: 0
+    Docs.Snippet:
+      type: object
+      required:
+      - index
+      - content
+      properties:
+        index:
+          type: integer
+          format: uint16
+        content:
+          type: string
+        embedding:
+          type: array
+          items:
+            type: number
     Common.ResourceDeletedResponse:
       type: object
       required:
@@ -445,70 +546,6 @@ components:
           description: IDs (if any) of jobs created as part of this request
           default: []
           readOnly: true
-    Docs.Doc:
-      type: object
-      required:
-      - id
-      - created_at
-      - title
-      - content
-      - embeddings
-      properties:
-        id:
-          allOf:
-          - $ref: '#/components/schemas/Common.uuid'
-          readOnly: true
-        metadata:
-          type: object
-          additionalProperties: {}
-        created_at:
-          type: string
-          format: date-time
-          description: When this resource was created as UTC date-time
-          readOnly: true
-        title:
-          type: string
-          maxLength: 800
-          description: Title describing what this document contains
-        content:
-          anyOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-          description: Contents of the document
-        embeddings:
-          anyOf:
-          - type: array
-            items:
-              type: number
-              format: float
-          - type: array
-            items:
-              type: array
-              items:
-                type: number
-                format: float
-          description: Embeddings for the document
-          default: null
-          readOnly: true
-        modality:
-          type: string
-          description: Modality of the document
-          readOnly: true
-        language:
-          type: string
-          description: Language of the document
-          readOnly: true
-        embedding_model:
-          type: string
-          description: Embedding model used for the document
-          readOnly: true
-        embedding_dimensions:
-          type: integer
-          format: uint16
-          description: Dimensions of the embedding model
-          readOnly: true
     Users.PatchUserRequest:
       type: object
       properties:
@@ -529,233 +566,9 @@ components:
           - $ref: '#/components/schemas/Common.canonicalName'
           description: Project canonical name of the user
       description: Payload for patching a user
-    Docs.DocOwner:
-      type: object
-      required:
-      - id
-      - role
-      properties:
-        id:
-          anyOf:
-          - allOf:
-            - $ref: '#/components/schemas/Common.uuid'
-            readOnly: true
-          - allOf:
-            - $ref: '#/components/schemas/Common.uuid'
-            readOnly: true
-        role:
-          type: string
-          enum:
-          - user
-          - agent
-    Common.offset:
-      type: integer
-      format: uint32
-      minimum: 0
-      description: Offset to apply to the results
-    Users.User:
-      type: object
-      required:
-      - id
-      - created_at
-      - updated_at
-      - name
-      - about
-      properties:
-        id:
-          allOf:
-          - $ref: '#/components/schemas/Common.uuid'
-          readOnly: true
-        metadata:
-          type: object
-          additionalProperties: {}
-        created_at:
-          type: string
-          format: date-time
-          description: When this resource was created as UTC date-time
-          readOnly: true
-        updated_at:
-          type: string
-          format: date-time
-          description: When this resource was updated as UTC date-time
-          readOnly: true
-        name:
-          allOf:
-          - $ref: '#/components/schemas/Common.identifierSafeUnicode'
-          description: Name of the user
-          default: ''
-        about:
-          type: string
-          description: About the user
-          default: ''
-        project:
-          allOf:
-          - $ref: '#/components/schemas/Common.canonicalName'
-          description: Project canonical name of the user
-    Common.canonicalName:
-      type: string
-      minLength: 1
-      maxLength: 255
-      pattern: ^[a-zA-Z][a-zA-Z0-9_]*$
-      description: 'For canonical names (machine-friendly identifiers)
-
-        Must start with a letter and can only contain letters, numbers, and underscores'
-    Common.identifierSafeUnicode:
-      type: string
-      maxLength: 120
-      pattern: ^[\p{L}\p{Nl}\p{Pattern_Syntax}\p{Pattern_White_Space}]+[\p{ID_Start}\p{Mn}\p{Mc}\p{Nd}\p{Pc}\p{Pattern_Syntax}\p{Pattern_White_Space}]*$
-      description: 'For Unicode character safety
-
-        See: https://unicode.org/reports/tr31/
-
-        See: https://www.unicode.org/reports/tr39/#Identifier_Characters'
-    Docs.VectorDocSearchRequest:
-      type: object
-      required:
-      - limit
-      - metadata_filter
-      - include_embeddings
-      - vector
-      - confidence
-      properties:
-        limit:
-          type: integer
-          format: uint16
-          minimum: 1
-          maximum: 50
-          description: The limit of documents to return
-          default: 10
-        metadata_filter:
-          type: object
-          additionalProperties: {}
-          description: Metadata filter to apply to the search
-          default: {}
-        include_embeddings:
-          type: boolean
-          description: Whether to include embeddings in the response
-          default: true
-        vector:
-          type: array
-          items:
-            type: number
-          description: Vector to use in the search. Must be the same dimensions as the embedding model or else an error will be thrown.
-        confidence:
-          type: number
-          minimum: -1
-          maximum: 1
-          description: The confidence cutoff level
-          default: 0.5
-        mmr_strength:
-          type: number
-          minimum: 0
-          description: MMR Strength (mmr_strength = 1 - mmr_lambda)
-          default: 0.5
-          exclusiveMaximum: 1
-    Users.UpdateUserRequest:
-      type: object
-      required:
-      - name
-      - about
-      properties:
-        metadata:
-          type: object
-          additionalProperties: {}
-        name:
-          allOf:
-          - $ref: '#/components/schemas/Common.identifierSafeUnicode'
-          description: Name of the user
-          default: ''
-        about:
-          type: string
-          description: About the user
-          default: ''
-        project:
-          allOf:
-          - $ref: '#/components/schemas/Common.canonicalName'
-          description: Project canonical name of the user
-      description: Payload for updating a user
     Common.uuid:
       type: string
       format: uuid
-    Docs.Snippet:
-      type: object
-      required:
-      - index
-      - content
-      properties:
-        index:
-          type: integer
-          format: uint16
-        content:
-          type: string
-        embedding:
-          type: array
-          items:
-            type: number
-    Users.CreateUserRequest:
-      type: object
-      required:
-      - name
-      - about
-      properties:
-        metadata:
-          type: object
-          additionalProperties: {}
-        name:
-          allOf:
-          - $ref: '#/components/schemas/Common.identifierSafeUnicode'
-          description: Name of the user
-          default: ''
-        about:
-          type: string
-          description: About the user
-          default: ''
-        project:
-          allOf:
-          - $ref: '#/components/schemas/Common.canonicalName'
-          description: Project canonical name of the user
-      description: Payload for creating a user (and associated documents)
-    Docs.TextOnlyDocSearchRequest:
-      type: object
-      required:
-      - limit
-      - metadata_filter
-      - include_embeddings
-      - text
-      - lang
-      - trigram_similarity_threshold
-      properties:
-        limit:
-          type: integer
-          format: uint16
-          minimum: 1
-          maximum: 50
-          description: The limit of documents to return
-          default: 10
-        metadata_filter:
-          type: object
-          additionalProperties: {}
-          description: Metadata filter to apply to the search
-          default: {}
-        include_embeddings:
-          type: boolean
-          description: Whether to include embeddings in the response
-          default: true
-        text:
-          type: string
-          description: Text to use in the search
-        lang:
-          type: string
-          description: The language to be used for text search. Support for other languages coming soon.
-          default: en-US
-        trigram_similarity_threshold:
-          type:
-          - number
-          - 'null'
-          minimum: 0
-          maximum: 1
-          description: Trigram similarity threshold for fuzzy matching. Set to null to disable trigram search.
-          default: null
     Docs.HybridDocSearchRequest:
       type: object
       required:
@@ -831,6 +644,170 @@ components:
           maximum: 10
           description: The k_multiplier to control how many intermediate results to fetch before final scoring
           default: 5
+    Docs.VectorDocSearchRequest:
+      type: object
+      required:
+      - limit
+      - metadata_filter
+      - include_embeddings
+      - vector
+      - confidence
+      properties:
+        limit:
+          type: integer
+          format: uint16
+          minimum: 1
+          maximum: 50
+          description: The limit of documents to return
+          default: 10
+        metadata_filter:
+          type: object
+          additionalProperties: {}
+          description: Metadata filter to apply to the search
+          default: {}
+        include_embeddings:
+          type: boolean
+          description: Whether to include embeddings in the response
+          default: true
+        vector:
+          type: array
+          items:
+            type: number
+          description: Vector to use in the search. Must be the same dimensions as the embedding model or else an error will be thrown.
+        confidence:
+          type: number
+          minimum: -1
+          maximum: 1
+          description: The confidence cutoff level
+          default: 0.5
+        mmr_strength:
+          type: number
+          minimum: 0
+          description: MMR Strength (mmr_strength = 1 - mmr_lambda)
+          default: 0.5
+          exclusiveMaximum: 1
+    Docs.Doc:
+      type: object
+      required:
+      - id
+      - created_at
+      - title
+      - content
+      - embeddings
+      properties:
+        id:
+          allOf:
+          - $ref: '#/components/schemas/Common.uuid'
+          readOnly: true
+        metadata:
+          type: object
+          additionalProperties: {}
+        created_at:
+          type: string
+          format: date-time
+          description: When this resource was created as UTC date-time
+          readOnly: true
+        title:
+          type: string
+          maxLength: 800
+          description: Title describing what this document contains
+        content:
+          anyOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+          description: Contents of the document
+        embeddings:
+          anyOf:
+          - type: array
+            items:
+              type: number
+              format: float
+          - type: array
+            items:
+              type: array
+              items:
+                type: number
+                format: float
+          description: Embeddings for the document
+          default: null
+          readOnly: true
+        modality:
+          type: string
+          description: Modality of the document
+          readOnly: true
+        language:
+          type: string
+          description: Language of the document
+          readOnly: true
+        embedding_model:
+          type: string
+          description: Embedding model used for the document
+          readOnly: true
+        embedding_dimensions:
+          type: integer
+          format: uint16
+          description: Dimensions of the embedding model
+          readOnly: true
+    Docs.TextOnlyDocSearchRequest:
+      type: object
+      required:
+      - limit
+      - metadata_filter
+      - include_embeddings
+      - text
+      - lang
+      - trigram_similarity_threshold
+      properties:
+        limit:
+          type: integer
+          format: uint16
+          minimum: 1
+          maximum: 50
+          description: The limit of documents to return
+          default: 10
+        metadata_filter:
+          type: object
+          additionalProperties: {}
+          description: Metadata filter to apply to the search
+          default: {}
+        include_embeddings:
+          type: boolean
+          description: Whether to include embeddings in the response
+          default: true
+        text:
+          type: string
+          description: Text to use in the search
+        lang:
+          type: string
+          description: The language to be used for text search. Support for other languages coming soon.
+          default: en-US
+        trigram_similarity_threshold:
+          type:
+          - number
+          - 'null'
+          minimum: 0
+          maximum: 1
+          description: Trigram similarity threshold for fuzzy matching. Set to null to disable trigram search.
+          default: null
+    Common.identifierSafeUnicode:
+      type: string
+      maxLength: 120
+      pattern: ^[\p{L}\p{Nl}\p{Pattern_Syntax}\p{Pattern_White_Space}]+[\p{ID_Start}\p{Mn}\p{Mc}\p{Nd}\p{Pc}\p{Pattern_Syntax}\p{Pattern_White_Space}]*$
+      description: 'For Unicode character safety
+
+        See: https://unicode.org/reports/tr31/
+
+        See: https://www.unicode.org/reports/tr39/#Identifier_Characters'
+    Common.canonicalName:
+      type: string
+      minLength: 1
+      maxLength: 255
+      pattern: ^[a-zA-Z][a-zA-Z0-9_]*$
+      description: 'For canonical names (machine-friendly identifiers)
+
+        Must start with a letter and can only contain letters, numbers, and underscores'
     Docs.CreateDocRequest:
       type: object
       required:
@@ -859,6 +836,29 @@ components:
           description: Instruction for the embedding model.
           default: null
       description: Payload for creating a doc
+    Users.UpdateUserRequest:
+      type: object
+      required:
+      - name
+      - about
+      properties:
+        metadata:
+          type: object
+          additionalProperties: {}
+        name:
+          allOf:
+          - $ref: '#/components/schemas/Common.identifierSafeUnicode'
+          description: Name of the user
+          default: ''
+        about:
+          type: string
+          description: About the user
+          default: ''
+        project:
+          allOf:
+          - $ref: '#/components/schemas/Common.canonicalName'
+          description: Project canonical name of the user
+      description: Payload for updating a user
     Common.limit:
       type: integer
       format: uint16
@@ -866,15 +866,6 @@ components:
       description: Limit the number of results
       exclusiveMaximum: 1000
   parameters:
-    Common.PaginationOptions.limit:
-      name: limit
-      in: query
-      required: true
-      description: Limit the number of items returned
-      schema:
-        $ref: '#/components/schemas/Common.limit'
-        default: 100
-      explode: false
     Common.PaginationOptions.direction:
       name: direction
       in: query
@@ -902,6 +893,15 @@ components:
         type: object
         additionalProperties: {}
         default: {}
+      explode: false
+    Common.PaginationOptions.limit:
+      name: limit
+      in: query
+      required: true
+      description: Limit the number of items returned
+      schema:
+        $ref: '#/components/schemas/Common.limit'
+        default: 100
       explode: false
     Common.PaginationOptions.offset:
       name: offset

@@ -58,15 +58,19 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Docs.SingleEmbedQueryRequest:
+    Docs.MultipleEmbedQueryRequest:
       type: object
       required:
       - text
       - embed_instruction
       properties:
         text:
-          type: string
-          description: Text to embed
+          type: array
+          items:
+            type: string
+          minItems: 1
+          maxItems: 100
+          description: Texts to embed
         embed_instruction:
           type: string
           description: Instruction for the embedding model.
@@ -83,19 +87,15 @@ components:
             items:
               type: number
           description: The embedded vectors
-    Docs.MultipleEmbedQueryRequest:
+    Docs.SingleEmbedQueryRequest:
       type: object
       required:
       - text
       - embed_instruction
       properties:
         text:
-          type: array
-          items:
-            type: string
-          minItems: 1
-          maxItems: 100
-          description: Texts to embed
+          type: string
+          description: Text to embed
         embed_instruction:
           type: string
           description: Instruction for the embedding model.

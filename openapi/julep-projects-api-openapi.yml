@@ -196,22 +196,99 @@ paths:
       summary: Projects route get
       x-summary-source: derived
 components:
+  parameters:
+    Common.PaginationOptions.metadata_filter:
+      name: metadata_filter
+      in: query
+      required: true
+      description: Object to filter results by metadata
+      schema:
+        type: object
+        additionalProperties: {}
+        default: {}
+      explode: false
+    Common.PaginationOptions.direction:
+      name: direction
+      in: query
+      required: true
+      description: Sort direction
+      schema:
+        type: string
+        enum:
+        - asc
+        - desc
+        default: asc
+      explode: false
+    Projects.CreateOrUpdateProjectRequest.id:
+      name: id
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/Common.uuid'
+    Common.PaginationOptions.sort_by:
+      name: sort_by
+      in: query
+      required: true
+      description: Sort by a field
+      schema:
+        type: string
+        enum:
+        - created_at
+        - updated_at
+        default: created_at
+      explode: false
+    Common.PaginationOptions.offset:
+      name: offset
+      in: query
+      required: true
+      description: Offset the items returned
+      schema:
+        $ref: '#/components/schemas/Common.offset'
+        default: 0
+      explode: false
+    Common.PaginationOptions.limit:
+      name: limit
+      in: query
+      required: true
+      description: Limit the number of items returned
+      schema:
+        $ref: '#/components/schemas/Common.limit'
+        default: 100
+      explode: false
   schemas:
+    Projects.CreateProjectRequest:
+      type: object
+      required:
+      - name
+      properties:
+        metadata:
+          type: object
+          additionalProperties: {}
+        canonical_name:
+          allOf:
+          - $ref: '#/components/schemas/Common.canonicalName'
+          description: Canonical name of the project (unique per developer)
+        name:
+          allOf:
+          - $ref: '#/components/schemas/Common.displayName'
+          description: Display name of the project
+      description: Payload for creating a project
     Common.uuid:
       type: string
       format: uuid
-    Common.displayName:
-      type: string
-      minLength: 1
-      maxLength: 255
-      description: 'For display names
-
-        Must be between 1 and 255 characters'
     Common.offset:
       type: integer
       format: uint32
       minimum: 0
       description: Offset to apply to the results
+    Common.canonicalName:
+      type: string
+      minLength: 1
+      maxLength: 255
+      pattern: ^[a-zA-Z][a-zA-Z0-9_]*$
+      description: 'For canonical names (machine-friendly identifiers)
+
+        Must start with a letter and can only contain letters, numbers, and underscores'
     Common.ResourceDeletedResponse:
       type: object
       required:
@@ -235,6 +312,21 @@ components:
           description: IDs (if any) of jobs created as part of this request
           default: []
           readOnly: true
+    Projects.PatchProjectRequest:
+      type: object
+      properties:
+        metadata:
+          type: object
+          additionalProperties: {}
+        canonical_name:
+          allOf:
+          - $ref: '#/components/schemas/Common.canonicalName'
+          description: Canonical name of the project (unique per developer)
+        name:
+          allOf:
+          - $ref: '#/components/schemas/Common.displayName'
+          description: Display name of the project
+      description: Payload for patching a project
     Projects.UpdateProjectRequest:
       type: object
       required:
@@ -252,52 +344,6 @@ components:
           - $ref: '#/components/schemas/Common.displayName'
           description: Display name of the project
       description: Payload for updating a project
-    Common.canonicalName:
-      type: string
-      minLength: 1
-      maxLength: 255
-      pattern: ^[a-zA-Z][a-zA-Z0-9_]*$
-      description: 'For canonical names (machine-friendly identifiers)
-
-        Must start with a letter and can only contain letters, numbers, and underscores'
-    Projects.CreateProjectRequest:
-      type: object
-      required:
-      - name
-      properties:
-        metadata:
-          type: object
-          additionalProperties: {}
-        canonical_name:
-          allOf:
-          - $ref: '#/components/schemas/Common.canonicalName'
-          description: Canonical name of the project (unique per developer)
-        name:
-          allOf:
-          - $ref: '#/components/schemas/Common.displayName'
-          description: Display name of the project
-      description: Payload for creating a project
-    Common.limit:
-      type: integer
-      format: uint16
-      minimum: 1
-      description: Limit the number of results
-      exclusiveMaximum: 1000
-    Projects.PatchProjectRequest:
-      type: object
-      properties:
-        metadata:
-          type: object
-          additionalProperties: {}
-        canonical_name:
-          allOf:
-          - $ref: '#/components/schemas/Common.canonicalName'
-          description: Canonical name of the project (unique per developer)
-        name:
-          allOf:
-          - $ref: '#/components/schemas/Common.displayName'
-          description: Display name of the project
-      description: Payload for patching a project
     Projects.Project:
       type: object
       required:
@@ -332,65 +378,19 @@ components:
           - $ref: '#/components/schemas/Common.displayName'
           description: Display name of the project
       description: Project model
-  parameters:
-    Common.PaginationOptions.sort_by:
-      name: sort_by
-      in: query
-      required: true
-      description: Sort by a field
-      schema:
-        type: string
-        enum:
-        - created_at
-        - updated_at
-        default: created_at
-      explode: false
-    Common.PaginationOptions.metadata_filter:
-      name: metadata_filter
-      in: query
-      required: true
-      description: Object to filter results by metadata
-      schema:
-        type: object
-        additionalProperties: {}
-        default: {}
-      explode: false
-    Projects.CreateOrUpdateProjectRequest.id:
-      name: id
-      in: path
-      required: true
-      schema:
-        $ref: '#/components/schemas/Common.uuid'
-    Common.PaginationOptions.offset:
-      name: offset
-      in: query
-      required: true
-      description: Offset the items returned
-      schema:
-        $ref: '#/components/schemas/Common.offset'
-        default: 0
-      explode: false
-    Common.PaginationOptions.limit:
-      name: limit
-      in: query
-      required: true
-      description: Limit the number of items returned
-      schema:
-        $ref: '#/components/schemas/Common.limit'
-        default: 100
-      explode: false
-    Common.PaginationOptions.direction:
-      name: direction
-      in: query
-      required: true
-      description: Sort direction
-      schema:
-        type: string
-        enum:
-        - asc
-        - desc
-        default: asc
-      explode: false
+    Common.displayName:
+      type: string
+      minLength: 1
+      maxLength: 255
+      description: 'For display names
+
+        Must be between 1 and 255 characters'
+    Common.limit:
+      type: integer
+      format: uint16
+      minimum: 1
+      description: Limit the number of results
+      exclusiveMaximum: 1000
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
