@@ -219,24 +219,6 @@ components:
         - desc
         default: asc
       explode: false
-    Projects.CreateOrUpdateProjectRequest.id:
-      name: id
-      in: path
-      required: true
-      schema:
-        $ref: '#/components/schemas/Common.uuid'
-    Common.PaginationOptions.sort_by:
-      name: sort_by
-      in: query
-      required: true
-      description: Sort by a field
-      schema:
-        type: string
-        enum:
-        - created_at
-        - updated_at
-        default: created_at
-      explode: false
     Common.PaginationOptions.offset:
       name: offset
       in: query
@@ -255,40 +237,25 @@ components:
         $ref: '#/components/schemas/Common.limit'
         default: 100
       explode: false
+    Common.PaginationOptions.sort_by:
+      name: sort_by
+      in: query
+      required: true
+      description: Sort by a field
+      schema:
+        type: string
+        enum:
+        - created_at
+        - updated_at
+        default: created_at
+      explode: false
+    Projects.CreateOrUpdateProjectRequest.id:
+      name: id
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/Common.uuid'
   schemas:
-    Projects.CreateProjectRequest:
-      type: object
-      required:
-      - name
-      properties:
-        metadata:
-          type: object
-          additionalProperties: {}
-        canonical_name:
-          allOf:
-          - $ref: '#/components/schemas/Common.canonicalName'
-          description: Canonical name of the project (unique per developer)
-        name:
-          allOf:
-          - $ref: '#/components/schemas/Common.displayName'
-          description: Display name of the project
-      description: Payload for creating a project
-    Common.uuid:
-      type: string
-      format: uuid
-    Common.offset:
-      type: integer
-      format: uint32
-      minimum: 0
-      description: Offset to apply to the results
-    Common.canonicalName:
-      type: string
-      minLength: 1
-      maxLength: 255
-      pattern: ^[a-zA-Z][a-zA-Z0-9_]*$
-      description: 'For canonical names (machine-friendly identifiers)
-
-        Must start with a letter and can only contain letters, numbers, and underscores'
     Common.ResourceDeletedResponse:
       type: object
       required:
@@ -312,6 +279,24 @@ components:
           description: IDs (if any) of jobs created as part of this request
           default: []
           readOnly: true
+    Common.canonicalName:
+      type: string
+      minLength: 1
+      maxLength: 255
+      pattern: ^[a-zA-Z][a-zA-Z0-9_]*$
+      description: 'For canonical names (machine-friendly identifiers)
+
+        Must start with a letter and can only contain letters, numbers, and underscores'
+    Common.uuid:
+      type: string
+      format: uuid
+    Common.displayName:
+      type: string
+      minLength: 1
+      maxLength: 255
+      description: 'For display names
+
+        Must be between 1 and 255 characters'
     Projects.PatchProjectRequest:
       type: object
       properties:
@@ -378,19 +363,34 @@ components:
           - $ref: '#/components/schemas/Common.displayName'
           description: Display name of the project
       description: Project model
-    Common.displayName:
-      type: string
-      minLength: 1
-      maxLength: 255
-      description: 'For display names
-
-        Must be between 1 and 255 characters'
+    Common.offset:
+      type: integer
+      format: uint32
+      minimum: 0
+      description: Offset to apply to the results
     Common.limit:
       type: integer
       format: uint16
       minimum: 1
       description: Limit the number of results
       exclusiveMaximum: 1000
+    Projects.CreateProjectRequest:
+      type: object
+      required:
+      - name
+      properties:
+        metadata:
+          type: object
+          additionalProperties: {}
+        canonical_name:
+          allOf:
+          - $ref: '#/components/schemas/Common.canonicalName'
+          description: Canonical name of the project (unique per developer)
+        name:
+          allOf:
+          - $ref: '#/components/schemas/Common.displayName'
+          description: Display name of the project
+      description: Payload for creating a project
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
