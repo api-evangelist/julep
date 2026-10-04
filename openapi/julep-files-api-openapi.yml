@@ -81,15 +81,6 @@ components:
       description: 'For canonical names (machine-friendly identifiers)
 
         Must start with a letter and can only contain letters, numbers, and underscores'
-    Common.identifierSafeUnicode:
-      type: string
-      maxLength: 120
-      pattern: ^[\p{L}\p{Nl}\p{Pattern_Syntax}\p{Pattern_White_Space}]+[\p{ID_Start}\p{Mn}\p{Mc}\p{Nd}\p{Pc}\p{Pattern_Syntax}\p{Pattern_White_Space}]*$
-      description: 'For Unicode character safety
-
-        See: https://unicode.org/reports/tr31/
-
-        See: https://www.unicode.org/reports/tr39/#Identifier_Characters'
     Files.CreateFileRequest:
       type: object
       required:
@@ -178,6 +169,15 @@ components:
     Common.uuid:
       type: string
       format: uuid
+    Common.identifierSafeUnicode:
+      type: string
+      maxLength: 120
+      pattern: ^[\p{L}\p{Nl}\p{Pattern_Syntax}\p{Pattern_White_Space}]+[\p{ID_Start}\p{Mn}\p{Mc}\p{Nd}\p{Pc}\p{Pattern_Syntax}\p{Pattern_White_Space}]*$
+      description: 'For Unicode character safety
+
+        See: https://unicode.org/reports/tr31/
+
+        See: https://www.unicode.org/reports/tr39/#Identifier_Characters'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
