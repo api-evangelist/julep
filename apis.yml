@@ -46,6 +46,10 @@ specificationVersion: '0.23'
 image: https://avatars.githubusercontent.com/u/112750682?v=4
 created: '2026-07-17'
 modified: '2026-07-19'
+x-docs-platform: mintlify
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-10-03
+x-docs-hosting: vercel
 tags:
 - Company
 - AI Agents
@@ -323,6 +327,9 @@ apis:
   - type: AgenticAccess
     url: agentic-access/julep-agentic-access.yml
 common:
+- type: CapabilityMap
+  url: capabilities/julep-capability-edges.yml
+  name: Julep Business Capability Map
 - type: Website
   url: https://www.julep.ai/
 - type: X-MCPServerCandidate
