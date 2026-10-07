@@ -327,6 +327,10 @@ apis:
   - type: AgenticAccess
     url: agentic-access/julep-agentic-access.yml
 common:
+- type: RateLimits
+  url: rate-limits/julep-rate-limits.yml
+- type: Plans
+  url: plans/julep-plans-pricing.yml
 - type: CapabilityMap
   url: capabilities/julep-capability-edges.yml
   name: Julep Business Capability Map
