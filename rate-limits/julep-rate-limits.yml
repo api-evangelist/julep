@@ -1,0 +1,17 @@
+# Rate limits transcribed from the provider's own documentation — see provenance. Quoted, not derived.
+generated: '2026-10-07'
+method: searched
+source: https://docs.julep.ai/FAQ
+sources:
+- https://docs.julep.ai/FAQ
+provenance:
+  tool: all/0-working/economics/harvest_ratelimits.py
+  run: 20261007T122905
+  grounding: every limit_text was found verbatim in the fetched page text
+published: false
+note: The one documented ceiling (1,000 entries per list request) is a pagination maximum, not a rate limit, and is not counted. The FAQ states rate limiting and quota management are planned features only (max_free_sessions and
+  max_free_executions env vars defined, implementation pending) with no numeric values given. The only
+  numeric constraint stated is a maximum of 1000 entries per request for pagination of conversation history.
+  No rate-limit headers or HTTP status codes are documented.
+limit_count: 0
+limits: []
