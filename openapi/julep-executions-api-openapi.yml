@@ -251,12 +251,6 @@ components:
           additionalProperties: {}
       allOf:
       - $ref: '#/components/schemas/Executions.TransitionEvent'
-    Common.limit:
-      type: integer
-      format: uint16
-      minimum: 1
-      description: Limit the number of results
-      exclusiveMaximum: 1000
     Executions.TransitionTarget:
       type: object
       required:
@@ -271,6 +265,37 @@ components:
           format: uint16
         scope_id:
           $ref: '#/components/schemas/Common.uuid'
+    Common.offset:
+      type: integer
+      format: uint32
+      minimum: 0
+      description: Offset to apply to the results
+    Common.limit:
+      type: integer
+      format: uint16
+      minimum: 1
+      description: Limit the number of results
+      exclusiveMaximum: 1000
+    Executions.UpdateExecutionRequest:
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          enum:
+          - queued
+          - starting
+          - running
+          - awaiting_input
+          - succeeded
+          - failed
+          - cancelled
+      discriminator:
+        propertyName: status
+        mapping:
+          cancelled: '#/components/schemas/Executions.StopExecutionRequest'
+          running: '#/components/schemas/Executions.ResumeExecutionRequest'
     Executions.Execution:
       type: object
       required:
@@ -328,53 +353,6 @@ components:
           allOf:
           - $ref: '#/components/schemas/Common.uuid'
           readOnly: true
-    Common.stepLabel:
-      type: string
-      maxLength: 120
-      pattern: ^[^0-9]|^[0-9]+[^0-9].*$
-      description: A valid step label
-    Common.offset:
-      type: integer
-      format: uint32
-      minimum: 0
-      description: Offset to apply to the results
-    Executions.UpdateExecutionRequest:
-      type: object
-      required:
-      - status
-      properties:
-        status:
-          type: string
-          enum:
-          - queued
-          - starting
-          - running
-          - awaiting_input
-          - succeeded
-          - failed
-          - cancelled
-      discriminator:
-        propertyName: status
-        mapping:
-          cancelled: '#/components/schemas/Executions.StopExecutionRequest'
-          running: '#/components/schemas/Executions.ResumeExecutionRequest'
-    Executions.TaskTokenResumeExecutionRequest:
-      type: object
-      required:
-      - status
-      properties:
-        status:
-          type: string
-          enum:
-          - running
-          default: running
-        input:
-          type: object
-          additionalProperties: {}
-          description: The input to resume the execution with
-    Common.uuid:
-      type: string
-      format: uuid
     Executions.TransitionEvent:
       type: object
       required:
@@ -408,6 +386,23 @@ components:
           format: date-time
           description: When this resource was updated as UTC date-time
           readOnly: true
+    Executions.TaskTokenResumeExecutionRequest:
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          enum:
+          - running
+          default: running
+        input:
+          type: object
+          additionalProperties: {}
+          description: The input to resume the execution with
+    Common.uuid:
+      type: string
+      format: uuid
     Common.identifierSafeUnicode:
       type: string
       maxLength: 120
@@ -417,7 +412,31 @@ components:
         See: https://unicode.org/reports/tr31/
 
         See: https://www.unicode.org/reports/tr39/#Identifier_Characters'
+    Common.stepLabel:
+      type: string
+      maxLength: 120
+      pattern: ^[^0-9]|^[0-9]+[^0-9].*$
+      description: A valid step label
   parameters:
+    Common.PaginationOptions.limit:
+      name: limit
+      in: query
+      required: true
+      description: Limit the number of items returned
+      schema:
+        $ref: '#/components/schemas/Common.limit'
+        default: 100
+      explode: false
+    Common.PaginationOptions.metadata_filter:
+      name: metadata_filter
+      in: query
+      required: true
+      description: Object to filter results by metadata
+      schema:
+        type: object
+        additionalProperties: {}
+        default: {}
+      explode: false
     Common.PaginationOptions.direction:
       name: direction
       in: query
@@ -430,15 +449,14 @@ components:
         - desc
         default: asc
       explode: false
-    Common.PaginationOptions.metadata_filter:
-      name: metadata_filter
+    Common.PaginationOptions.offset:
+      name: offset
       in: query
       required: true
-      description: Object to filter results by metadata
+      description: Offset the items returned
       schema:
-        type: object
-        additionalProperties: {}
-        default: {}
+        $ref: '#/components/schemas/Common.offset'
+        default: 0
       explode: false
     Common.PaginationOptions.sort_by:
       name: sort_by
@@ -451,24 +469,6 @@ components:
         - created_at
         - updated_at
         default: created_at
-      explode: false
-    Common.PaginationOptions.offset:
-      name: offset
-      in: query
-      required: true
-      description: Offset the items returned
-      schema:
-        $ref: '#/components/schemas/Common.offset'
-        default: 0
-      explode: false
-    Common.PaginationOptions.limit:
-      name: limit
-      in: query
-      required: true
-      description: Limit the number of items returned
-      schema:
-        $ref: '#/components/schemas/Common.limit'
-        default: 100
       explode: false
   securitySchemes:
     ApiKeyAuth:

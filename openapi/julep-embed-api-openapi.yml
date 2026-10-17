@@ -58,6 +58,31 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    Docs.EmbedQueryResponse:
+      type: object
+      required:
+      - vectors
+      properties:
+        vectors:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
+          description: The embedded vectors
+    Docs.SingleEmbedQueryRequest:
+      type: object
+      required:
+      - text
+      - embed_instruction
+      properties:
+        text:
+          type: string
+          description: Text to embed
+        embed_instruction:
+          type: string
+          description: Instruction for the embedding model.
+          default: ''
     Docs.MultipleEmbedQueryRequest:
       type: object
       required:
@@ -75,31 +100,6 @@ components:
           type: string
           description: Instruction for the embedding model.
           default: ''
-    Docs.SingleEmbedQueryRequest:
-      type: object
-      required:
-      - text
-      - embed_instruction
-      properties:
-        text:
-          type: string
-          description: Text to embed
-        embed_instruction:
-          type: string
-          description: Instruction for the embedding model.
-          default: ''
-    Docs.EmbedQueryResponse:
-      type: object
-      required:
-      - vectors
-      properties:
-        vectors:
-          type: array
-          items:
-            type: array
-            items:
-              type: number
-          description: The embedded vectors
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
