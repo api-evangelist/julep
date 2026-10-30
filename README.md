@@ -64,6 +64,140 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Julep is a company surfaced as a portfolio company of version-one-ventures and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Julep is an open-source platform for building stateful AI agents that remember past interactions and execute long-running, multi-step tasks. Its cloud API and self-hostable server expose agents, sessions, tasks, executions, documents (RAG), tools, users, projects, secrets, and files, along with a task-workflow engine that supports decisions, loops, parallel branches, and integrations to external tools and APIs. Official Python and TypeScript SDKs and a command-line interface wrap the REST API; authentication is via API key. Julep is Apache-2.0 licensed and backed by Version One Ventures.
 
-Backed by: version-one-ventures
+**Areas:** Company · AI Agents · LLM · Agents · Workflows · RAG · Memory · Orchestration · Developer Tools · Open Source
+
+## Julep on APIs.io
+
+Everything profiled for Julep is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/julep/](https://apis.io/providers/julep/)** — or go straight to one of the APIs or properties below.
+
+### APIs (12)
+
+- [Julep Agents API](https://apis.io/apis/julep/julep-agents-api/) — The Agents API from Julep — 13 operation(s) for agents.
+- [Julep Docs API](https://apis.io/apis/julep/julep-docs-api/) — The Docs API from Julep — 1 operation(s) for docs.
+- [Julep Embed API](https://apis.io/apis/julep/julep-embed-api/) — The Embed API from Julep — 1 operation(s) for embed.
+- [Julep Executions API](https://apis.io/apis/julep/julep-executions-api/) — The Executions API from Julep — 5 operation(s) for executions.
+- [Julep Files API](https://apis.io/apis/julep/julep-files-api/) — The Files API from Julep — 2 operation(s) for files.
+- [Julep Jobs API](https://apis.io/apis/julep/julep-jobs-api/) — The Jobs API from Julep — 1 operation(s) for jobs.
+- [Julep Projects API](https://apis.io/apis/julep/julep-projects-api/) — The Projects API from Julep — 2 operation(s) for projects.
+- [Julep Responses API](https://apis.io/apis/julep/julep-responses-api/) — The Responses API from Julep — 2 operation(s) for responses.
+- [Julep Secrets API](https://apis.io/apis/julep/julep-secrets-api/) — The Secrets API from Julep — 2 operation(s) for secrets.
+- [Julep Sessions API](https://apis.io/apis/julep/julep-sessions-api/) — The Sessions API from Julep — 5 operation(s) for sessions.
+- [Julep Tasks API](https://apis.io/apis/julep/julep-tasks-api/) — The Tasks API from Julep — 2 operation(s) for tasks.
+- [Julep Users API](https://apis.io/apis/julep/julep-users-api/) — The Users API from Julep — 5 operation(s) for users.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [julep](https://apis.io/servers/julep/julep/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Julep Agentic Access](https://apis.io/agentic-access/julep/julep-agentic-access/)
+
+#### Collections (12)
+
+Postman and Open Collection request collections.
+
+- [Julep Agents API](https://apis.io/collections/julep/open-julep-agents-api/)
+- [Julep Agents Docs API](https://apis.io/collections/julep/open-julep-docs-api/)
+- [Julep Agents Embed API](https://apis.io/collections/julep/open-julep-embed-api/)
+- [Julep Agents Executions API](https://apis.io/collections/julep/open-julep-executions-api/)
+- [Julep Agents Files API](https://apis.io/collections/julep/open-julep-files-api/)
+- [Julep Agents Jobs API](https://apis.io/collections/julep/open-julep-jobs-api/)
+- [Julep Agents Projects API](https://apis.io/collections/julep/open-julep-projects-api/)
+- [Julep Agents Responses API](https://apis.io/collections/julep/open-julep-responses-api/)
+- [Julep Agents Secrets API](https://apis.io/collections/julep/open-julep-secrets-api/)
+- [Julep Agents Sessions API](https://apis.io/collections/julep/open-julep-sessions-api/)
+- [Julep Agents Tasks API](https://apis.io/collections/julep/open-julep-tasks-api/)
+- [Julep Agents Users API](https://apis.io/collections/julep/open-julep-users-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Julep Openapi Overlay](https://apis.io/overlays/julep/julep-openapi-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Julep Authentication](https://apis.io/security/julep/julep-authentication/)
+- [Julep Domain Security](https://apis.io/security/julep/julep-domain-security/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Julep Rate Limits](https://apis.io/rate-limits/julep/julep-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.julep.ai/)
+- [Documentation](https://docs.julep.ai)
+- [Getting started](https://docs.julep.ai/introduction/quickstart)
+- [API reference](https://docs.julep.ai/api-reference/agents/list-agents)
+- [GitHub](https://github.com/julep-ai)
+
+## API Evangelist rating
+
+**Kin Score 37.0** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 52.5 |
+| Contract governance | 4.5 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 66.1 |
+| Access clarity | 0.0 |
+
+**Agent readiness 20.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 15.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/julep/](https://apis.io/providers/julep/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Julep: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/julep/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
